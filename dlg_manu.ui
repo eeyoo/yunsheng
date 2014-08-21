@@ -260,7 +260,7 @@ QRadioButton::indicator:checked {
      <item>
       <widget class="QTabWidget" name="tabWidget">
        <property name="currentIndex">
-        <number>0</number>
+        <number>1</number>
        </property>
        <widget class="QWidget" name="tab_servo">
         <attribute name="title">
@@ -719,7 +719,7 @@ QRadioButton::indicator:checked {
          <item row="2" column="4">
           <widget class="QCheckBox" name="cbO27">
            <property name="text">
-            <string>输出27</string>
+            <string>Z1刹车</string>
            </property>
           </widget>
          </item>
@@ -754,7 +754,7 @@ QRadioButton::indicator:checked {
          <item row="3" column="4">
           <widget class="QCheckBox" name="cbO28">
            <property name="text">
-            <string>输出28</string>
+            <string>Z2刹车</string>
            </property>
           </widget>
          </item>
