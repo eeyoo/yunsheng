@@ -1,7 +1,7 @@
 # files or dirs ignored by git
 *~
 *.autosave
-*.user.*
+*.user*
 
 
 
