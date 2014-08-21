@@ -1,0 +1,805 @@
+/////////////////////////
+手动
+/////////////////////////
+
+QWidget {
+color: #c2c2c3;
+background: #343639;
+}
+
+QDialog {
+border:1px solid black;
+border-radius:1px;
+}
+
+#titleFrame {
+border: no;
+min-height: 20px;
+background: url(":/Res/image/title_bar.png");
+}
+
+QTabWidget {
+outline: no;
+}
+
+QTabWidget::tab-bar {
+	left: 15px;
+}
+
+QTabWidget::pane {
+/*border-top: 1px solid #343639;
+border-left: 1px solid black;
+border-right: 1px solid black;
+border-bottom: 1px solid black;*/
+border: 1px solid black;
+}
+
+QTabBar::tab{
+background: #343639;
+border: 1px solid black;
+border-bottom-color: #343639;                                 
+border-top-left-radius: 4px;
+border-top-right-radius: 4px;
+min-width:10ex;
+padding: 2px;
+min-height: 3ex;
+}
+
+QTabBar::tab:selected{
+color: white;
+outline: no;
+padding-top: 4px;
+background: #2773b4;
+border-bottom: #2773b4;
+}
+
+QTabBar::tab:!selected {
+ margin-top: 2px; /* make non-selected tabs look smaller */
+
+}
+
+#ServoFrame {
+border: no;
+}
+
+QPushButton {
+border: no;
+outline: no;
+min-width: 80px;
+min-height: 50px;
+image: url(":/Res/image/button_80x50_normal.png");
+}
+
+QPushButton:pressed {
+color: black;
+border: no;
+min-width: 80px;
+min-height: 50px;
+image: url(":/Res/image/button_80x50_active.png");
+}
+/*
+QPushButton {
+border: no;
+outline: no;
+min-width: 50px;
+min-height: 50px;
+image: url(":/Res/image/button_50x50_normal.png");
+}
+
+QPushButton:pressed {
+color: black;
+border: no;
+min-width: 50px;
+min-height: 50px;
+image: url(":/Res/image/button_50x50_active.png");
+}
+*/
+QPushButton:checked {
+color: black;
+border: no;
+min-width: 80px;
+min-height: 50px;
+image: url(":/Res/image/button_80x50_active.png");
+}
+
+QPushButton[objectName="btnRun"] {
+border: no;
+min-width: 80px;
+min-height: 50px;
+image: url(":/Res/image/btn_manual_run_80x50_normal.png");
+}
+
+QPushButton[objectName="btnRun"]:pressed {
+color: black;
+border: no;
+min-width: 80px;
+min-height: 50px;
+image: url(":/Res/image/btn_manual_run_80x50_active.png");
+}
+
+QPushButton[objectName="btnRun"]:checked {
+color: black;
+border: no;
+min-width: 80px;
+min-height: 50px;
+image: url(":/Res/image/btn_manual_run_80x50_active.png");
+}
+
+QPushButton[objectName="btnStp"] {
+border: no;
+min-width: 80px;
+min-height: 50px;
+image: url(":/Res/image/btn_manual_stop_80x50_normal.png");
+}
+
+QPushButton[objectName="btnStp"]:pressed {
+color: black;
+border: no;
+min-width: 80px;
+min-height: 50px;
+image: url(":/Res/image/btn_manual_stop_80x50_active.png");
+}
+
+QPushButton[objectName="btnOk"] {
+border: no;
+min-width: 80px;
+min-height: 50px;
+image: url(":/Res/image/button_80x50_normal.png");
+}
+
+QPushButton[objectName="btnOk"]:pressed {
+color: black;
+border: no;
+min-width: 80px;
+min-height: 50px;
+image: url(":/Res/image/button_80x50_active.png");
+}
+
+QLineEdit {
+color: black;
+background: qlineargradient(
+  x1:0, y1:0, x2:0, y2:1,
+  stop:0 gray,
+  stop: 0.2 white
+  stop:1 white
+ );
+border-radius: 1px;
+border: 1px solid black;
+min-height: 30px;
+width: 150px
+}
+
+QGroupBox {
+border: 1px solid black;
+border-radius: 1px
+}
+
+QCheckBox {
+outline: no;
+     spacing: 5px;
+}
+
+QCheckBox::indicator {
+     width: 50px;
+     height: 40px;
+}
+
+QCheckBox::indicator:unchecked {
+     image: url(":/Res/image/btn_cb_slider_45x30_off.png");
+}
+
+QCheckBox::indicator:checked {
+     image: url(":/Res/image/btn_cb_slider_45x30_on.png");
+}
+
+QRadioButton {
+outline: no;
+spacing: 5px;
+}
+
+QRadioButton::indicator {
+     width: 28px;
+     height: 28px;
+}
+
+QRadioButton::indicator:unchecked {
+     image: url(":/Res/image/btn_rb_28x28_off.png");
+}
+
+QRadioButton::indicator:checked {
+     image: url(":/Res/image/btn_rb_28x28_on.png");
+}
+
+/////////////////////////
+示教
+/////////////////////////
+
+QWidget { 
+color: #c2c2c3;
+background: #343639;
+}
+
+QPushButton {
+border: no;
+outline: no;
+min-width: 80px;
+min-height: 50px;
+image: url(":/Res/image/button_80x50_normal.png");
+}
+
+QPushButton:pressed {
+color: black;
+border: no;
+min-width: 80px;
+min-height: 50px;
+image: url(":/Res/image/button_80x50_active.png");
+}
+
+QTabWidget::pane {
+border: 1px solid black;
+}
+
+QTabBar::tab{
+background: #343639;
+border: 1px solid black;
+border-bottom-color: #343639; 
+border-top-left-radius: 4px;
+border-top-right-radius: 4px;
+min-width:10ex;
+padding: 2px;
+min-height: 3ex;
+}
+
+QTabBar::tab:selected {
+color: white;
+padding-top: 4px;
+background: #2773b4;
+border-bottom: #2773b4;
+}
+
+QTabBar::tab:!selected {
+margin-top: 2px; 
+
+}
+
+QTabWidget QPushButton[objectName="btnR1"] {
+border: no;
+min-width:50px;
+min-height:50px;
+max-width:50px;
+max-height:50px;
+image: url(:/Res/image/icon_servo_x1.png);
+}
+
+QTabWidget QPushButton[objectName="btnR1"]:pressed {
+border: no;
+min-width:50px;
+min-height:50px;
+max-width:50px;
+max-height:50px;
+image: url(:/Res/image/icon_servo_x1.png);
+padding: 2px 2px 2px 2px;
+}
+
+QTabWidget QPushButton[objectName="btnR2"] {
+border: no;
+min-width:50px;
+min-height:50px;
+max-width:50px;
+max-height:50px;
+image: url(:/Res/image/icon_servo_z1.png);
+}
+
+QTabWidget QPushButton[objectName="btnR2"]:pressed {
+border: no;
+min-width:50px;
+min-height:50px;
+max-width:50px;
+max-height:50px;
+image: url(:/Res/image/icon_servo_z1.png);
+padding: 2px 2px 2px 2px;
+}
+
+QTabWidget QPushButton[objectName="btnR3"] {
+border: no;
+min-width:50px;
+min-height:50px;
+max-width:50px;
+max-height:50px;
+image: url(:/Res/image/icon_servo_u.png);
+}
+
+QTabWidget QPushButton[objectName="btnR3"]:pressed {
+border: no;
+min-width:50px;
+min-height:50px;
+max-width:50px;
+max-height:50px;
+image: url(:/Res/image/icon_servo_u.png);
+padding: 2px 2px 2px 2px;
+}
+
+QTabWidget QPushButton[objectName="btnR4"] {
+border: no;
+min-width:50px;
+min-height:50px;
+max-width:50px;
+max-height:50px;
+image: url(:/Res/image/icon_servo_x2.png);
+}
+
+QTabWidget QPushButton[objectName="btnR4"]:pressed {
+border: no;
+min-width:50px;
+min-height:50px;
+max-width:50px;
+max-height:50px;
+image: url(:/Res/image/icon_servo_x2.png);
+padding: 2px 2px 2px 2px;
+}
+
+QTabWidget QPushButton[objectName="btnR5"] {
+border: no;
+min-width:50px;
+min-height:50px;
+max-width:50px;
+max-height:50px;
+image: url(:/Res/image/icon_servo_z2.png);
+}
+
+QTabWidget QPushButton[objectName="btnR5"]:pressed {
+border: no;
+min-width:50px;
+min-height:50px;
+max-width:50px;
+max-height:50px;
+image: url(:/Res/image/icon_servo_z2.png);
+padding: 2px 2px 2px 2px;
+}
+
+QTabWidget QPushButton[objectName="btnIG"] {
+border: no;
+min-width:50px;
+min-height:50px;
+max-width:50px;
+max-height:50px;
+image: url(:/Res/image/icon_input_gpio.png);
+}
+
+QTabWidget QPushButton[objectName="btnIG"]:pressed {
+border: no;
+min-width:50px;
+min-height:50px;
+max-width:50px;
+max-height:50px;
+image: url(:/Res/image/icon_input_gpio.png);
+padding: 2px 2px 2px 2px;
+}
+
+QTabWidget QPushButton[objectName="btnO1"] {
+border: no;
+min-width:50px;
+min-height:50px;
+max-width:50px;
+max-height:50px;
+image: url(:/Res/image/icon_output1_gpio.png);
+}
+
+QTabWidget QPushButton[objectName="btnO1"]:pressed {
+border: no;
+min-width:50px;
+min-height:50px;
+max-width:50px;
+max-height:50px;
+image: url(:/Res/image/icon_output1_gpio.png);
+padding: 2px 2px 2px 2px;
+}
+
+QTabWidget QPushButton[objectName="btnO2"] {
+border: no;
+min-width:50px;
+min-height:50px;
+max-width:50px;
+max-height:50px;
+image: url(:/Res/image/icon_output2_gpio.png);
+}
+
+QTabWidget QPushButton[objectName="btnO2"]:pressed {
+border: no;
+min-width:50px;
+min-height:50px;
+max-width:50px;
+max-height:50px;
+image: url(:/Res/image/icon_output2_gpio.png);
+padding: 2px 2px 2px 2px;
+}
+
+QTabWidget QPushButton[objectName="btnS"] {
+border: no;
+min-width:50px;
+min-height:50px;
+max-width:50px;
+max-height:50px;
+image: url(:/Res/image/icon_stack.png);
+}
+
+QTabWidget QPushButton[objectName="btnS"]:pressed {
+border: no;
+min-width:50px;
+min-height:50px;
+max-width:50px;
+max-height:50px;
+image: url(:/Res/image/icon_stack.png);
+padding: 2px 2px 2px 2px;
+}
+/*
+QTabWidget#tabCmd QPushButton:checked {
+color: white;
+image: no;
+background: #2773b4;
+}
+*/
+
+QTableView {
+border: 1px solid black;
+}
+QLineEdit {
+background: qlineargradient(
+x1:0, y1:0, x2:0, y2:1,
+stop:0 gray,
+stop: 0.2 white
+stop:1 white
+);
+border-radius: 1px;
+border: 1px solid black;
+min-height: 30px;
+color: black;
+}
+
+QCheckBox {
+outline: no;
+spacing: 5px;
+}
+
+QCheckBox::indicator {
+width: 45px;
+height: 30px;
+}
+
+QCheckBox::indicator:unchecked {
+image: url(:/Res/image/btn_cb_slider_45x30_off.png);
+}
+
+QCheckBox::indicator:checked {
+image: url(:/Res/image/btn_cb_slider_45x30_on.png);
+}
+
+#paraFrame {
+border: 1px solid black;
+border-radius: 1px;
+}
+
+QScrollBar:vertical {
+border: 1px solid black;
+width: 40px;
+background: #343639;
+}
+
+QScrollBar::handle:vertical {
+border: 1px solid black;
+width: 40px;
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, 
+stop:0 #2773b4, 
+stop:1 #2773b4);
+min-height: 80px;
+}
+
+/////////////////////////
+主画面
+/////////////////////////
+
+QWidget {
+color: #c2c2c3;
+background: #343639;
+}
+
+QScrollBar:vertical {
+border: 1px solid black;
+width: 40px;
+background: #343639;
+}
+
+QScrollBar::handle:vertical {
+border: 1px solid black;
+width: 40px;
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, 
+stop:0 #2773b4, 
+stop:1 #2773b4);
+}
+
+#titleFrame {
+border:no;
+min-height: 20px;
+background: url(":/Res/image/title_bar.png");
+}
+
+#titleFrame QLabel {
+color: white;
+border: no;
+background: transparent;
+}
+
+#midlleFrame {
+border:no;
+min-width: 804px;
+min-height: 500px;
+}
+
+#positionFrame {
+border: 1px solid black;
+border-radius: 1px;
+min-height: 50px;
+}
+
+#positionFrame QLabel {
+font: 18px;
+color: white;
+background: transparent;
+}
+
+#positionFrame QLabel:disabled {
+font: 18px;
+color: gray;
+background: transparent;
+}
+
+#bottomFrame {
+border:no;
+background: #2773b4;
+min-height: 30px;
+}
+
+#bottomFrame QLabel{
+color: white;
+border: no;
+background: transparent;
+}
+
+#centralWidget QPushButton {
+border: no;
+outline: no;
+min-width: 80px;
+min-height: 50px;
+image: url(":/Res/image/button_80x50_normal.png");
+}
+
+#centralWidget QPushButton:pressed {
+color: black;
+border: no;
+outline: no;
+min-width: 80px;
+min-height: 50px;
+image: url(":/Res/image/button_80x50_active.png");
+}
+
+/////////////////////////
+设置
+/////////////////////////
+
+QWidget {
+color: #c2c2c3;
+background: #343639;
+}
+
+QTabWidget {
+outline: no;
+}
+
+QTabWidget::tab-bar {
+	left: 15px;
+}
+
+QTabWidget::pane {
+border: 1px solid black;
+}
+
+QTabBar::tab{
+background: #343639;
+border: 1px solid black;
+border-bottom-color: #343639; 
+border-top-left-radius: 4px;
+border-top-right-radius: 4px;
+min-width:10ex;
+padding: 2px;
+min-height: 3ex;
+}
+
+QTabBar::tab:selected {
+color: white;
+padding-top: 4px;
+background: #2773b4;
+border-bottom: #2773b4;
+}
+
+QTabBar::tab:!selected {
+margin-top: 2px; 
+
+}
+
+QGroupBox {
+border: 1px solid black;
+border-radius: 1px
+}
+
+QCheckBox {
+/*outline: no;*/
+spacing: 5px;
+}
+
+QCheckBox::indicator {
+	width: 45px;
+	height: 30px;
+}
+
+QCheckBox::indicator:unchecked {
+     image: url(:/Res/image/btn_cb_slider_45x30_off.png);
+}
+
+QCheckBox::indicator:checked {
+     image: url(:/Res/image/btn_cb_slider_45x30_on.png);
+}
+
+QRadioButton {
+/*outline: no;*/
+spacing: 5px;
+}
+
+QRadioButton::indicator {
+     width: 28px;
+     height: 28px;
+}
+
+QRadioButton::indicator:unchecked {
+     image: url(:/Res/image/btn_rb_28x28_off.png);
+}
+
+QRadioButton::indicator:checked {
+     image: url(:/Res/image/btn_rb_28x28_on.png);
+}
+
+QLineEdit {
+ background: qlineargradient(
+  x1:0, y1:0, x2:0, y2:1,
+  stop:0 gray,
+  stop: 0.2 white
+  stop:1 white
+ );
+ border-radius: 1px;
+ border: 1px solid black;
+ min-height: 30px;
+ color: black;
+}
+
+QPushButton {
+border: no;
+/*outline: no;*/
+min-width: 106px;
+min-height: 50px;
+image: url(":/Res/image/button_106x50_normal.png");
+}
+
+QPushButton:pressed {
+color: black;
+border: no;
+min-width: 106px;
+min-height: 50px;
+image: url(":/Res/image/button_106x50_active.png");
+}
+
+QComboBox {
+border: 1px solid black;
+min-height: 30px;
+/*outline: no;*/
+}
+
+QComboBox::drop-down{
+border: 1px solid #2773b4;
+min-width: 30px;
+}
+
+QComboBox::down-arrow {
+image: url(":/Res/image/downarrow.png");
+}
+
+QComboBox::down-arrow:on { /* shift the arrow when popup is open */
+top: 1px;
+left: 1px;
+}
+
+QComboBox QAbstractItemView {
+color: white;
+border: 1px solid black;
+selection-background-color: #2773b4;
+}
+
+/////////////////////////
+设置
+/////////////////////////
+
+QWidget {
+color: #c2c2c3;
+background: #343639;
+}
+
+QDialog {
+border:1px solid black;
+border-radius:1px;
+}
+
+#titleFrame {
+border: no;
+min-height: 20px;
+background: url(":/Res/image/title_bar.png");
+}
+
+#btnFrame {
+border: no;
+}
+
+QPushButton {
+border: no;
+outline: no;
+min-width: 50px;
+min-height: 50px;
+image: url(":/Res/image/button_50x50_normal.png");
+}
+
+QPushButton:pressed {
+color: black;
+border: no;
+min-width: 50px;
+min-height: 50px;
+image: url(":/Res/image/button_50x50_active.png");
+}
+
+QPushButton[objectName="btn48"] {
+border: no;
+min-width: 106px;
+min-height: 50px;
+image: url(":/Res/image/button_106x50_normal.png");
+}
+
+QPushButton[objectName="btn48"]:pressed {
+border: no;
+min-width: 106px;
+min-height: 50px;
+image: url(":/Res/image/button_106x50_active.png");
+}
+
+QPushButton[objectName="btnOK_K"] {
+border: no;
+min-width: 50px;
+min-height: 106px;
+image: url(":/Res/image/button_50x106_normal.png");
+}
+
+QPushButton[objectName="btnOK_K"]:pressed {
+border: no;
+min-width: 50px;
+min-height: 106px;
+image: url(":/Res/image/button_50x106_active.png");
+}
+
+QLineEdit {
+ background: qlineargradient(
+  x1:0, y1:0, x2:0, y2:1,
+  stop:0 gray,
+  stop: 0.2 white
+  stop:1 white
+ );
+ border-radius: 1px;
+ border: 1px solid black;
+ min-height: 30px;
+ color: black;
+}
+

@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dlg_Authority</class>
+ <widget class="QDialog" name="Dlg_Authority">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>426</width>
+    <height>317</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+QWidget {
+color: #c2c2c3;
+background: #343639;
+}
+
+QDialog {
+border:1px solid black;
+border-radius:1px;
+}
+
+#titleFrame {
+border: no;
+min-height: 20px;
+background: url(&quot;:/Res/image/title_bar.png&quot;);
+}
+
+QTabWidget {
+border: no;
+}
+
+QTabWidget::tab-bar {
+left: 15px;
+}
+
+QTabWidget::pane {
+border: 1px solid black;
+}
+
+QTabBar::tab{
+background: #343639;
+outline: no;
+border: 1px solid black;
+border-bottom-color: #343639;                                 
+border-top-left-radius: 4px;
+border-top-right-radius: 4px;
+min-width:10ex;
+padding: 2px;
+min-height: 3ex;
+}
+
+QTabBar::tab:selected{
+color: white;
+outline: no;
+padding-top: 4px;
+background: #2773b4;
+border-bottom: #2773b4;
+}
+
+QGroupBox {
+border: 1px solid black;
+border-radius: 1px
+}
+
+QLineEdit {
+color: black;
+background: qlineargradient(
+  x1:0, y1:0, x2:0, y2:1,
+  stop:0 gray,
+  stop: 0.2 white
+  stop:1 white
+ );
+border-radius: 1px;
+border: 1px solid black;
+min-height: 30px;
+width: 150px
+}
+
+QRadioButton {
+outline: no;
+spacing: 5px;
+}
+
+QRadioButton::indicator {
+     width: 28px;
+     height: 28px;
+}
+
+QRadioButton::indicator:unchecked {
+     image: url(&quot;:/Res/image/btn_rb_28x28_off.png&quot;);
+}
+
+QRadioButton::indicator:checked {
+     image: url(&quot;:/Res/image/btn_rb_28x28_on.png&quot;);
+}
+
+QPushButton {
+border: no;
+outline: no;
+min-width: 80px;
+min-height: 50px;
+image: url(&quot;:/Res/image/button_80x50_normal.png&quot;);
+}
+
+QPushButton:pressed {
+color: black;
+border: no;
+min-width: 80px;
+min-height: 50px;
+image: url(&quot;:/Res/image/button_80x50_active.png&quot;);
+}
+
+/*
+QPushButton[objectName=&quot;btnOk&quot;] {
+border: no;
+outline: no;
+min-width: 80px;
+min-height: 50px;
+image: url(&quot;:/Res/image/button_80x50_normal.png&quot;);
+}
+
+QPushButton[objectName=&quot;btnOk&quot;]:pressed {
+color: black;
+border: no;
+min-width: 80px;
+min-height: 50px;
+image: url(&quot;:/Res/image/button_80x50_active.png&quot;);
+}
+
+QPushButton[objectName=&quot;btnCancel&quot;] {
+border: no;
+outline: no;
+min-width: 80px;
+min-height: 50px;
+image: url(&quot;:/Res/image/button_80x50_normal.png&quot;);
+}
+
+QPushButton[objectName=&quot;btnCancel&quot;]:pressed {
+color: black;
+border: no;
+min-width: 80px;
+min-height: 50px;
+image: url(&quot;:/Res/image/button_50x50_active.png&quot;);
+}
+
+QPushButton[objectName=&quot;btnSignOut&quot;] {
+border: no;
+outline: no;
+min-width: 50px;
+min-height: 50px;
+image: url(&quot;:/Res/image/button_50x50_normal.png&quot;);
+}
+
+QPushButton[objectName=&quot;btnSignOut&quot;]:pressed {
+color: black;
+border: no;
+min-width: 50px;
+min-height: 50px;
+image: url(&quot;:/Res/image/button_50x50_active.png&quot;);
+}
+*/</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QFrame" name="titleFrame">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="leftMargin">
+      <number>9</number>
+     </property>
+     <property name="topMargin">
+      <number>9</number>
+     </property>
+     <property name="rightMargin">
+      <number>9</number>
+     </property>
+     <property name="bottomMargin">
+      <number>9</number>
+     </property>
+     <item>
+      <widget class="QTabWidget" name="tabw">
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="tab">
+        <attribute name="title">
+         <string>用户登陆</string>
+        </attribute>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QGroupBox" name="groupBox">
+           <property name="title">
+            <string>用户</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <item>
+             <widget class="QRadioButton" name="rb1">
+              <property name="text">
+               <string>操作员</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="rb2">
+              <property name="text">
+               <string>管理员</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="rb3">
+              <property name="text">
+               <string>厂家</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_2">
+           <property name="title">
+            <string>密码输入</string>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_2" rowstretch="1" columnstretch="0">
+            <property name="leftMargin">
+             <number>50</number>
+            </property>
+            <property name="topMargin">
+             <number>9</number>
+            </property>
+            <property name="rightMargin">
+             <number>50</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="TLineEdit" name="leLPsw"/>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="tab_2">
+        <attribute name="title">
+         <string>密码管理</string>
+        </attribute>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QGroupBox" name="groupBox_4">
+           <property name="title">
+            <string>用户</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <item>
+             <widget class="QRadioButton" name="rb4">
+              <property name="text">
+               <string>操作员</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="rb5">
+              <property name="text">
+               <string>管理员</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="rb6">
+              <property name="text">
+               <string>厂家</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_3">
+           <property name="title">
+            <string>密码修改</string>
+           </property>
+           <layout class="QGridLayout" name="gridLayout">
+            <item row="0" column="0">
+             <widget class="QLabel" name="label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>旧密码：</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="TLineEdit" name="leOPsw"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_2">
+              <property name="text">
+               <string>新密码：</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="TLineEdit" name="leNPsw"/>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="label_3">
+              <property name="text">
+               <string>确认密码：</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="TLineEdit" name="leNPswA"/>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QPushButton" name="btnSignOut">
+         <property name="text">
+          <string>注销</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnOk">
+         <property name="text">
+          <string>确定</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnCancel">
+         <property name="text">
+          <string>取消</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>TLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>tlineedit.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

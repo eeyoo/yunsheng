@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PRJCONFIG note="配置系统参数">
+  <CMD note="配置命令的ID和字符名的对应关系，尤其是IO的名字">
+    <MOV>
+      <CMDM CmdId="10" CmdTil="X轴"></CMDM>
+      <CMDM CmdId="11" CmdTil="Y1轴"></CMDM>
+      <CMDM CmdId="12" CmdTil="Z1轴"></CMDM>
+      <CMDM CmdId="13" CmdTil="Y2轴"></CMDM>
+      <CMDM CmdId="14" CmdTil="Z2轴"></CMDM>
+      <CMDM CmdId="15" CmdTil="Y联动"></CMDM>
+      <CMDM CmdId="16" CmdTil="Z联动"></CMDM>
+    </MOV>
+    <INPUT>
+      <CMDI CmdId="17" CmdTil="输入1"></CMDI>
+      <CMDI CmdId="18" CmdTil="输入2"></CMDI>
+      <CMDI CmdId="19" CmdTil="输入3"></CMDI>
+      <CMDI CmdId="1A" CmdTil="输入4"></CMDI>
+      <CMDI CmdId="1B" CmdTil="输入5"></CMDI>
+      <CMDI CmdId="1C" CmdTil="输入6"></CMDI>
+      <CMDI CmdId="1D" CmdTil="输入7"></CMDI>
+      <CMDI CmdId="1E" CmdTil="输入8"></CMDI>
+      <CMDI CmdId="1F" CmdTil="输入9"></CMDI>
+      <CMDI CmdId="20" CmdTil="输入10"></CMDI>
+      <CMDI CmdId="21" CmdTil="输入11"></CMDI>
+      <CMDI CmdId="22" CmdTil="输入12"></CMDI>
+      <CMDI CmdId="23" CmdTil="输入13"></CMDI>
+      <CMDI CmdId="24" CmdTil="输入14"></CMDI>
+      <CMDI CmdId="25" CmdTil="输入15"></CMDI>
+      <CMDI CmdId="26" CmdTil="输入16"></CMDI>
+      <CMDI CmdId="27" CmdTil="输入17"></CMDI>
+      <CMDI CmdId="28" CmdTil="输入18"></CMDI>
+      <CMDI CmdId="29" CmdTil="输入19"></CMDI>
+      <CMDI CmdId="2A" CmdTil="输入20"></CMDI>
+      <CMDI CmdId="2B" CmdTil="输入21"></CMDI>
+      <CMDI CmdId="2C" CmdTil="输入22"></CMDI>
+      <CMDI CmdId="2D" CmdTil="输入23"></CMDI>
+      <CMDI CmdId="2E" CmdTil="输入24"></CMDI>
+      <CMDI CmdId="2F" CmdTil="输入25"></CMDI>
+      <CMDI CmdId="30" CmdTil="输入26"></CMDI>
+      <CMDI CmdId="31" CmdTil="输入27"></CMDI>
+      <CMDI CmdId="32" CmdTil="输入28"></CMDI>
+      <CMDI CmdId="33" CmdTil="输入29"></CMDI>
+      <CMDI CmdId="34" CmdTil="输入30"></CMDI>
+      <CMDI CmdId="35" CmdTil="输入31"></CMDI>
+      <CMDI CmdId="36" CmdTil="输入32"></CMDI>
+      <CMDI CmdId="37" CmdTil="输入33"></CMDI>
+      <CMDI CmdId="38" CmdTil="输入34"></CMDI>
+      <CMDI CmdId="39" CmdTil="输入35"></CMDI>
+      <CMDI CmdId="3A" CmdTil="输入36"></CMDI>
+      <CMDI CmdId="3B" CmdTil="输入37"></CMDI>
+      <CMDI CmdId="3C" CmdTil="输入38"></CMDI>
+      <CMDI CmdId="3D" CmdTil="输入39"></CMDI>
+      <CMDI CmdId="3E" CmdTil="输入40"></CMDI>
+      <CMDI CmdId="3F" CmdTil="输入41"></CMDI>
+      <CMDI CmdId="40" CmdTil="输入42"></CMDI>
+      <CMDI CmdId="41" CmdTil="输入43"></CMDI>
+      <CMDI CmdId="42" CmdTil="输入44"></CMDI>
+    </INPUT>
+    <OUTPUT>
+      <CMDO CmdId="76" CmdTil="输出1"></CMDO>
+      <CMDO CmdId="77" CmdTil="输出2"></CMDO>
+      <CMDO CmdId="78" CmdTil="输出3"></CMDO>
+      <CMDO CmdId="79" CmdTil="输出4"></CMDO>
+      <CMDO CmdId="7A" CmdTil="输出5"></CMDO>
+      <CMDO CmdId="7B" CmdTil="输出6"></CMDO>
+      <CMDO CmdId="7C" CmdTil="输出7"></CMDO>
+      <CMDO CmdId="7D" CmdTil="输出8"></CMDO>
+      <CMDO CmdId="7E" CmdTil="输出9"></CMDO>
+      <CMDO CmdId="7F" CmdTil="输出10"></CMDO>
+      <CMDO CmdId="80" CmdTil="输出11"></CMDO>
+      <CMDO CmdId="81" CmdTil="输出12"></CMDO>
+      <CMDO CmdId="82" CmdTil="输出13"></CMDO>
+      <CMDO CmdId="83" CmdTil="输出14"></CMDO>
+      <CMDO CmdId="84" CmdTil="输出15"></CMDO>
+      <CMDO CmdId="85" CmdTil="输出16"></CMDO>
+      <CMDO CmdId="86" CmdTil="输出17"></CMDO>
+      <CMDO CmdId="87" CmdTil="输出18"></CMDO>
+      <CMDO CmdId="88" CmdTil="输出19"></CMDO>
+      <CMDO CmdId="89" CmdTil="输出20"></CMDO>
+      <CMDO CmdId="8A" CmdTil="输出21"></CMDO>
+      <CMDO CmdId="8B" CmdTil="输出22"></CMDO>
+      <CMDO CmdId="8C" CmdTil="输出23"></CMDO>
+      <CMDO CmdId="8D" CmdTil="输出24"></CMDO>
+      <CMDO CmdId="8E" CmdTil="输出25"></CMDO>
+      <CMDO CmdId="8F" CmdTil="输出26"></CMDO>
+      <CMDO CmdId="90" CmdTil="输出27"></CMDO>
+      <CMDO CmdId="91" CmdTil="输出28"></CMDO>
+    </OUTPUT>
+    <STACK>
+      <CMDS CmdId="C5" CmdTil="堆叠"></CMDS>
+    </STACK>
+  </CMD>
+</PRJCONFIG>
