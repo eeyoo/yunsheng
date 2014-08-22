@@ -82,6 +82,16 @@ image: url(:/Res/image/icon_servo_x1.png);
 padding: 2px 2px 2px 2px;
 }
 
+QTabWidget QPushButton[objectName=&quot;btnR1&quot;]:checked {
+border: 1px solid #2773b4;
+min-width:50px;
+min-height:50px;
+max-width:50px;
+max-height:50px;
+image: url(:/Res/image/icon_servo_x1.png);
+padding: 2px 2px 2px 2px;
+}
+
 QTabWidget QPushButton[objectName=&quot;btnR2&quot;] {
 border: no;
 min-width:50px;
@@ -93,6 +103,16 @@ image: url(:/Res/image/icon_servo_z1.png);
 
 QTabWidget QPushButton[objectName=&quot;btnR2&quot;]:pressed {
 border: no;
+min-width:50px;
+min-height:50px;
+max-width:50px;
+max-height:50px;
+image: url(:/Res/image/icon_servo_z1.png);
+padding: 2px 2px 2px 2px;
+}
+
+QTabWidget QPushButton[objectName=&quot;btnR2&quot;]:checked {
+border: 1px solid #2773b4;
 min-width:50px;
 min-height:50px;
 max-width:50px;
@@ -120,6 +140,16 @@ image: url(:/Res/image/icon_servo_u.png);
 padding: 2px 2px 2px 2px;
 }
 
+QTabWidget QPushButton[objectName=&quot;btnR3&quot;]:checked {
+border: 1px solid #2773b4;
+min-width:50px;
+min-height:50px;
+max-width:50px;
+max-height:50px;
+image: url(:/Res/image/icon_servo_u.png);
+padding: 2px 2px 2px 2px;
+}
+
 QTabWidget QPushButton[objectName=&quot;btnR4&quot;] {
 border: no;
 min-width:50px;
@@ -131,6 +161,16 @@ image: url(:/Res/image/icon_servo_x2.png);
 
 QTabWidget QPushButton[objectName=&quot;btnR4&quot;]:pressed {
 border: no;
+min-width:50px;
+min-height:50px;
+max-width:50px;
+max-height:50px;
+image: url(:/Res/image/icon_servo_x2.png);
+padding: 2px 2px 2px 2px;
+}
+
+QTabWidget QPushButton[objectName=&quot;btnR4&quot;]:checked {
+border: 1px solid #2773b4;
 min-width:50px;
 min-height:50px;
 max-width:50px;
@@ -158,6 +198,16 @@ image: url(:/Res/image/icon_servo_z2.png);
 padding: 2px 2px 2px 2px;
 }
 
+QTabWidget QPushButton[objectName=&quot;btnR5&quot;]:checked {
+border: 1px solid #2773b4;
+min-width:50px;
+min-height:50px;
+max-width:50px;
+max-height:50px;
+image: url(:/Res/image/icon_servo_z2.png);
+padding: 2px 2px 2px 2px;
+}
+
 QTabWidget QPushButton[objectName=&quot;btnIG&quot;] {
 border: no;
 min-width:50px;
@@ -169,6 +219,16 @@ image: url(:/Res/image/icon_input_gpio.png);
 
 QTabWidget QPushButton[objectName=&quot;btnIG&quot;]:pressed {
 border: no;
+min-width:50px;
+min-height:50px;
+max-width:50px;
+max-height:50px;
+image: url(:/Res/image/icon_input_gpio.png);
+padding: 2px 2px 2px 2px;
+}
+
+QTabWidget QPushButton[objectName=&quot;btnIG&quot;]:checked {
+border: 1px solid #2773b4;
 min-width:50px;
 min-height:50px;
 max-width:50px;
@@ -196,6 +256,16 @@ image: url(:/Res/image/icon_output1_gpio.png);
 padding: 2px 2px 2px 2px;
 }
 
+QTabWidget QPushButton[objectName=&quot;btnO1&quot;]:checked {
+border: 1px solid #2773b4;
+min-width:50px;
+min-height:50px;
+max-width:50px;
+max-height:50px;
+image: url(:/Res/image/icon_output1_gpio.png);
+padding: 2px 2px 2px 2px;
+}
+
 QTabWidget QPushButton[objectName=&quot;btnO2&quot;] {
 border: no;
 min-width:50px;
@@ -215,6 +285,16 @@ image: url(:/Res/image/icon_output2_gpio.png);
 padding: 2px 2px 2px 2px;
 }
 
+QTabWidget QPushButton[objectName=&quot;btnO2&quot;]:checked {
+border: 1px solid #2773b4;
+min-width:50px;
+min-height:50px;
+max-width:50px;
+max-height:50px;
+image: url(:/Res/image/icon_output2_gpio.png);
+padding: 2px 2px 2px 2px;
+}
+
 QTabWidget QPushButton[objectName=&quot;btnS&quot;] {
 border: no;
 min-width:50px;
@@ -226,6 +306,16 @@ image: url(:/Res/image/icon_stack.png);
 
 QTabWidget QPushButton[objectName=&quot;btnS&quot;]:pressed {
 border: no;
+min-width:50px;
+min-height:50px;
+max-width:50px;
+max-height:50px;
+image: url(:/Res/image/icon_stack.png);
+padding: 2px 2px 2px 2px;
+}
+
+QTabWidget QPushButton[objectName=&quot;btnS&quot;]:checked {
+border: 1px solid #2773b4;
 min-width:50px;
 min-height:50px;
 max-width:50px;
@@ -438,7 +528,7 @@ min-height: 80px;
             </size>
            </property>
            <property name="checkable">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="flat">
             <bool>true</bool>
@@ -462,6 +552,9 @@ min-height: 80px;
              <height>48</height>
             </size>
            </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
            <property name="flat">
             <bool>true</bool>
            </property>
@@ -483,6 +576,9 @@ min-height: 80px;
              <width>48</width>
              <height>48</height>
             </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
            </property>
            <property name="flat">
             <bool>true</bool>
@@ -506,6 +602,9 @@ min-height: 80px;
              <height>48</height>
             </size>
            </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
            <property name="flat">
             <bool>true</bool>
            </property>
@@ -527,6 +626,9 @@ min-height: 80px;
              <width>48</width>
              <height>48</height>
             </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
            </property>
            <property name="flat">
             <bool>true</bool>
@@ -566,6 +668,9 @@ min-height: 80px;
              <height>43</height>
             </size>
            </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
            <property name="flat">
             <bool>true</bool>
            </property>
@@ -588,6 +693,9 @@ min-height: 80px;
              <height>32</height>
             </size>
            </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
            <property name="flat">
             <bool>true</bool>
            </property>
@@ -609,6 +717,9 @@ min-height: 80px;
              <width>32</width>
              <height>32</height>
             </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
            </property>
            <property name="flat">
             <bool>true</bool>
@@ -645,6 +756,9 @@ min-height: 80px;
              <height>32</height>
             </size>
            </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
            <property name="flat">
             <bool>true</bool>
            </property>
@@ -675,7 +789,7 @@ min-height: 80px;
            </sizepolicy>
           </property>
           <property name="currentIndex">
-           <number>4</number>
+           <number>3</number>
           </property>
           <widget class="QWidget" name="page_D">
            <layout class="QGridLayout" name="gridLayout">
@@ -922,7 +1036,7 @@ min-height: 80px;
                </size>
               </property>
               <property name="text">
-               <string>11</string>
+               <string>10</string>
               </property>
              </widget>
             </item>
@@ -958,7 +1072,7 @@ min-height: 80px;
             <item row="2" column="0">
              <widget class="QLabel" name="label_22">
               <property name="text">
-               <string>状态:</string>
+               <string>输入状态:</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1049,7 +1163,7 @@ min-height: 80px;
             <item row="2" column="0">
              <widget class="QLabel" name="label_26">
               <property name="text">
-               <string>状态:</string>
+               <string>输出状态:</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1080,7 +1194,7 @@ min-height: 80px;
           <widget class="QWidget" name="page_S">
            <layout class="QGridLayout" name="gridLayout_5">
             <property name="bottomMargin">
-             <number>70</number>
+             <number>60</number>
             </property>
             <item row="0" column="0">
              <widget class="QLabel" name="label_23">

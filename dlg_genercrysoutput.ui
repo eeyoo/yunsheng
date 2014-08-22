@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>519</width>
-    <height>322</height>
+    <height>330</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -102,21 +102,21 @@ image: url(:/Res/image/icon_servo_x1.png);
       <item row="0" column="0">
        <widget class="QPushButton" name="O9">
         <property name="text">
-         <string>晶体管输出1</string>
+         <string>晶体管输出9</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
        <widget class="QPushButton" name="O10">
         <property name="text">
-         <string>晶体管输出2</string>
+         <string>晶体管输出10</string>
         </property>
        </widget>
       </item>
       <item row="0" column="2">
        <widget class="QPushButton" name="O11">
         <property name="text">
-         <string>晶体管输出3</string>
+         <string>晶体管输出11</string>
         </property>
        </widget>
       </item>
