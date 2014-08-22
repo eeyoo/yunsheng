@@ -281,9 +281,9 @@ void Frm_Fun::on_btnHelp_clicked()
 *************************************************************************/
 void Frm_Fun::OnQdec(QDECT qt)
 {
-    QWidget *pW[] = {(QWidget*)ui->btnTeach,(QWidget*)ui->btnRun,(QWidget*)ui->btnSysS,
-                     (QWidget*)ui->btnStkS,(QWidget*)ui->btnTimS,(QWidget*)ui->btnMonitor,
-                     (QWidget*)ui->btnLog,(QWidget*)ui->btnAuthority,(QWidget*)ui->btnHelp,
+    QWidget *pW[] = {(QWidget*)ui->btnTeach,(QWidget*)ui->btnRun,(QWidget*)ui->btnStkS,
+                     (QWidget*)ui->btnMonitor,(QWidget*)ui->btnLog,(QWidget*)ui->btnSysS,
+                     (QWidget*)ui->btnTimS,(QWidget*)ui->btnHelp,(QWidget*)ui->btnAuthority,
                      (QWidget*)ui->btnManufacturer};
 
     static QWidget  *pCW = NULL;

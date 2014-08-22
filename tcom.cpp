@@ -1280,7 +1280,7 @@ bool TComF0::UpdateUI(bool bSuc)
 
     widMana->mainW->ui->lblXPos->setText(QString("X1:") + QString::number(fxp,'f',2) + QString("mm"));
     widMana->mainW->ui->lblY1Pos->setText(QString("Z1:") + QString::number(fy1p,'f',2) + QString("mm"));
-    widMana->mainW->ui->lblZ1Pos->setText(QString("U:") + QString::number(fz1p,'f',2) + QString("бу"));
+    widMana->mainW->ui->lblZ1Pos->setText(QString("U:") + QString::number(fz1p,'f',2) + QObject::tr("бу"));
     widMana->mainW->ui->lblY2Pos->setText(QString("X2:") + QString::number(fy2p,'f',2) + QString("mm"));
     widMana->mainW->ui->lblZ2Pos->setText(QString("Z2:") + QString::number(fz2p,'f',2) + QString("mm"));
 

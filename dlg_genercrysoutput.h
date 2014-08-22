@@ -25,9 +25,9 @@ public:
     int iO;
 
 private slots:
-    void on_btn_clicked(int ibtn);
     void on_btnOk_clicked();
     void on_btnCancel_clicked();
+    void on_btn_clicked(int ibtn);
 };
 
 #endif // DLG_GENERCRYSOUTPUT_H

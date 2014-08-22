@@ -214,8 +214,8 @@ image: url(&quot;:/Res/image/function_help.png&quot;);
 QPushButton[objectName=&quot;btnManufacturer&quot;] {
 border: no;
 /*outline: no;*/
-min-width: 105px;
-min-height: 105px;
+min-width: 101px;
+min-height: 101px;
 image: url(&quot;:/Res/image/function_vendor.png&quot;); 
 }
 

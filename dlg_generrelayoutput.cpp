@@ -2,6 +2,7 @@
 #include "ui_dlg_generrelayoutput.h"
 #include "twidmana.h"
 #include "treadcmd.h"
+#include "qa5driver.h"
 
 Dlg_GenerRelayOutput::Dlg_GenerRelayOutput(QWidget *parent) :
     QDialog(parent),
@@ -10,6 +11,7 @@ Dlg_GenerRelayOutput::Dlg_GenerRelayOutput(QWidget *parent) :
     ui->setupUi(this);
 
     setWindowFlags(Qt::FramelessWindowHint);
+    a5drv.buzzer_off();
 
     QPushButton *btn[] = {ui->O1,ui->O2,ui->O3,ui->O4,ui->O5,ui->O6,ui->O7,ui->O8};
     for(int i = 0;i<sizeof(btn)/sizeof(QPushButton*);i++)
@@ -28,6 +30,7 @@ Dlg_GenerRelayOutput::Dlg_GenerRelayOutput(QWidget *parent) :
 
 Dlg_GenerRelayOutput::~Dlg_GenerRelayOutput()
 {
+    widMana->bDialog = false;
     delete ui;
 }
 /*************************************************************************
@@ -47,4 +50,14 @@ void Dlg_GenerRelayOutput::on_btn_clicked(int ibtn)
 
     widMana->bDialog = false;
     QDialog::accept();
+}
+
+void Dlg_GenerRelayOutput::on_btnOk_clicked()
+{
+    QDialog::reject();
+}
+
+void Dlg_GenerRelayOutput::on_btnCancel_clicked()
+{
+    QDialog::reject();
 }

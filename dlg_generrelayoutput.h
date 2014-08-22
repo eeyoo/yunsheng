@@ -25,6 +25,8 @@ private:
     Ui::Dlg_GenerRelayOutput *ui;
 
 private slots:
+    void on_btnCancel_clicked();
+    void on_btnOk_clicked();
     void on_btn_clicked(int ibtn);
 };
 

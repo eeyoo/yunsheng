@@ -40,7 +40,7 @@ Frm_Run::Frm_Run() :
 
     ui->tblV_Pro->setModel(com20.modelPro);
     ui->tblV_Pro->setSelectionBehavior(QAbstractItemView::SelectRows);
-    //ui->tblV_Pro->setSelectionMode(QAbstractItemView::NoSelection);
+    ui->tblV_Pro->setSelectionMode(QAbstractItemView::MultiSelection);
     //ui->tblV_Pro->setStyleSheet("selection-background-color: green");
     //ui->tblV_Pro->setAlternatingRowColors(true);
     //ui->tblV_Pro->setStyleSheet("QTableView{background-color: rgb(250, 250, 115);"
@@ -56,8 +56,6 @@ Frm_Run::Frm_Run() :
     ui->tblV_Pro->setFocus(Qt::MouseFocusReason);
     ui->tblV_Pro->verticalHeader()->setResizeMode(0,QHeaderView::Fixed);
     ui->tblV_Pro->verticalHeader()->setResizeMode(1,QHeaderView::Fixed);
-
-
 }
 /*************************************************************************
 * º¯ÊýÃû³Æ: ~Frm_Run
@@ -91,6 +89,7 @@ void Frm_Run::setVisible(bool visible)
         for(int i = 0;i<com20.modelPro->rowCount();i++)
         {
             ui->tblV_Pro->setRowHeight(i,50);
+            //ui->tblV_Pro->selectRow(i);
             /*QStandardItem *item = modelPro->item(i,0);
             if(((TCmd*)item)->cmd_wid == TCmd::WID_MOVES)
             {
@@ -99,6 +98,7 @@ void Frm_Run::setVisible(bool visible)
         }
     }
     ui->tblV_Pro->selectRow(0);
+
 
     m_iSAdr = 1;
 }
@@ -111,7 +111,20 @@ void Frm_Run::setVisible(bool visible)
 *************************************************************************/
 void Frm_Run::UpdateUI()
 {
+    ui->tblV_Pro->clearSelection();
     ui->tblV_Pro->selectRow(comF0.rpara.radd);
+    TCmd *itemCmd=(TCmd*)com20.modelPro->item(comF0.rpara.radd,1);
+    if(itemCmd->para.combin != 0){
+        for(int i = comF0.rpara.radd + 1; i < com20.modelPro->rowCount() - 1; i++){
+            TCmd *itemCmd2=(TCmd*)com20.modelPro->item(i,1);
+            if(itemCmd->para.combin == itemCmd2->para.combin){
+                ui->tblV_Pro->selectRow(i);
+            }else{
+                break;
+            }
+        }
+    }
+
     QCheckBox *cb[] = {ui->cb1,ui->cb2,ui->cb3,ui->cb4,ui->cb5,ui->cb6,ui->cb7};
     int iNum = 0, iPos = 0;
     for(int i = 0; i < sizeof(cb)/sizeof(QCheckBox*); i++){

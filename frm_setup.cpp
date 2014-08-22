@@ -866,7 +866,7 @@ void Frm_Setup::OnQdec(QDECT qt)
                      (QWidget*)ui->leRstSpd,(QWidget*)ui->cbBoxRstFirst,(QWidget*)ui->cbBoxRstSec,
                      (QWidget*)ui->cbBoxRstTree,(QWidget*)ui->cbBoxRstFouth,(QWidget*)ui->cbBoxRstFifth,
                      (QWidget*)ui->btnSysSend,(QWidget*)ui->btnSysRead,(QWidget*)ui->leScrProTim,
-                     /*(QWidget*)ui->leBacklight,*/(QWidget*)ui->btnCalib,(QWidget*)ui->rdBtnChi,
+                     (QWidget*)ui->btnCalib,(QWidget*)ui->rdBtnChi,
                      (QWidget*)ui->rdBtnEng,(QWidget*)ui->le_ser,(QWidget*)ui->le_ser_2,
                      (QWidget*)ui->le_ver,(QWidget*)ui->btnVelG,(QWidget*)ui->ckKeySound,
                      (QWidget*)ui->ckScreenSound,

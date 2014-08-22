@@ -2,6 +2,7 @@
 #include "ui_dlg_generinput.h"
 #include "twidmana.h"
 #include "treadcmd.h"
+#include "qa5driver.h"
 
 Dlg_GenerInput::Dlg_GenerInput(QWidget *parent) :
     QDialog(parent),
@@ -10,6 +11,7 @@ Dlg_GenerInput::Dlg_GenerInput(QWidget *parent) :
     ui->setupUi(this);
 
     setWindowFlags(Qt::FramelessWindowHint);
+    a5drv.buzzer_off();
 
     QPushButton *btn[] = {ui->I1,ui->I2,ui->I3,ui->I4,ui->I5,ui->I6,ui->I7,
                           ui->I8,ui->I9,ui->I10,ui->I11,ui->I12,ui->I13,ui->I14,
@@ -32,6 +34,7 @@ Dlg_GenerInput::Dlg_GenerInput(QWidget *parent) :
 
 Dlg_GenerInput::~Dlg_GenerInput()
 {
+    widMana->bDialog = false;
     delete ui;
 }
 /*************************************************************************
@@ -46,4 +49,14 @@ void Dlg_GenerInput::on_btn_clicked(int ibtn)
     iI = ibtn;
     widMana->bDialog = false;
     QDialog::accept();
+}
+
+void Dlg_GenerInput::on_btnOk_clicked()
+{
+    QDialog::reject();
+}
+
+void Dlg_GenerInput::on_btnCancel_clicked()
+{
+    QDialog::reject();
 }

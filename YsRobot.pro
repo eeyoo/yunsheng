@@ -53,7 +53,8 @@ SOURCES += main.cpp\
     frm_mana_new.cpp \
     dlg_generinput.cpp \
     dlg_generrelayoutput.cpp \
-    dlg_genercrysoutput.cpp
+    dlg_genercrysoutput.cpp \
+    ttblviewf.cpp
 
 HEADERS  += mainwindow.h \
     dlg_teach.h \
@@ -99,7 +100,8 @@ HEADERS  += mainwindow.h \
     frm_mana_new.h \
     dlg_generinput.h \
     dlg_generrelayoutput.h \
-    dlg_genercrysoutput.h
+    dlg_genercrysoutput.h \
+    ttblviewf.h
 
 FORMS    += mainwindow.ui \
     dlg_teach.ui \
@@ -133,4 +135,3 @@ FORMS    += mainwindow.ui \
 
 RESOURCES += Res.qrc
 TRANSLATIONS=Ys_En.ts
-

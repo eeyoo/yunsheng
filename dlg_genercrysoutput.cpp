@@ -1,6 +1,7 @@
 #include "dlg_genercrysoutput.h"
 #include "ui_dlg_genercrysoutput.h"
 #include "twidmana.h"
+#include "qa5driver.h"
 
 Dlg_GenerCrysOutput::Dlg_GenerCrysOutput(QWidget *parent) :
     QDialog(parent),
@@ -9,6 +10,7 @@ Dlg_GenerCrysOutput::Dlg_GenerCrysOutput(QWidget *parent) :
     ui->setupUi(this);
 
     setWindowFlags(Qt::FramelessWindowHint);
+    a5drv.buzzer_off();
 
     QPushButton *btn[] = {ui->O9,ui->O10,ui->O11,ui->O12,ui->O13,ui->O14,ui->O15,ui->O16,
                           ui->O17,ui->O18,ui->O19,ui->O20,ui->O21,ui->O22,ui->O23,ui->O24,
@@ -29,6 +31,7 @@ Dlg_GenerCrysOutput::Dlg_GenerCrysOutput(QWidget *parent) :
 
 Dlg_GenerCrysOutput::~Dlg_GenerCrysOutput()
 {
+    widMana->bDialog = false;
     delete ui;
 }
 /*************************************************************************
@@ -52,12 +55,12 @@ void Dlg_GenerCrysOutput::on_btn_clicked(int ibtn)
     QDialog::accept();
 }
 
-void Dlg_GenerCrysOutput::on_btnOk_clicked()
+void Dlg_GenerCrysOutput::on_btnCancel_clicked()
 {
-    QDialog::accept();
+    QDialog::reject();
 }
 
-void Dlg_GenerCrysOutput::on_btnCancel_clicked()
+void Dlg_GenerCrysOutput::on_btnOk_clicked()
 {
     QDialog::reject();
 }

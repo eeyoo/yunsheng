@@ -55,8 +55,6 @@ private slots:
     void on_btnStkSave_clicked();
     void on_btnStkOpen_clicked();
     void on_btnOk_clicked();
-    void on_leStkInterZ_clicked();
-    void on_leStkNumZ_clicked();
     void on_leStkInterY_clicked();
     void on_leStkNumY_clicked();
     void on_leStkInterX_clicked();

@@ -65,9 +65,8 @@ void Frm_Stack::on_leReadypoint_clicked()
     Dlg_Manu dlg;
     dlg.setModal(true);
     if(dlg.exec() == QDialog::Accepted){
-        ui->leReadypoint->setText(QString("%1,%2,%3").arg(comF0.rpara.xpos)
-                                                     .arg(comF0.rpara.y1pos)
-                                                     .arg(comF0.rpara.z1pos));
+        ui->leReadypoint->setText(QString("%1,%2").arg(comF0.rpara.xpos)
+                                                     .arg(comF0.rpara.y1pos));
         bSve = false;
     }
 }
@@ -83,9 +82,8 @@ void Frm_Stack::on_leStartPoint_clicked()
     Dlg_Manu dlg;
     dlg.setModal(true);
     if(dlg.exec() == QDialog::Accepted){
-        ui->leStartPoint->setText(QString("%1,%2,%3").arg(comF0.rpara.xpos)
-                                                     .arg(comF0.rpara.y1pos)
-                                                     .arg(comF0.rpara.z1pos));
+        ui->leStartPoint->setText(QString("%1,%2").arg(comF0.rpara.xpos)
+                                                     .arg(comF0.rpara.y1pos));
         bSve = false;
     }
 }
@@ -170,38 +168,6 @@ void Frm_Stack::on_leStkInterY_clicked()
     }
 }
 /*************************************************************************
-* 函数名称: on_leStkNumZ_clicked
-* 功    能: Z方向堆叠数量
-* 输入参数: 无
-* 输出参数: 无
-* 返 回 值: 无
-*************************************************************************/
-void Frm_Stack::on_leStkNumZ_clicked()
-{
-    Dlg_Psw dlg;
-    dlg.setModal(true);
-    if(dlg.exec() == QDialog::Accepted){
-        ui->leStkNumZ->setText(dlg.m_str);
-        bSve = false;
-    }
-}
-/*************************************************************************
-* 函数名称: on_leStkInterZ_clicked
-* 功    能: Z方向间距
-* 输入参数: 无
-* 输出参数: 无
-* 返 回 值: 无
-*************************************************************************/
-void Frm_Stack::on_leStkInterZ_clicked()
-{
-    Dlg_Psw dlg;
-    dlg.setModal(true);
-    if(dlg.exec() == QDialog::Accepted){
-        ui->leStkInterZ->setText(dlg.m_str);
-        bSve = false;
-    }
-}
-/*************************************************************************
 * 函数名称: GetData
 * 功    能: 获取设置数据
 * 输入参数: 无
@@ -213,31 +179,31 @@ void Frm_Stack::GetData()
     QString strT;
 
     strT = ui->leReadypoint->text();
-    for(int i = 0; i < 3; i++){
+    for(int i = 0; i < 2; i++){
         com06.para.entP[i] = strT.left(strT.indexOf(",")).toInt();
         strT = strT.right(strT.length() - strT.indexOf(",") - 1);
     }
 
     strT = ui->leStartPoint->text();
-    for(int i = 0; i < 3; i++){
+    for(int i = 0; i < 2; i++){
         com06.para.stkP[i] = strT.left(strT.indexOf(",")).toInt();
         strT = strT.right(strT.length() - strT.indexOf(",") - 1);
     }
 
     strT = ui->leStackSpd->text();
-    for(int i = 0; i < 3; i++){
+    for(int i = 0; i < 2; i++){
         com06.para.spd[i] = strT.toInt();
     }
 
-    QComboBox* cbbOdr[] = {ui->cbBoxOrderFst1,ui->cbBoxOrderFst2,ui->cbBoxOrderFst3};
-    for(int i = 0; i < 3; i++){
+    QComboBox* cbbOdr[] = {ui->cbBoxOrderFst1,ui->cbBoxOrderFst2};
+    for(int i = 0; i < 2; i++){
         com06.para.odr[i] = cbbOdr[i]->currentIndex() + 1;
     }
 
-    QComboBox* cbbDir[] = {ui->cbBoxOrientX,ui->cbBoxOrientY,ui->cbBoxOrientZ};
-    TLineEdit* leNum[]  = {ui->leStkNumX,ui->leStkNumY,ui->leStkNumZ};
-    TLineEdit* leDis[]  = {ui->leStkInterX,ui->leStkInterY,ui->leStkInterZ};
-    for(int i = 0; i < 3; i++){
+    QComboBox* cbbDir[] = {ui->cbBoxOrientX,ui->cbBoxOrientY};
+    TLineEdit* leNum[]  = {ui->leStkNumX,ui->leStkNumY};
+    TLineEdit* leDis[]  = {ui->leStkInterX,ui->leStkInterY};
+    for(int i = 0; i < 2; i++){
         com06.para.opt[i].dir = cbbDir[i]->currentIndex() + 1;
         com06.para.opt[i].num = leNum[i]->text().toInt();
         com06.para.opt[i].dis = leDis[i]->text().toInt();
@@ -254,27 +220,25 @@ void Frm_Stack::SetData()
 {
     QString strT;
 
-    strT = QString("%1,%2,%3").arg(com06.para.entP[0])
-                              .arg(com06.para.entP[1])
-                              .arg(com06.para.entP[2]);
+    strT = QString("%1,%2").arg(com06.para.entP[0])
+                              .arg(com06.para.entP[1]);
     ui->leReadypoint->setText(strT);
 
-    strT = QString("%1,%2,%3").arg(com06.para.stkP[0])
-                              .arg(com06.para.stkP[1])
-                              .arg(com06.para.stkP[2]);
+    strT = QString("%1,%2").arg(com06.para.stkP[0])
+                              .arg(com06.para.stkP[1]);
     ui->leStartPoint->setText(strT);
 
     ui->leStackSpd->setText(QString("%1").arg(com06.para.spd[0]));
 
-    QComboBox* cbbOdr[] = {ui->cbBoxOrderFst1,ui->cbBoxOrderFst2,ui->cbBoxOrderFst3};
-    for(int i = 0; i < 3; i++){
+    QComboBox* cbbOdr[] = {ui->cbBoxOrderFst1,ui->cbBoxOrderFst2};
+    for(int i = 0; i < 2; i++){
         cbbOdr[i]->setCurrentIndex(com06.para.odr[i] - 1);
     }
 
-    QComboBox* cbbDir[] = {ui->cbBoxOrientX,ui->cbBoxOrientY,ui->cbBoxOrientZ};
-    TLineEdit* leNum[]  = {ui->leStkNumX,ui->leStkNumY,ui->leStkNumZ};
-    TLineEdit* leDis[]  = {ui->leStkInterX,ui->leStkInterY,ui->leStkInterZ};
-    for(int i = 0; i < 3; i++){
+    QComboBox* cbbDir[] = {ui->cbBoxOrientX,ui->cbBoxOrientY};
+    TLineEdit* leNum[]  = {ui->leStkNumX,ui->leStkNumY};
+    TLineEdit* leDis[]  = {ui->leStkInterX,ui->leStkInterY};
+    for(int i = 0; i < 2; i++){
         cbbDir[i]->setCurrentIndex(com06.para.opt[i].dir - 1);
         leNum[i]->setText(QString("%1").arg(com06.para.opt[i].num));
         leDis[i]->setText(QString("%1").arg(com06.para.opt[i].dis));
