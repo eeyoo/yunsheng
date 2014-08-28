@@ -20,7 +20,7 @@
 #ifndef QA5DRIVER_H
 #define QA5DRIVER_H
 
-//#define EMBEDED_ARM
+#define EMBEDED_ARM
 //#ifdef EMBEDED_ARM
 
 #include <QFile>
