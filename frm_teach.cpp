@@ -93,6 +93,7 @@ Frm_Teach::Frm_Teach() :
     }
 
     m_bModify = false;
+    m_bStk    = false;
 }
 /*************************************************************************
 * 函数名称: ~Frm_Teach
@@ -174,6 +175,8 @@ void Frm_Teach::on_btn_clicked(int ibtn)
     QWidget* wid[] = {ui->page_D,ui->page_D,ui->page_R,ui->page_D,ui->page_D,
                       ui->page_I,ui->page_O,ui->page_O,ui->page_S};
     ui->stkW_Para->setCurrentWidget(wid[ibtn]);
+
+    m_bModify = false;
 }
 /*************************************************************************
 * 函数名称: on_leT_clicked
@@ -295,6 +298,7 @@ void Frm_Teach::on_leNoO_clicked()
 *************************************************************************/
 void Frm_Teach::on_btnOK_clicked()
 {
+    m_bStk = false;
     int iRow = 0;
     QModelIndex index = ui->tblV_Pro->currentIndex();
     if((index.row() != com20.modelPro->rowCount()-1) && index.isValid())
@@ -306,6 +310,7 @@ void Frm_Teach::on_btnOK_clicked()
         QStandardItem *item=com20.modelPro->item(ui->tblV_Pro->currentIndex().row(),2);
         item->setText(cmd->getCmdTit());
 
+        com20.bOpen = true;
         m_bModify=false;
         return;
 
@@ -475,6 +480,7 @@ void Frm_Teach::on_btnDel_clicked()
     if(index.row() > 0 && index.row()!= com20.modelPro->rowCount() - 1)
     {
         com20.DelCmd(index.row());
+        m_bModify = false;
         ui->tblV_Pro->selectRow(index.row() - 1);
     }
 }
@@ -500,5 +506,23 @@ void Frm_Teach::setVisible(bool visible)
         {
             ui->tblV_Pro->setRowHeight(i,50);
         }
+
+        if(m_bStk){
+            ui->leStkN->setText(widMana->frm_stack.strN);
+        }
     }
+}
+/*************************************************************************
+* 函数名称: on_leStkN_clicked
+* 功    能: 点击设置堆叠指令
+* 输入参数: 无
+* 输出参数: 无
+* 返 回 值: 无
+*************************************************************************/
+void Frm_Teach::on_leStkN_clicked()
+{
+    m_bStk = true;
+
+    widMana->frm_stack.stk_t = Frm_Stack::TEACH;
+    widMana->SwitchWM(&widMana->frm_stack);
 }

@@ -14,7 +14,11 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">
+   <string notr="true">*{
+font: 12px;
+font-family: &quot;微软雅黑&quot;;
+}
+
 QWidget {
 color: #c2c2c3;
 background: #343639;

@@ -111,8 +111,12 @@ void Frm_Run::setVisible(bool visible)
 *************************************************************************/
 void Frm_Run::UpdateUI()
 {
+    if(comF0.rpara.radd < 1 || comF0.rpara.radd > com20.modelPro->rowCount() - 2)
+        return;
+
     ui->tblV_Pro->clearSelection();
     ui->tblV_Pro->selectRow(comF0.rpara.radd);
+
     TCmd *itemCmd=(TCmd*)com20.modelPro->item(comF0.rpara.radd,1);
     if(itemCmd->para.combin != 0){
         for(int i = comF0.rpara.radd + 1; i < com20.modelPro->rowCount() - 1; i++){

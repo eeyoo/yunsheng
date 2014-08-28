@@ -118,6 +118,9 @@ void MainWindow::UpdateTim()
     ui->btnTim->setText(strTim);
 
     warn.ClearW();
+
+
+    config.DoScrPT();
 }
 /*************************************************************************
 * 函数名称: ~MainWindow
@@ -463,6 +466,7 @@ void MainWindow::on_btnHlp_clicked()
         pComBuf1.push_back((TCom*)(&comF0));
         bStp = true;
     }
+
     //widMana->pCurW->OnQdec(TWidget::PRS);
 
 
@@ -477,7 +481,7 @@ void MainWindow::on_btnHlp_clicked()
 *************************************************************************/
 void MainWindow::on_btnLft_clicked()
 {
-    widMana->pCurW->OnQdec(TWidget::AHD);
+    widMana->pCurW->OnQdec(TWidget::AHD,prsTim.restart());
 }
 /*************************************************************************
 * 函数名称: on_btnRht_clicked
@@ -488,7 +492,7 @@ void MainWindow::on_btnLft_clicked()
 *************************************************************************/
 void MainWindow::on_btnRht_clicked()
 {
-    widMana->pCurW->OnQdec(TWidget::BCK);
+    widMana->pCurW->OnQdec(TWidget::BCK, prsTim.restart());
 }
 /*************************************************************************
 * 函数名称: on_sigKey
@@ -504,6 +508,7 @@ void MainWindow::on_sigKey(int dt)
 
     //printf("key:%x\n",msg.msgT);
     //ui->btnStus->setText(QString("%1").arg(msg.msgT,0,16));
+
 
     if(config.cfg.bBuzzK){
         if(msg.msgL == TDrvKey::UP)
@@ -535,11 +540,15 @@ void MainWindow::on_sigKey(int dt)
     //编码器
     if(msg.msgT == TDrvKey::QDEC_KEY){
         if(msg.msgL == TDrvKey::UP){
+            if(config.bScrP){
+                config.InitScrPT();
+                return;
+            }
             prsTim.start();
         }else if(msg.msgL == TDrvKey::DOWN){
             if(prsTim.restart() < 1000){
                 //printf("pt1:%d\n",prsTim.restart());
-                widMana->pCurW->OnQdec(TWidget::PRS);
+                widMana->pCurW->OnQdec(TWidget::PRS, prsTim.restart());
             }else{
                 //printf("pt2:%d\n",prsTim.restart());
                 widMana->SwitchWM(&widMana->frm_fun);
@@ -589,6 +598,8 @@ void MainWindow::on_sigKey(int dt)
     }
 
     (this->*bf[ibf])();
+
+    config.InitScrPT();
 }
 /*************************************************************************
 * 函数名称: on_sigQdec
@@ -601,7 +612,8 @@ void MainWindow::on_sigQdec(int dt)
 {
     //if(!widMana->bDialog)
     //    return;
-    widMana->pCurW->OnQdec((TWidget::QDECT)dt);
+    if(!config.bScrP)
+        widMana->pCurW->OnQdec((TWidget::QDECT)dt,prsTim.restart());
 
     /*quint8 spd[]    ={com02.para[0].manS,com02.para[1].manS,com02.para[2].manS,com02.para[3].manS,
                       com02.para[4].manS,com02.para[0].manS,com02.para[1].manS};

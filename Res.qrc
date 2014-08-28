@@ -58,6 +58,12 @@
         <file>Res/image/icon_servo_z2.png</file>
         <file>Res/image/icon_stack.png</file>
         <file>Res/image/title_bar.png</file>
+        <file>Res/image/button_enter_normal.png</file>
+        <file>Res/image/button_back_actvie.png</file>
+        <file>Res/image/button_back_normal.png</file>
+        <file>Res/image/button_cancel_active.png</file>
+        <file>Res/image/button_cancel_normal.png</file>
+        <file>Res/image/button_enter_active.png</file>
     </qresource>
     <qresource prefix="/QSS">
         <file>Res/QSS/ys.qss</file>

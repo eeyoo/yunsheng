@@ -195,6 +195,7 @@
 #define YS_LED1		AT91_PIN_PD1
 #define YS_LED2		AT91_PIN_PD2
 #define YS_LED3		AT91_PIN_PD3
+#define YS_LED4     AT91_PIN_PA24
 
 
 

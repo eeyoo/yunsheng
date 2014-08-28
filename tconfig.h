@@ -37,9 +37,14 @@ public:
 
 public:
     CONFIG cfg;
+    int    curPT;
+    bool   bScrP;
 public:
     void OpenCfg();
     void SaveCfg();
+
+    void DoScrPT();
+    void InitScrPT();
 };
 
 extern  TConfig     config;     //≥Ã–Ú≈‰÷√Œƒº˛

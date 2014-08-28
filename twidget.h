@@ -32,7 +32,7 @@ public:
         AHD,BCK,PRS
     };
 
-    virtual void OnQdec(QDECT qt){}          //响应旋转编码
+    virtual void OnQdec(QDECT qt, int spanT){ ispanT = spanT;}          //响应旋转编码
 protected:
     bool DoAhd(QWidget* pW, int *pT);
     bool DoAhd_PushButton(QWidget* pW, int *pT);
@@ -60,6 +60,9 @@ protected:
     bool DoPrs_ComboBox(QWidget* pW, int *pT);
     bool DoPrs_TableView(QWidget* pW, int *pT);
     bool DoPrs_TableWidget(QWidget* pW, int *pT);
+
+private:
+    int ispanT;
 signals:
 
 public slots:

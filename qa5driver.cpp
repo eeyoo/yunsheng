@@ -44,7 +44,8 @@ QA5Driver a5drv;
 
 static GPIO_ATTR_ST gpios[] = {
     {"YS_LED0",YS_LED0},{"YS_LED1",YS_LED1},
-    {"YS_LED2", YS_LED2},{"YS_LED3",YS_LED3}
+    {"YS_LED2", YS_LED2},{"YS_LED3",YS_LED3},
+    {"YS_LED4",YS_LED4}
 };
 #define DEV_QDEC         "/dev/input/event2"
 #define QDEC_PD5         0x10d
@@ -98,11 +99,11 @@ QA5Driver::~QA5Driver()
 *************************************************************************/
 void QA5Driver::init_All_drv()
 {
-    fd_buzzer       =-1;
-    socket_can      =-1;
-    fd_led          =-1;
-    fd_key          =-1;
-    fd_qdec         =-1;
+    fd_buzzer       = -1;
+    socket_can      = -1;
+    fd_led          = -1;
+    fd_key          = -1;
+    fd_qdec         = -1;
 }
 /*************************************************************************
 * º¯ÊýÃû³Æ: Open_All_drv
@@ -260,7 +261,7 @@ bool QA5Driver::led_on(int iNo/*=0*/)
     leda.gpio_index = gpios[iNo].gpio_index;
     leda.gpio_level = 1;
 
-    return ioctl(fd_led,IOCTL_GPIO_LEVEL_GET,&leda);
+    return ioctl(fd_led,IOCTL_GPIO_LEVEL_SET,&leda);
 #endif
     return false;
 }
@@ -278,7 +279,7 @@ bool QA5Driver::led_off(int iNo/* = 0*/)
     leda.gpio_index = gpios[iNo].gpio_index;
     leda.gpio_level = 0;
 
-    return ioctl(fd_led,IOCTL_GPIO_LEVEL_GET,&leda);
+    return ioctl(fd_led,IOCTL_GPIO_LEVEL_SET,&leda);
 #endif
     return false;
 }

@@ -65,8 +65,13 @@ void Frm_Stack::on_leReadypoint_clicked()
     Dlg_Manu dlg;
     dlg.setModal(true);
     if(dlg.exec() == QDialog::Accepted){
-        ui->leReadypoint->setText(QString("%1,%2").arg(comF0.rpara.xpos)
-                                                     .arg(comF0.rpara.y1pos));
+        double fxp = ((double)comF0.rpara.xpos) / 100.0;
+        double fy1p = ((double)comF0.rpara.y1pos) / 100.0;
+
+        ui->leReadypoint->setText(QString::number(fxp,'f',2) + QString(",") + QString::number(fy1p,'f',2));
+
+        //ui->leReadypoint->setText(QString("%1,%2").arg(comF0.rpara.xpos)
+        //                                             .arg(comF0.rpara.y1pos));
         bSve = false;
     }
 }
@@ -82,8 +87,12 @@ void Frm_Stack::on_leStartPoint_clicked()
     Dlg_Manu dlg;
     dlg.setModal(true);
     if(dlg.exec() == QDialog::Accepted){
-        ui->leStartPoint->setText(QString("%1,%2").arg(comF0.rpara.xpos)
-                                                     .arg(comF0.rpara.y1pos));
+        double fxp = ((double)comF0.rpara.xpos) / 100.0;
+        double fy1p = ((double)comF0.rpara.y1pos) / 100.0;
+
+        ui->leStartPoint->setText(QString::number(fxp,'f',2) + QString(",") + QString::number(fy1p,'f',2));
+        //ui->leStartPoint->setText(QString("%1,%2").arg(comF0.rpara.xpos)
+        //                                             .arg(comF0.rpara.y1pos));
         bSve = false;
     }
 }
@@ -180,13 +189,13 @@ void Frm_Stack::GetData()
 
     strT = ui->leReadypoint->text();
     for(int i = 0; i < 2; i++){
-        com06.para.entP[i] = strT.left(strT.indexOf(",")).toInt();
+        com06.para.entP[i] = (quint32)(strT.left(strT.indexOf(",")).toDouble() * 100.0);
         strT = strT.right(strT.length() - strT.indexOf(",") - 1);
     }
 
     strT = ui->leStartPoint->text();
     for(int i = 0; i < 2; i++){
-        com06.para.stkP[i] = strT.left(strT.indexOf(",")).toInt();
+        com06.para.stkP[i] = (quint32)(strT.left(strT.indexOf(",")).toDouble() * 100.0);
         strT = strT.right(strT.length() - strT.indexOf(",") - 1);
     }
 
@@ -206,7 +215,7 @@ void Frm_Stack::GetData()
     for(int i = 0; i < 2; i++){
         com06.para.opt[i].dir = cbbDir[i]->currentIndex() + 1;
         com06.para.opt[i].num = leNum[i]->text().toInt();
-        com06.para.opt[i].dis = leDis[i]->text().toInt();
+        com06.para.opt[i].dis = (quint16)(leDis[i]->text().toDouble() * 100.0);
     }
 }
 /*************************************************************************
@@ -220,13 +229,14 @@ void Frm_Stack::SetData()
 {
     QString strT;
 
-    strT = QString("%1,%2").arg(com06.para.entP[0])
-                              .arg(com06.para.entP[1]);
-    ui->leReadypoint->setText(strT);
 
-    strT = QString("%1,%2").arg(com06.para.stkP[0])
-                              .arg(com06.para.stkP[1]);
-    ui->leStartPoint->setText(strT);
+    double fxpR = ((double)com06.para.entP[0]) / 100.0;
+    double fy1pR = ((double)com06.para.entP[1]) / 100.0;
+    ui->leReadypoint->setText(QString::number(fxpR,'f',2) + QString(",") + QString::number(fy1pR,'f',2));
+
+    double fxpS = ((double)com06.para.stkP[0]) / 100.0;
+    double fy1pS = ((double)com06.para.stkP[1]) / 100.0;
+    ui->leStartPoint->setText(QString::number(fxpS,'f',2) + QString(",") + QString::number(fy1pS,'f',2));
 
     ui->leStackSpd->setText(QString("%1").arg(com06.para.spd[0]));
 
@@ -241,7 +251,9 @@ void Frm_Stack::SetData()
     for(int i = 0; i < 2; i++){
         cbbDir[i]->setCurrentIndex(com06.para.opt[i].dir - 1);
         leNum[i]->setText(QString("%1").arg(com06.para.opt[i].num));
-        leDis[i]->setText(QString("%1").arg(com06.para.opt[i].dis));
+
+        double dis = ((double)com06.para.opt[i].dis) / 100.0;
+        leDis[i]->setText(QString::number(dis,'f',2));
     }
 }
 /*************************************************************************

@@ -15,6 +15,11 @@
   </property>
   <property name="styleSheet">
    <string notr="true">
+*{
+font: 12px;
+font-family: &quot;微软雅黑&quot;;
+}
+
 QWidget {
 color: #c2c2c3;
 background: #343639;
@@ -88,16 +93,16 @@ spacing: 5px;
 }
 
 QRadioButton::indicator {
-     width: 28px;
-     height: 28px;
+     width: 25px;
+     height: 25px;
 }
 
 QRadioButton::indicator:unchecked {
-     image: url(&quot;:/Res/image/btn_rb_28x28_off.png&quot;);
+     image: url(:/Res/image/btn_rb_28x28_off.png);
 }
 
 QRadioButton::indicator:checked {
-     image: url(&quot;:/Res/image/btn_rb_28x28_on.png&quot;);
+     image: url(:/Res/image/btn_rb_28x28_on.png);
 }
 
 QPushButton {
@@ -206,7 +211,7 @@ image: url(&quot;:/Res/image/button_50x50_active.png&quot;);
      <item>
       <widget class="QTabWidget" name="tabw">
        <property name="currentIndex">
-        <number>0</number>
+        <number>1</number>
        </property>
        <widget class="QWidget" name="tab">
         <attribute name="title">
@@ -306,7 +311,10 @@ image: url(&quot;:/Res/image/button_50x50_active.png&quot;);
            <property name="title">
             <string>密码修改</string>
            </property>
-           <layout class="QGridLayout" name="gridLayout">
+           <layout class="QGridLayout" name="gridLayout" rowstretch="1,1,1" columnstretch="2,3">
+            <property name="topMargin">
+             <number>15</number>
+            </property>
             <item row="0" column="0">
              <widget class="QLabel" name="label">
               <property name="sizePolicy">

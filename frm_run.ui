@@ -14,7 +14,13 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget {
+   <string notr="true">*{
+font: 12px;
+font-family: &quot;微软雅黑&quot;;
+}
+
+
+QWidget {
 color: #c2c2c3;
 background: #343639;
 }
@@ -165,7 +171,11 @@ stop:1 #2773b4);
       <widget class="QGroupBox" name="groupBox">
        <property name="font">
         <font>
-         <pointsize>9</pointsize>
+         <family>微软雅黑</family>
+         <pointsize>-1</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
         </font>
        </property>
        <property name="title">
@@ -191,7 +201,11 @@ stop:1 #2773b4);
          <widget class="QLabel" name="label">
           <property name="font">
            <font>
-            <pointsize>9</pointsize>
+            <family>微软雅黑</family>
+            <pointsize>-1</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -209,7 +223,11 @@ stop:1 #2773b4);
           </property>
           <property name="font">
            <font>
-            <pointsize>9</pointsize>
+            <family>微软雅黑</family>
+            <pointsize>-1</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -221,7 +239,11 @@ stop:1 #2773b4);
          <widget class="QLabel" name="label_2">
           <property name="font">
            <font>
-            <pointsize>9</pointsize>
+            <family>微软雅黑</family>
+            <pointsize>-1</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -245,7 +267,11 @@ stop:1 #2773b4);
           </property>
           <property name="font">
            <font>
-            <pointsize>9</pointsize>
+            <family>微软雅黑</family>
+            <pointsize>-1</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -257,7 +283,11 @@ stop:1 #2773b4);
          <widget class="QLabel" name="label_3">
           <property name="font">
            <font>
-            <pointsize>9</pointsize>
+            <family>微软雅黑</family>
+            <pointsize>-1</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -275,7 +305,11 @@ stop:1 #2773b4);
           </property>
           <property name="font">
            <font>
-            <pointsize>9</pointsize>
+            <family>微软雅黑</family>
+            <pointsize>-1</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -290,7 +324,11 @@ stop:1 #2773b4);
       <widget class="QGroupBox" name="groupBox_2">
        <property name="font">
         <font>
-         <pointsize>9</pointsize>
+         <family>微软雅黑</family>
+         <pointsize>-1</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
         </font>
        </property>
        <property name="title">
@@ -307,7 +345,11 @@ stop:1 #2773b4);
           </property>
           <property name="font">
            <font>
-            <pointsize>9</pointsize>
+            <family>微软雅黑</family>
+            <pointsize>-1</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -334,7 +376,11 @@ stop:1 #2773b4);
           </property>
           <property name="font">
            <font>
-            <pointsize>9</pointsize>
+            <family>微软雅黑</family>
+            <pointsize>-1</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -361,7 +407,11 @@ stop:1 #2773b4);
           </property>
           <property name="font">
            <font>
-            <pointsize>9</pointsize>
+            <family>微软雅黑</family>
+            <pointsize>-1</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -388,7 +438,11 @@ stop:1 #2773b4);
           </property>
           <property name="font">
            <font>
-            <pointsize>9</pointsize>
+            <family>微软雅黑</family>
+            <pointsize>-1</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -415,7 +469,11 @@ stop:1 #2773b4);
           </property>
           <property name="font">
            <font>
-            <pointsize>9</pointsize>
+            <family>微软雅黑</family>
+            <pointsize>-1</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -442,7 +500,11 @@ stop:1 #2773b4);
           </property>
           <property name="font">
            <font>
-            <pointsize>9</pointsize>
+            <family>微软雅黑</family>
+            <pointsize>-1</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -469,7 +531,11 @@ stop:1 #2773b4);
           </property>
           <property name="font">
            <font>
-            <pointsize>9</pointsize>
+            <family>微软雅黑</family>
+            <pointsize>-1</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">

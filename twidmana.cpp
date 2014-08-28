@@ -218,7 +218,7 @@ void TWidMana::SwitchWM(QWidget *pWidget,SHOWTYPE st)
         return;
 
     if(pCurWidgetS == &frm_teach){
-        if(com20.bNewForSnd && com20.bOpen){
+        if(com20.bOpen){
             warn.ShowW2L(TWarn::W_NEWPRG_S);
             return;
         }

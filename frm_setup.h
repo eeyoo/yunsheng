@@ -43,11 +43,12 @@ public:
     void SetResetPara();
     void SetAxisEn();
 
-    void OnQdec(QDECT qt);
+    void OnQdec(QDECT qt, int spanT);
 
 private:
     QSignalMapper  sglMapL;
 private slots:
+    void on_leScrProTim_clicked();
     void on_leRstSpd_clicked();
     void on_btnServoRead_clicked();
     void on_btnSysRead_clicked();

@@ -357,6 +357,8 @@ void Frm_Setup::setVisible(bool visible)
     {
         SetSeroPara();
         SetResetPara();
+
+        ui->leScrProTim->setText(QString("%1").arg(config.cfg.scrPT / 60));
     }
 }
 /*************************************************************************
@@ -829,8 +831,10 @@ void Frm_Setup::on_leRstSpd_clicked()
 * 输出参数: 无
 * 返 回 值:
 *************************************************************************/
-void Frm_Setup::OnQdec(QDECT qt)
+void Frm_Setup::OnQdec(QDECT qt, int spanT)
 {
+    TWidget::OnQdec(qt, spanT);
+
     QWidget* pW[] = {(QWidget*)ui->cbEnableX,(QWidget*)ui->cbDirX,(QWidget*)ui->cbAccX,
                      (QWidget*)ui->leAbsLX,(QWidget*)ui->leMaxSX,(QWidget*)ui->leMaxAX,
                      (QWidget*)ui->lePlsX,(QWidget*)ui->lePrdWX,(QWidget*)ui->leErrAX,
@@ -961,7 +965,27 @@ void Frm_Setup::OnQdec(QDECT qt)
         ui->tabW_sero->setCurrentIndex(iCur / 15);
     }*/
 }
+/*************************************************************************
+* 函数名称: on_leScrProTim_clicked
+* 功    能: 输入屏幕保护时间
+* 输入参数: 无
+* 输出参数: 无
+* 返 回 值:
+*************************************************************************/
+void Frm_Setup::on_leScrProTim_clicked()
+{
+    Dlg_Psw dlg;
+    dlg.setModal(true);
+    if(dlg.exec() == QDialog::Accepted){
+        config.cfg.scrPT = dlg.m_str.toInt() * 60;
+        config.InitScrPT();
+        ui->leScrProTim->setText(dlg.m_str);
+        config.SaveCfg();
+    }
+}
 
 //==========================================================================================
 // End of file.
 //==========================================================================================
+
+

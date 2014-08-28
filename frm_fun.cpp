@@ -279,8 +279,10 @@ void Frm_Fun::on_btnHelp_clicked()
 * 输出参数: 无
 * 返 回 值: 无
 *************************************************************************/
-void Frm_Fun::OnQdec(QDECT qt)
+void Frm_Fun::OnQdec(QDECT qt, int spanT)
 {
+    TWidget::OnQdec(qt, spanT);
+
     QWidget *pW[] = {(QWidget*)ui->btnTeach,(QWidget*)ui->btnRun,(QWidget*)ui->btnStkS,
                      (QWidget*)ui->btnMonitor,(QWidget*)ui->btnLog,(QWidget*)ui->btnSysS,
                      (QWidget*)ui->btnTimS,(QWidget*)ui->btnHelp,(QWidget*)ui->btnAuthority,
