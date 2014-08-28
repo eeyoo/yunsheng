@@ -15,7 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">*{
-font: 12px;
+font: 13pt;
 font-family: &quot;微软雅黑&quot;;
 }
 

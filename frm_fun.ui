@@ -31,7 +31,7 @@ color: #55555;
 background: white;
 }*/
 *{
-font: 12px;
+font: 13pt;
 font-family: &quot;微软雅黑&quot;;
 }
 

@@ -15,7 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">*{
-font: 12px;
+font: 16pt;
 font-family: &quot;微软雅黑&quot;;
 }
 
@@ -84,7 +84,7 @@ color: black;
 border: no;
 min-width: 50px;
 min-height: 50px;
-image: url(&quot;:/Res/image/button_back_active.png&quot;);
+image: url(&quot;:/Res/image/button_back_actvie.png&quot;);
 }
 
 QPushButton[objectName=&quot;btnOK_K&quot;] {
@@ -189,16 +189,7 @@ QLineEdit {
         <enum>QFrame::Raised</enum>
        </property>
        <layout class="QGridLayout" name="gridLayout">
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
+        <property name="margin">
          <number>0</number>
         </property>
         <property name="verticalSpacing">

@@ -15,7 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">*{
-font: 12px;
+font: 13pt;
 font-family: &quot;微软雅黑&quot;;
 }
 
@@ -26,6 +26,7 @@ background: #343639;
 }
 
 QPushButton {
+font: 16pt;
 border: no;
 outline: no;
 min-width: 80px;
@@ -35,6 +36,7 @@ image: url(&quot;:/Res/image/button_80x50_normal.png&quot;);
 
 QPushButton:pressed {
 color: black;
+font: 16pt;
 border: no;
 outline: no;
 min-width: 80px;
@@ -172,7 +174,7 @@ stop:1 #2773b4);
        <property name="font">
         <font>
          <family>微软雅黑</family>
-         <pointsize>-1</pointsize>
+         <pointsize>13</pointsize>
          <weight>50</weight>
          <italic>false</italic>
          <bold>false</bold>
@@ -202,7 +204,7 @@ stop:1 #2773b4);
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>-1</pointsize>
+            <pointsize>13</pointsize>
             <weight>50</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -224,7 +226,7 @@ stop:1 #2773b4);
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>-1</pointsize>
+            <pointsize>13</pointsize>
             <weight>50</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -240,7 +242,7 @@ stop:1 #2773b4);
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>-1</pointsize>
+            <pointsize>13</pointsize>
             <weight>50</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -268,7 +270,7 @@ stop:1 #2773b4);
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>-1</pointsize>
+            <pointsize>13</pointsize>
             <weight>50</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -284,7 +286,7 @@ stop:1 #2773b4);
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>-1</pointsize>
+            <pointsize>13</pointsize>
             <weight>50</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -306,7 +308,7 @@ stop:1 #2773b4);
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>-1</pointsize>
+            <pointsize>13</pointsize>
             <weight>50</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -325,7 +327,7 @@ stop:1 #2773b4);
        <property name="font">
         <font>
          <family>微软雅黑</family>
-         <pointsize>-1</pointsize>
+         <pointsize>13</pointsize>
          <weight>50</weight>
          <italic>false</italic>
          <bold>false</bold>
@@ -346,7 +348,7 @@ stop:1 #2773b4);
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>-1</pointsize>
+            <pointsize>13</pointsize>
             <weight>50</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -377,7 +379,7 @@ stop:1 #2773b4);
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>-1</pointsize>
+            <pointsize>13</pointsize>
             <weight>50</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -408,7 +410,7 @@ stop:1 #2773b4);
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>-1</pointsize>
+            <pointsize>13</pointsize>
             <weight>50</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -439,7 +441,7 @@ stop:1 #2773b4);
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>-1</pointsize>
+            <pointsize>13</pointsize>
             <weight>50</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -470,7 +472,7 @@ stop:1 #2773b4);
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>-1</pointsize>
+            <pointsize>13</pointsize>
             <weight>50</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -501,7 +503,7 @@ stop:1 #2773b4);
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>-1</pointsize>
+            <pointsize>13</pointsize>
             <weight>50</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -532,7 +534,7 @@ stop:1 #2773b4);
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>-1</pointsize>
+            <pointsize>13</pointsize>
             <weight>50</weight>
             <italic>false</italic>
             <bold>false</bold>

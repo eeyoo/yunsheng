@@ -15,7 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">*{
-font: 12px;
+font: 16pt;
 font-family: &quot;微软雅黑&quot;;
 }
 
@@ -91,7 +91,7 @@ QPushButton[objectName=&quot;btnBack&quot;]:pressed {
 border: no;
 min-width: 50px;
 min-height: 50px;
-image: url(&quot;:/Res/image/button_back_active.png&quot;);
+image: url(&quot;:/Res/image/button_back_actvie.png&quot;);
 }
 
 QPushButton[objectName=&quot;btnQuit&quot;] {
@@ -138,16 +138,7 @@ QLineEdit {
 </string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,1">
-   <property name="leftMargin">
-    <number>0</number>
-   </property>
-   <property name="topMargin">
-    <number>0</number>
-   </property>
-   <property name="rightMargin">
-    <number>0</number>
-   </property>
-   <property name="bottomMargin">
+   <property name="margin">
     <number>0</number>
    </property>
    <item>
@@ -163,16 +154,7 @@ QLineEdit {
    </item>
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
-     <property name="leftMargin">
-      <number>9</number>
-     </property>
-     <property name="topMargin">
-      <number>9</number>
-     </property>
-     <property name="rightMargin">
-      <number>9</number>
-     </property>
-     <property name="bottomMargin">
+     <property name="margin">
       <number>9</number>
      </property>
      <item>
@@ -934,7 +916,7 @@ QLineEdit {
           </sizepolicy>
          </property>
          <property name="text">
-          <string>Space</string>
+          <string/>
          </property>
         </widget>
        </item>
