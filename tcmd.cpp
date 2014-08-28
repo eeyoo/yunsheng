@@ -756,6 +756,19 @@ void TCmd_Stk::OnCmdClk()
     }
 
     widMana->frm_teach.ui->leStkN->setText(strT);*/
+    widMana->frm_teach.ui->tabCmd->setCurrentIndex(2);
+    widMana->frm_teach.on_btn_clicked(8);
+    widMana->frm_teach.ui->leTimS->setText(QString("%1").arg(para.wattim));
+
+    STK_PARA *sp = (STK_PARA*)(&para);
+    QString strT;
+    for(int i = 0; i < 8; i++){
+        if(sp->name[i] == 255)
+            break;
+        strT += (char)sp->name[i];
+    }
+
+    widMana->frm_teach.ui->leStkN->setText(strT);
 }
 /*************************************************************************
 * º¯ÊýÃû³Æ: snd

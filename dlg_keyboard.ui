@@ -14,7 +14,12 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget {
+   <string notr="true">*{
+font: 12px;
+font-family: &quot;微软雅黑&quot;;
+}
+
+QWidget {
 color: #c2c2c3;
 background: #343639;
 }
@@ -65,17 +70,16 @@ QPushButton[objectName=&quot;btnEnter&quot;] {
 border: no;
 min-width: 50px;
 min-height: 106px;
-image: url(&quot;:/Res/image/button_50x106_normal.png&quot;);
+image: url(&quot;:/Res/image/button_enter_normal.png&quot;);
 }
 
 QPushButton[objectName=&quot;btnEnter&quot;]:pressed {
 border: no;
 min-width: 50px;
 min-height: 106px;
-image: url(&quot;:/Res/image/button_50x106_active.png&quot;);
+image: url(&quot;:/Res/image/button_enter_active.png&quot;);
 }
 
-/*
 QPushButton[objectName=&quot;btnBack&quot;] {
 border: no;
 min-width: 50px;
@@ -89,7 +93,20 @@ min-width: 50px;
 min-height: 50px;
 image: url(&quot;:/Res/image/button_back_active.png&quot;);
 }
-*/
+
+QPushButton[objectName=&quot;btnQuit&quot;] {
+border: no;
+min-width: 50px;
+min-height: 50px;
+image: url(&quot;:/Res/image/button_cancel_normal.png&quot;);
+}
+
+QPushButton[objectName=&quot;btnQuit&quot;]:pressed {
+border: no;
+min-width: 50px;
+min-height: 50px;
+image: url(&quot;:/Res/image/button_cancel_active.png&quot;);
+}
 
 QPushButton[objectName=&quot;btn32&quot;] {
 border: no;
@@ -185,7 +202,7 @@ QLineEdit {
           </sizepolicy>
          </property>
          <property name="text">
-          <string>退格</string>
+          <string/>
          </property>
         </widget>
        </item>
@@ -362,7 +379,7 @@ QLineEdit {
           </sizepolicy>
          </property>
          <property name="text">
-          <string>确定</string>
+          <string/>
          </property>
         </widget>
        </item>
@@ -695,7 +712,7 @@ QLineEdit {
           </sizepolicy>
          </property>
          <property name="text">
-          <string>退出</string>
+          <string/>
          </property>
         </widget>
        </item>
@@ -859,7 +876,7 @@ QLineEdit {
           </sizepolicy>
          </property>
          <property name="text">
-          <string/>
+          <string>shift</string>
          </property>
          <property name="checkable">
           <bool>true</bool>

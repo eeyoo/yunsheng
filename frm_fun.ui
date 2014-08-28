@@ -30,6 +30,10 @@ QLabel {
 color: #55555;
 background: white;
 }*/
+*{
+font: 12px;
+font-family: &quot;微软雅黑&quot;;
+}
 
 QWidget {
 color: #c2c2c3;

@@ -533,35 +533,35 @@
     </message>
     <message utf8="true">
         <source>运行</source>
-        <translation type="unfinished">Run</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <source>设置</source>
-        <translation type="unfinished">Setup</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <source>堆叠设置</source>
-        <translation type="unfinished">Stack Setup</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <source>监视</source>
-        <translation type="unfinished">Monitor</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <source>时间设置</source>
-        <translation type="unfinished">Time</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <source>记录查询</source>
-        <translation type="unfinished">System Log</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <source>用户管理</source>
-        <translation type="unfinished">Authority</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <source>帮助</source>
-        <translation type="unfinished">Help</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -572,15 +572,15 @@
     </message>
     <message utf8="true">
         <source>语言：</source>
-        <translation type="unfinished">Language: </translation>
+        <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <source>中文</source>
-        <translation type="unfinished">Chinese</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>English</source>
-        <translation type="unfinished">English</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -591,23 +591,23 @@
     </message>
     <message utf8="true">
         <source>输入</source>
-        <translation type="unfinished">Input</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <source>机床信号输入</source>
-        <translation type="unfinished">Manual Signal Input</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <source>正在加工</source>
-        <translation type="unfinished">Working</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <source>加工完成</source>
-        <translation type="unfinished">Completed</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <source>预留1</source>
-        <translation type="unfinished">Res</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <source>预留2</source>

@@ -6,15 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>676</width>
-    <height>434</height>
+    <width>586</width>
+    <height>425</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget {
+   <string notr="true">*{
+font: 12px;
+font-family: &quot;微软雅黑&quot;;
+}
+
+QWidget {
 color: #c2c2c3;
 background: #343639;
 }
@@ -47,6 +52,15 @@ image: url(&quot;:/Res/image/button_80x50_active.png&quot;);
 }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
    <item>
     <widget class="QFrame" name="titleFrame">
      <property name="frameShape">
@@ -60,10 +74,10 @@ image: url(&quot;:/Res/image/button_80x50_active.png&quot;);
    <item>
     <layout class="QGridLayout" name="gridLayout">
      <property name="leftMargin">
-      <number>1</number>
+      <number>0</number>
      </property>
      <property name="rightMargin">
-      <number>1</number>
+      <number>0</number>
      </property>
      <item row="0" column="0">
       <widget class="QPushButton" name="I1">
@@ -307,6 +321,9 @@ image: url(&quot;:/Res/image/button_80x50_active.png&quot;);
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="rightMargin">
+      <number>9</number>
+     </property>
      <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">

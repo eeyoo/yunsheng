@@ -52,6 +52,24 @@ bool TApplication::notify(QObject *object, QEvent *event)
         }
     }
 
+    if(config.bScrP){
+        if(event->type() == QEvent::MouseButtonRelease){
+            config.InitScrPT();
+            return true;
+        }
+
+        if(event->type() == QEvent::MouseButtonPress ||
+               event->type() == QEvent::MouseButtonDblClick ||
+               event->type() == QEvent::MouseMove){
+            return true;
+        }
+    }else{
+        if(event->type() == QEvent::MouseButtonRelease){
+            config.InitScrPT();
+        }
+    }
+
+
     QApplication::notify(object,event);
 }
 

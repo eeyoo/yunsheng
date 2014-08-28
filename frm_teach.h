@@ -41,9 +41,10 @@ public:
 private:
     void InitBtn();
     void InitTim();
-private:
+public:
     int         m_iCmd;
     bool        m_bModify;
+    bool        m_bStk;
 private:
     QSignalMapper  sglMapT;
     QSignalMapper  sglMapL;
@@ -53,6 +54,7 @@ public slots:
     void on_leT_clicked(int ile);
 
 private slots:
+    void on_leStkN_clicked();
     void on_leNoO_clicked();
     void on_leNoI_clicked();
     void on_lePosR_clicked();

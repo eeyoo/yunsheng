@@ -230,15 +230,15 @@ public:
 #pragma pack(1)
     struct STR_PARA
     {
-        quint32 entP[3]; //进入点坐标
-        quint32 stkP[3]; //堆叠起点坐标
-        quint8  spd[3];  //X、Y、Z轴的速度
-        quint8  odr[3];  //第一、二、三顺序
+        quint32 entP[2]; //进入点坐标
+        quint32 stkP[2]; //堆叠起点坐标
+        quint8  spd[2];  //X、Y、Z轴的速度
+        quint8  odr[2];  //第一、二、三顺序
         struct{
             quint8  dir; //方向
             quint16 num; //数量
             quint16 dis; //间距
-        }opt[3];         // X、Y、Z的方向、数量、间距
+        }opt[2];         // X、Y、Z的方向、数量、间距
     };
 #pragma pack()
 

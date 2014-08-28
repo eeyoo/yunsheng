@@ -769,6 +769,7 @@ void TCom20::AddCmd(int rIndex)
 {
     modelPro->insertRow(rIndex);
     bNewForSnd = true;
+    bOpen      = true;
 }
 /*************************************************************************
 * 函数名称: DelCmd
@@ -784,6 +785,7 @@ void TCom20::DelCmd(int rIndex)
 
     modelPro->removeRow(rIndex);
     bNewForSnd = true;
+    bOpen      = true;
 }
 /*************************************************************************
 * 函数名称: SetItem
@@ -798,6 +800,7 @@ void TCom20::SetItem(int row,int column,QStandardItem* item)
 {
     modelPro->setItem(row,column,item);
     bNewForSnd = true;
+    bOpen      = true;
 }
 /*************************************************************************
 * 函数名称: NewPgm
@@ -904,7 +907,7 @@ void TCom20::OpenPgm(QFile *file)
 
     delete []para;
 
-    bOpen = true;
+    bOpen = false;
 }
 /*************************************************************************
 * 函数名称: snd
@@ -1032,7 +1035,7 @@ bool TCom20::chk()
     if((pd[2] != 'A')||(pd[3] != 'C')||(pd[4] != 'K'))
         return false;
 
-    bNewForSnd=false;   //置位发送成功的标志
+    bNewForSnd = false;   //置位发送成功的标志
     return true;
 }
 /*************************************************************************

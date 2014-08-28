@@ -1,8 +1,34 @@
+/*************************************************************************************
+
+* Copyright (c) 2014, 宁波韵升中央研究院
+
+* All rights reserved.
+
+* 文件名称: dlg_genercrysoutput.cpp
+
+* 功能描述: 输出设置
+
+* 当前版本: 1.000
+
+* 编	写: 汤超阳
+
+* 创建日期: 2014.8.20
+
+* 修	改:
+**************************************************************************************/
+
 #include "dlg_genercrysoutput.h"
 #include "ui_dlg_genercrysoutput.h"
 #include "twidmana.h"
 #include "qa5driver.h"
 
+/*************************************************************************
+* 函数名称: Dlg_GenerCrysOutput
+* 功   能: 构造函数
+* 输入参数: QWidget *parent 父类句柄
+* 输出参数: 无
+* 返 回 值: 无
+*************************************************************************/
 Dlg_GenerCrysOutput::Dlg_GenerCrysOutput(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Dlg_GenerCrysOutput)
@@ -28,7 +54,13 @@ Dlg_GenerCrysOutput::Dlg_GenerCrysOutput(QWidget *parent) :
 
     widMana->bDialog = true;
 }
-
+/*************************************************************************
+* 函数名称: Dlg_GenerCrysOutput
+* 功   能: 析构函数
+* 输入参数:
+* 输出参数: 无
+* 返 回 值: 无
+*************************************************************************/
 Dlg_GenerCrysOutput::~Dlg_GenerCrysOutput()
 {
     widMana->bDialog = false;
@@ -54,13 +86,29 @@ void Dlg_GenerCrysOutput::on_btn_clicked(int ibtn)
     widMana->bDialog = false;
     QDialog::accept();
 }
-
+/*************************************************************************
+* 函数名称: on_btnCancel_clicked
+* 功   能: 点击取消按钮
+* 输入参数:
+* 输出参数: 无
+* 返 回 值: 无
+*************************************************************************/
 void Dlg_GenerCrysOutput::on_btnCancel_clicked()
 {
     QDialog::reject();
 }
-
+/*************************************************************************
+* 函数名称: on_btnOk_clicked
+* 功   能: 点击确定按钮
+* 输入参数:
+* 输出参数: 无
+* 返 回 值: 无
+*************************************************************************/
 void Dlg_GenerCrysOutput::on_btnOk_clicked()
 {
     QDialog::reject();
 }
+
+//==========================================================================================
+// End of file.
+//==========================================================================================

@@ -27,6 +27,7 @@
 #include "at91_gpio.h"
 #include "common.h"
 
+
 struct CAN_Frame
 {
     quint32 canId;

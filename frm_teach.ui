@@ -14,7 +14,11 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">
+   <string notr="true">*{
+font: 12px;
+font-family: &quot;微软雅黑&quot;;
+}
+
 QWidget { 
 color: #c2c2c3;
 background: #343639;
@@ -789,7 +793,7 @@ min-height: 80px;
            </sizepolicy>
           </property>
           <property name="currentIndex">
-           <number>3</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="page_D">
            <layout class="QGridLayout" name="gridLayout">

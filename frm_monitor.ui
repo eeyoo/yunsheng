@@ -14,7 +14,11 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">
+   <string notr="true">*{
+font: 12px;
+font-family: &quot;微软雅黑&quot;;
+}
+
 QWidget {
 color: #c2c2c3;
 background: #343639;
@@ -58,24 +62,24 @@ outline: no;
 }
 
 QCheckBox::indicator {
-     width: 34px;
-     height: 25px;
+     width: 30px;
+     height: 30px;
 }
 
 #tab_input QCheckBox::indicator:unchecked {
-     image: url(&quot;:/Res/image/btn_cb_io_30x30_off.png&quot;);
+     image: url(:/Res/image/btn_cb_io_30x30_off.png);
 }
 
 #tab_input QCheckBox::indicator:checked {
-     image: url(&quot;:/Res/image/btn_cb_io_30x30_on.png&quot;);
+     image: url(:/Res/image/btn_cb_io_30x30_on.png);
 }
 
 #tab_output QCheckBox::indicator:unchecked {
-     image: url(&quot;:/Res/image/btn_cb_io_30x30_off.png&quot;);
+     image: url(:/Res/image/btn_cb_io_30x30_off.png);
 }
 
 #tab_output QCheckBox::indicator:checked {
-     image: url(&quot;:/Res/image/btn_cb_io_30x30_on.png&quot;);
+     image: url(:/Res/image/btn_cb_io_30x30_on.png);
 }
 </string>
   </property>
@@ -83,7 +87,7 @@ QCheckBox::indicator {
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab_input">
       <attribute name="title">
@@ -133,7 +137,7 @@ QCheckBox::indicator {
        <item row="0" column="4">
         <widget class="QCheckBox" name="cbI37">
          <property name="text">
-          <string>X2左限位</string>
+          <string>输入37</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -183,7 +187,7 @@ QCheckBox::indicator {
        <item row="1" column="4">
         <widget class="QCheckBox" name="cbI38">
          <property name="text">
-          <string>X2右限位</string>
+          <string>输入38</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -233,7 +237,7 @@ QCheckBox::indicator {
        <item row="2" column="4">
         <widget class="QCheckBox" name="cbI39">
          <property name="text">
-          <string>U左限位</string>
+          <string>输入39</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -283,7 +287,7 @@ QCheckBox::indicator {
        <item row="3" column="4">
         <widget class="QCheckBox" name="cbI40">
          <property name="text">
-          <string>U右限位</string>
+          <string>输入40</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -433,7 +437,7 @@ QCheckBox::indicator {
        <item row="7" column="3">
         <widget class="QCheckBox" name="cbI35">
          <property name="text">
-          <string>Z2左限位</string>
+          <string>输入35</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -473,7 +477,7 @@ QCheckBox::indicator {
        <item row="8" column="3">
         <widget class="QCheckBox" name="cbI36">
          <property name="text">
-          <string>Z2右限位</string>
+          <string>输入36</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -483,7 +487,7 @@ QCheckBox::indicator {
        <item row="4" column="4">
         <widget class="QCheckBox" name="cbI41">
          <property name="text">
-          <string>Z1左限位</string>
+          <string>输入41</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -493,7 +497,7 @@ QCheckBox::indicator {
        <item row="5" column="4">
         <widget class="QCheckBox" name="cbI42">
          <property name="text">
-          <string>Z1右限位 </string>
+          <string>输入42</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -503,7 +507,7 @@ QCheckBox::indicator {
        <item row="6" column="4">
         <widget class="QCheckBox" name="cbI43">
          <property name="text">
-          <string>X1左限位</string>
+          <string>输入43</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -523,7 +527,7 @@ QCheckBox::indicator {
        <item row="7" column="4">
         <widget class="QCheckBox" name="cbI44">
          <property name="text">
-          <string>X1右限位</string>
+          <string>输入44</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -573,7 +577,7 @@ QCheckBox::indicator {
        <item row="0" column="3">
         <widget class="QCheckBox" name="cbO28">
          <property name="text">
-          <string>Z2刹车</string>
+          <string>输出28</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -816,7 +820,7 @@ QCheckBox::indicator {
        <item row="8" column="2">
         <widget class="QCheckBox" name="cbO27">
          <property name="text">
-          <string>Z1刹车</string>
+          <string>输出27</string>
          </property>
          <property name="checkable">
           <bool>true</bool>

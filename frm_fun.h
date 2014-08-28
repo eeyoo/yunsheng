@@ -34,7 +34,7 @@ class Frm_Fun : public TWidget
 public:
     Frm_Fun();
     ~Frm_Fun();
-    void OnQdec(QDECT qt);
+    void OnQdec(QDECT qt, int spanT);
 
 private:
     Ui::Frm_Fun *ui;
