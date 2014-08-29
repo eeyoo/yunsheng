@@ -37,16 +37,32 @@ public:
 
     enum COM_ADD
     {
-        COM01 = 0x01,COM02,COM03,COM04,COM05,COM06,COM07,COM08,
+        COM01 = 0x01,
+        COM02,
+        COM03,
+        COM04,
+        COM05,
+        COM06,
+        COM07,
+        COM08,
+
         COM20 = 0x20,
         COM70 = 0x70,
         COM7F = 0x7f,
         COME0 = 0xe0,
-        COMF0 = 0xf0,COMF1,COMF2,COMF3
+
+        COMF0 = 0xf0,
+        COMF1,
+        COMF2,
+        COMF3
     };
     enum AXIS
     {
-        X = 0x01,Y1,Z1,Y2,Z2
+        X = 0x01,
+        Y1,
+        Z1,
+        Y2,
+        Z2
     };
 public:
     virtual bool DoCom();               //执行通讯
@@ -107,20 +123,20 @@ public:
         quint8  axis;       //电机轴
         quint32 absL;       //绝对长度
         quint8  whlvel;     //整体速度
-        quint16  maxS;       //最大速度
-        quint16  maxA;       //最大加速度
+        quint16  maxS;      //最大速度
+        quint16  maxA;      //最大加速度
         quint8  manS;       //手动示教速度
         quint8  resS;       //复位速度
         quint8  errA;       //运行误差
         quint16 zro_off;    //零点偏移
-        quint16  pls_equ;    //脉冲当量
+        quint16  pls_equ;   //脉冲当量
         quint8  accp;       //加速度允许
         quint8  axisp;      //电机使能
         quint8  rspd;       //运行速度
         quint16 prdw;       //周波数
         quint8  mtrD;       //电机方向
-        quint8  gears;     //手动档位
-        quint16  jog_d_t;    //点动减速时间
+        quint8  gears;      //手动档位
+        quint16  jog_d_t;   //点动减速时间
         quint8  axisT;      //轴类型 0x01旋转
         quint8  rev[3];     //保留
     };
@@ -288,6 +304,8 @@ public:
     bool snd();
     bool chk();
 };
+
+
 class TCom20 : public TCom
 {
 public:
@@ -321,6 +339,8 @@ public:
     bool snd();
     bool chk();
 };
+
+
 class TCom70 : public TCom
 {
 public:
@@ -484,13 +504,12 @@ private:
     void AnaCmd();
 };
 
-
 extern  TCom01  com01;
 extern  TCom02  com02;       //伺服配置
 extern  TCom03  com03;       //配置待机方式等
 extern  TCom04  com04;       //配置检测允许
 extern  TCom05  com05;       //配置产品
-extern  TCom06  com06,comStk;       //配置堆叠
+extern  TCom06  com06,comStk;//配置堆叠
 extern  TCom07  com07;       //复位配置
 extern  TCom08  com08;       //电机方向配置
 extern  TCom20  com20;       //示教程序

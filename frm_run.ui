@@ -15,7 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">*{
-font: 13pt;
+font: 14pt;
 font-family: &quot;微软雅黑&quot;;
 }
 
@@ -110,7 +110,7 @@ stop:1 #2773b4);
       <number>6</number>
      </property>
      <item>
-      <widget class="QTableView" name="tblV_Pro">
+      <widget class="TTblViewF" name="tblV_Pro">
        <property name="enabled">
         <bool>true</bool>
        </property>
@@ -174,7 +174,7 @@ stop:1 #2773b4);
        <property name="font">
         <font>
          <family>微软雅黑</family>
-         <pointsize>13</pointsize>
+         <pointsize>14</pointsize>
          <weight>50</weight>
          <italic>false</italic>
          <bold>false</bold>
@@ -204,7 +204,7 @@ stop:1 #2773b4);
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>13</pointsize>
+            <pointsize>14</pointsize>
             <weight>50</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -226,7 +226,7 @@ stop:1 #2773b4);
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>13</pointsize>
+            <pointsize>14</pointsize>
             <weight>50</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -242,7 +242,7 @@ stop:1 #2773b4);
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>13</pointsize>
+            <pointsize>14</pointsize>
             <weight>50</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -270,7 +270,7 @@ stop:1 #2773b4);
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>13</pointsize>
+            <pointsize>14</pointsize>
             <weight>50</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -286,7 +286,7 @@ stop:1 #2773b4);
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>13</pointsize>
+            <pointsize>14</pointsize>
             <weight>50</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -308,7 +308,7 @@ stop:1 #2773b4);
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>13</pointsize>
+            <pointsize>14</pointsize>
             <weight>50</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -327,7 +327,7 @@ stop:1 #2773b4);
        <property name="font">
         <font>
          <family>微软雅黑</family>
-         <pointsize>13</pointsize>
+         <pointsize>14</pointsize>
          <weight>50</weight>
          <italic>false</italic>
          <bold>false</bold>
@@ -348,7 +348,7 @@ stop:1 #2773b4);
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>13</pointsize>
+            <pointsize>14</pointsize>
             <weight>50</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -379,7 +379,7 @@ stop:1 #2773b4);
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>13</pointsize>
+            <pointsize>14</pointsize>
             <weight>50</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -410,7 +410,7 @@ stop:1 #2773b4);
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>13</pointsize>
+            <pointsize>14</pointsize>
             <weight>50</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -441,7 +441,7 @@ stop:1 #2773b4);
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>13</pointsize>
+            <pointsize>14</pointsize>
             <weight>50</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -472,7 +472,7 @@ stop:1 #2773b4);
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>13</pointsize>
+            <pointsize>14</pointsize>
             <weight>50</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -503,7 +503,7 @@ stop:1 #2773b4);
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>13</pointsize>
+            <pointsize>14</pointsize>
             <weight>50</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -534,7 +534,7 @@ stop:1 #2773b4);
           <property name="font">
            <font>
             <family>微软雅黑</family>
-            <pointsize>13</pointsize>
+            <pointsize>14</pointsize>
             <weight>50</weight>
             <italic>false</italic>
             <bold>false</bold>
@@ -564,6 +564,13 @@ stop:1 #2773b4);
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>TTblViewF</class>
+   <extends>QTableView</extends>
+   <header>ttblviewf.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

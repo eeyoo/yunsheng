@@ -15,7 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">*{
-font: 13pt;
+font: 14pt;
 font-family: &quot;微软雅黑&quot;;
 }
 
@@ -115,6 +115,7 @@ QLineEdit {
 
 QPushButton {
 border: no;
+font: 16pt;
 /*outline: no;*/
 min-width: 106px;
 min-height: 50px;
@@ -123,6 +124,7 @@ image: url(&quot;:/Res/image/button_106x50_normal.png&quot;);
 
 QPushButton:pressed {
 color: black;
+font: 16pt;
 border: no;
 min-width: 106px;
 min-height: 50px;
@@ -159,7 +161,7 @@ selection-background-color: #2773b4;
    <item>
     <widget class="QTabWidget" name="tabW">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab_srv">
       <attribute name="title">

@@ -20,18 +20,18 @@
 #ifndef QA5DRIVER_H
 #define QA5DRIVER_H
 
-#define EMBEDED_ARM
+//#define EMBEDED_ARM
 //#ifdef EMBEDED_ARM
 
 #include <QFile>
 #include "at91_gpio.h"
 #include "common.h"
 
-
+//CAN通讯数据帧
 struct CAN_Frame
 {
-    quint32 canId;
-    quint8 data[8];
+    quint32 canId;  //CAN ID
+    quint8 data[8]; //CAN数据
 };
 
 class QA5Driver

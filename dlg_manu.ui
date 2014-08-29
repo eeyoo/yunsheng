@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>628</width>
-    <height>423</height>
+    <height>424</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,7 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">*{
-font: 13pt;
+font: 14pt;
 font-family: &quot;微软雅黑&quot;;
 }
 
@@ -81,6 +81,7 @@ border: no;
 
 QPushButton {
 border: no;
+font: 16pt;
 outline: no;
 min-width: 80px;
 min-height: 50px;
@@ -89,6 +90,7 @@ image: url(&quot;:/Res/image/button_80x50_normal.png&quot;);
 
 QPushButton:pressed {
 color: black;
+font: 16pt;
 border: no;
 min-width: 80px;
 min-height: 50px;
@@ -231,7 +233,16 @@ QRadioButton::indicator:checked {
    <property name="spacing">
     <number>6</number>
    </property>
-   <property name="margin">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
     <number>0</number>
    </property>
    <item>

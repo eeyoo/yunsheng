@@ -272,30 +272,6 @@ void Dlg_Manu::on_btnServoZ2_clicked()
     SetBtnChk();
 }
 /*************************************************************************
-* 函数名称: on_btnServoY1Y2_clicked
-* 功    能: 按下伺服Y1Y2轴
-* 输入参数: 无
-* 输出参数: 无
-* 返 回 值: 无
-*************************************************************************/
-void Dlg_Manu::on_btnServoY1Y2_clicked()
-{
-    m_iCurCmd = 5;
-    SetBtnChk();
-}
-/*************************************************************************
-* 函数名称: on_btnServoZ1Z2_clicked
-* 功    能: 按下伺服Z1Z2轴
-* 输入参数: 无
-* 输出参数: 无
-* 返 回 值: 无
-*************************************************************************/
-void Dlg_Manu::on_btnServoZ1Z2_clicked()
-{
-    m_iCurCmd = 6;
-    SetBtnChk();
-}
-/*************************************************************************
 * 函数名称: SetBtnChk
 * 功    能: 设置按钮的下沉效果
 * 输入参数: 无
@@ -307,7 +283,7 @@ void Dlg_Manu::SetBtnChk()
     QPushButton *btn[]={ui->btnServoX,ui->btnServoY1,ui->btnServoZ1,
                         ui->btnServoY2,ui->btnServoZ2};//,ui->btnServoY1Y2,ui->btnServoZ1Z2};
 
-    for(int i=0;i<sizeof(btn)/sizeof(QPushButton*);i++)
+    for(int i=0; i<sizeof(btn) / sizeof(QPushButton*); i++)
     {
         btn[i]->setChecked(false);
     }
@@ -452,7 +428,7 @@ void Dlg_Manu::on_btnSpeedLow_clicked()
     else
         *spd[m_iCurCmd] = 0;*/
 
-    com02.para[0].gears -=25;
+    com02.para[0].gears -= 25;
     if(com02.para[0].gears < 25)
         com02.para[0].gears = 25;
 

@@ -2,13 +2,11 @@
 <PRJCONFIG note="配置系统参数">
   <CMD note="配置命令的ID和字符名的对应关系，尤其是IO的名字">
     <MOV>
-      <CMDM CmdId="10" CmdTil="X轴"></CMDM>
-      <CMDM CmdId="11" CmdTil="Y1轴"></CMDM>
-      <CMDM CmdId="12" CmdTil="Z1轴"></CMDM>
-      <CMDM CmdId="13" CmdTil="Y2轴"></CMDM>
+      <CMDM CmdId="10" CmdTil="X1轴"></CMDM>
+      <CMDM CmdId="11" CmdTil="Z1轴"></CMDM>
+      <CMDM CmdId="12" CmdTil="U轴"></CMDM>
+      <CMDM CmdId="13" CmdTil="X2轴"></CMDM>
       <CMDM CmdId="14" CmdTil="Z2轴"></CMDM>
-      <CMDM CmdId="15" CmdTil="Y联动"></CMDM>
-      <CMDM CmdId="16" CmdTil="Z联动"></CMDM>
     </MOV>
     <INPUT>
       <CMDI CmdId="17" CmdTil="输入1"></CMDI>
@@ -45,16 +43,16 @@
       <CMDI CmdId="36" CmdTil="输入32"></CMDI>
       <CMDI CmdId="37" CmdTil="输入33"></CMDI>
       <CMDI CmdId="38" CmdTil="输入34"></CMDI>
-      <CMDI CmdId="39" CmdTil="输入35"></CMDI>
-      <CMDI CmdId="3A" CmdTil="输入36"></CMDI>
-      <CMDI CmdId="3B" CmdTil="输入37"></CMDI>
-      <CMDI CmdId="3C" CmdTil="输入38"></CMDI>
-      <CMDI CmdId="3D" CmdTil="输入39"></CMDI>
-      <CMDI CmdId="3E" CmdTil="输入40"></CMDI>
-      <CMDI CmdId="3F" CmdTil="输入41"></CMDI>
-      <CMDI CmdId="40" CmdTil="输入42"></CMDI>
-      <CMDI CmdId="41" CmdTil="输入43"></CMDI>
-      <CMDI CmdId="42" CmdTil="输入44"></CMDI>
+      <CMDI CmdId="39" CmdTil="Z2左限位"></CMDI>
+      <CMDI CmdId="3A" CmdTil="Z2右限位"></CMDI>
+      <CMDI CmdId="3B" CmdTil="X2左限位"></CMDI>
+      <CMDI CmdId="3C" CmdTil="X2右限位"></CMDI>
+      <CMDI CmdId="3D" CmdTil="U左限位"></CMDI>
+      <CMDI CmdId="3E" CmdTil="U右限位"></CMDI>
+      <CMDI CmdId="3F" CmdTil="Z1左限位"></CMDI>
+      <CMDI CmdId="40" CmdTil="Z1右限位"></CMDI>
+      <CMDI CmdId="41" CmdTil="X1左限位"></CMDI>
+      <CMDI CmdId="42" CmdTil="X1右限位"></CMDI>
     </INPUT>
     <OUTPUT>
       <CMDO CmdId="76" CmdTil="输出1"></CMDO>
@@ -83,8 +81,8 @@
       <CMDO CmdId="8D" CmdTil="输出24"></CMDO>
       <CMDO CmdId="8E" CmdTil="输出25"></CMDO>
       <CMDO CmdId="8F" CmdTil="输出26"></CMDO>
-      <CMDO CmdId="90" CmdTil="输出27"></CMDO>
-      <CMDO CmdId="91" CmdTil="输出28"></CMDO>
+      <CMDO CmdId="90" CmdTil="Z1刹车"></CMDO>
+      <CMDO CmdId="91" CmdTil="Z2刹车"></CMDO>
     </OUTPUT>
     <STACK>
       <CMDS CmdId="C5" CmdTil="堆叠"></CMDS>

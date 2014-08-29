@@ -15,7 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">*{
-font: 16pt;
+font: 14pt;
 font-family: &quot;微软雅黑&quot;;
 }
 
@@ -41,6 +41,7 @@ border: no;
 
 QPushButton {
 border: no;
+font: 16pt;
 outline: no;
 min-width: 50px;
 min-height: 50px;
@@ -49,6 +50,7 @@ image: url(&quot;:/Res/image/button_50x50_normal.png&quot;);
 
 QPushButton:pressed {
 color: black;
+font: 16pt;
 border: no;
 min-width: 50px;
 min-height: 50px;
@@ -189,7 +191,16 @@ QLineEdit {
         <enum>QFrame::Raised</enum>
        </property>
        <layout class="QGridLayout" name="gridLayout">
-        <property name="margin">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
          <number>0</number>
         </property>
         <property name="verticalSpacing">

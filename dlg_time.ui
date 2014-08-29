@@ -15,7 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">*{
-font: 13pt;
+font: 14pt;
 font-family: &quot;微软雅黑&quot;;
 }
 
@@ -37,6 +37,7 @@ background: url(&quot;:/Res/image/title_bar.png&quot;);
 
 QPushButton {
 border: no;
+font: 16pt;
 outline: no;
 min-width: 50px;
 min-height: 50px;
@@ -45,6 +46,7 @@ image: url(&quot;:/Res/image/button_50x50_normal.png&quot;);
 
 QPushButton:pressed {
 color: black;
+font: 16pt;
 border: no;
 outline: no;
 min-width: 50px;
@@ -87,7 +89,7 @@ image: url(&quot;:/Res/image/button_80x50_active.png&quot;);
 }
 
 QDateEdit {
-font: 16pt;
+font: 18pt;
   color: black;
 background: qlineargradient(
   x1:0, y1:0, x2:0, y2:1,
@@ -109,7 +111,7 @@ width: no;
 }
 
 QTimeEdit {
-font: 16pt;
+font: 18pt;
   color: black;
 background: qlineargradient(
   x1:0, y1:0, x2:0, y2:1,
@@ -211,7 +213,7 @@ width: no;
            <property name="font">
             <font>
              <family>微软雅黑</family>
-             <pointsize>16</pointsize>
+             <pointsize>18</pointsize>
              <weight>50</weight>
              <italic>false</italic>
              <bold>false</bold>
@@ -260,7 +262,7 @@ width: no;
            <property name="font">
             <font>
              <family>微软雅黑</family>
-             <pointsize>16</pointsize>
+             <pointsize>18</pointsize>
              <weight>50</weight>
              <italic>false</italic>
              <bold>false</bold>

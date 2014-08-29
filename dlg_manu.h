@@ -58,8 +58,6 @@ private slots:
     void on_btnServoY2_clicked();
     void on_btnServoZ1_clicked();
     void on_btnServoZ2_clicked();
-    void on_btnServoY1Y2_clicked();
-    void on_btnServoZ1Z2_clicked();
     void on_lePos_clicked();
     void on_btnUp_pressed();
     void on_btnUp_released();

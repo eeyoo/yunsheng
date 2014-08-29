@@ -25,6 +25,7 @@ background: #343639;
 }
 
 QPushButton {
+font: 16pt;
 border: no;
 outline: no;
 min-width: 80px;
@@ -34,6 +35,7 @@ image: url(&quot;:/Res/image/button_80x50_normal.png&quot;);
 
 QPushButton:pressed {
 color: black;
+font: 16pt;
 border: no;
 min-width: 80px;
 min-height: 50px;

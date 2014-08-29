@@ -15,7 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">*{
-font: 13pt;
+font: 14pt;
 font-family: &quot;微软雅黑&quot;;
 }
 
@@ -55,6 +55,7 @@ background: qlineargradient(
 
 QPushButton {
 border: no;
+font: 16pt;
 outline: no;
 min-width: 50px;
 min-height: 50px;
@@ -63,6 +64,7 @@ image: url(&quot;:/Res/image/button_50x50_normal.png&quot;);
 
 QPushButton:pressed {
 color: black;
+font: 16pt;
 border: no;
 min-width: 50px;
 min-height: 50px;
@@ -98,7 +100,16 @@ image: url(&quot;:/Res/image/button_80x50_active.png&quot;);
 }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
-   <property name="margin">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
     <number>0</number>
    </property>
    <item>

@@ -557,7 +557,7 @@ void MainWindow::on_sigKey(int dt)
         return;
     }
 
-    if(widMana->bDialog)
+    if((widMana->bDialog) && (msg.msgT != TDrvKey::KEY4))
         return;
 
     typedef void (MainWindow::*btnFun)();

@@ -12,15 +12,23 @@
   </property>
   <property name="font">
    <font>
-    <family>AR PL UKai CN</family>
-    <pointsize>12</pointsize>
+    <family>微软雅黑</family>
+    <pointsize>13</pointsize>
+    <weight>50</weight>
+    <italic>false</italic>
+    <bold>false</bold>
    </font>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget {
+   <string notr="true">*{
+font: 13pt;
+font-family: &quot;微软雅黑&quot;;
+}
+
+QWidget {
 color: #c2c2c3;
 background: #343639;
 }
@@ -78,7 +86,16 @@ image: url(&quot;:/Res/image/button_80x50_active.png&quot;);
    <property name="spacing">
     <number>6</number>
    </property>
-   <property name="margin">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
     <number>0</number>
    </property>
    <item>

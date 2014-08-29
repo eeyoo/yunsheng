@@ -14,24 +14,9 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">/*QWidget {
-background:white;
-}
-
-QPushButton {
-color: white;
-font:bold 14px;
-border:1px solid black;
-
-background: #323232;
-}
-
-QLabel {
-color: #55555;
-background: white;
-}*/
+   <string notr="true">
 *{
-font: 13pt;
+font: 14pt;
 font-family: &quot;微软雅黑&quot;;
 }
 
