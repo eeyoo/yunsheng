@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>826</width>
     <height>500</height>
    </rect>
   </property>
@@ -42,9 +42,9 @@ border: 1px solid black;
 border-bottom-color: #343639; 
 border-top-left-radius: 4px;
 border-top-right-radius: 4px;
-min-width:10ex;
+min-width: 50px;
 padding: 2px;
-min-height: 3ex;
+min-height: 10px;
 }
 
 QTabBar::tab:selected {
@@ -161,7 +161,7 @@ selection-background-color: #2773b4;
    <item>
     <widget class="QTabWidget" name="tabW">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab_srv">
       <attribute name="title">
