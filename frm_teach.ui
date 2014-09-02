@@ -42,6 +42,10 @@ min-height: 50px;
 image: url(&quot;:/Res/image/button_80x50_active.png&quot;);
 }
 
+QTabWidget::tab-bar {
+	left: 15px;
+}
+
 QTabWidget::pane {
 border: 1px solid black;
 }
@@ -52,9 +56,9 @@ border: 1px solid black;
 border-bottom-color: #343639; 
 border-top-left-radius: 4px;
 border-top-right-radius: 4px;
-min-width:10ex;
+min-width: 70px;
 padding: 2px;
-min-height: 3ex;
+min-height: 20px;
 }
 
 QTabBar::tab:selected {
@@ -509,7 +513,7 @@ min-height: 80px;
         <enum>QTabWidget::North</enum>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>1</number>
        </property>
        <widget class="QWidget" name="tab">
         <attribute name="title">
@@ -643,13 +647,51 @@ min-height: 80px;
          </item>
         </layout>
        </widget>
+       <widget class="QWidget" name="widget">
+        <attribute name="title">
+         <string>堆叠</string>
+        </attribute>
+        <layout class="QGridLayout" name="gridLayout_8">
+         <property name="rightMargin">
+          <number>184</number>
+         </property>
+         <property name="bottomMargin">
+          <number>86</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="QPushButton" name="btnS">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Ignored">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>32</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
        <widget class="QWidget" name="tab_4">
         <attribute name="title">
          <string>I/O</string>
         </attribute>
-        <layout class="QGridLayout" name="gridLayout_8">
+        <layout class="QGridLayout" name="gridLayout_7">
          <property name="bottomMargin">
-          <number>97</number>
+          <number>89</number>
          </property>
          <item row="0" column="0">
           <widget class="QPushButton" name="btnIG">
@@ -734,44 +776,6 @@ min-height: 80px;
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="widget">
-        <attribute name="title">
-         <string>堆叠</string>
-        </attribute>
-        <layout class="QGridLayout" name="gridLayout_7">
-         <property name="rightMargin">
-          <number>154</number>
-         </property>
-         <property name="bottomMargin">
-          <number>102</number>
-         </property>
-         <item row="0" column="0">
-          <widget class="QPushButton" name="btnS">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Ignored">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>32</width>
-             <height>32</height>
-            </size>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
       </widget>
      </item>
      <item>
@@ -795,7 +799,7 @@ min-height: 80px;
            </sizepolicy>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>4</number>
           </property>
           <widget class="QWidget" name="page_D">
            <layout class="QGridLayout" name="gridLayout">
@@ -1200,7 +1204,7 @@ min-height: 80px;
           <widget class="QWidget" name="page_S">
            <layout class="QGridLayout" name="gridLayout_5">
             <property name="bottomMargin">
-             <number>60</number>
+             <number>55</number>
             </property>
             <item row="0" column="0">
              <widget class="QLabel" name="label_23">
