@@ -1,0 +1,84 @@
+*{
+font: 14pt;
+font-family: "微软雅黑";
+}
+
+QWidget {
+color: #c2c2c3;
+background: #343639;
+}
+
+QDialog {
+border:1px solid black;
+border-radius:1px;
+}
+
+#titleFrame {
+border: no;
+min-height: 20px;
+background: url(":/Res/image/title_bar.png");
+}
+
+#spdWidget {
+min-width: 200px;
+min-height: 200px;
+}
+
+QLineEdit {
+  color: black;
+background: qlineargradient(
+  x1:0, y1:0, x2:0, y2:1,
+  stop:0 gray,
+  stop: 0.2 white
+  stop:1 white
+ );
+ border-radius: 1px;
+ border: 1px solid black;
+ min-height: 45px;
+}
+
+QPushButton {
+border: no;
+font: 16pt;
+outline: no;
+min-width: 50px;
+min-height: 50px;
+image: url(":/Res/image/button_50x50_normal.png");
+}
+
+QPushButton:pressed {
+color: black;
+font: 16pt;
+border: no;
+min-width: 50px;
+min-height: 50px;
+image: url(":/Res/image/button_50x50_active.png");
+}
+
+QPushButton[objectName="btnOk"] {
+border: no;
+min-width: 80px;
+min-height: 50px;
+image: url(":/Res/image/button_80x50_normal.png");
+}
+
+QPushButton[objectName="btnOk"]:pressed {
+border: no;
+min-width: 80px;
+min-height: 50px;
+image: url(":/Res/image/button_80x50_active.png");
+}
+
+QPushButton[objectName="btnCancel"] {
+border: no;
+min-width: 80px;
+min-height: 50px;
+image: url(":/Res/image/button_80x50_normal.png");
+}
+
+QPushButton[objectName="btnCancel"]:pressed {
+border: no;
+min-width: 80px;
+min-height: 50px;
+image: url(":/Res/image/button_80x50_active.png");
+}

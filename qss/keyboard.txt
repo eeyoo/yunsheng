@@ -1,0 +1,122 @@
+*{
+font: 16pt;
+font-family: "微软雅黑";
+}
+
+QWidget {
+color: #c2c2c3;
+background: #343639;
+}
+
+QDialog {
+border:1px solid black;
+border-radius:1px;
+}
+
+#titleFrame {
+border: no;
+min-height: 20px;
+background: url(":/Res/image/title_bar.png");
+}
+
+#btnFrame {
+border: no;
+}
+
+#mainFrame {
+border: no;
+}
+
+QPushButton {
+border: no;
+outline: no;
+min-width: 50px;
+min-height: 50px;
+image: url(":/Res/image/button_50x50_normal.png");
+}
+
+QPushButton:pressed {
+color: black;
+border: no;
+min-width: 50px;
+min-height: 50px;
+image: url(":/Res/image/button_50x50_active.png");
+}
+QPushButton:checked {
+color: black;
+border: no;
+min-width: 50px;
+min-height: 50px;
+image: url(":/Res/image/button_50x50_active.png");
+}
+
+QPushButton[objectName="btnEnter"] {
+border: no;
+min-width: 50px;
+min-height: 106px;
+image: url(":/Res/image/button_enter_normal.png");
+}
+
+QPushButton[objectName="btnEnter"]:pressed {
+border: no;
+min-width: 50px;
+min-height: 106px;
+image: url(":/Res/image/button_enter_active.png");
+}
+
+QPushButton[objectName="btnBack"] {
+border: no;
+min-width: 50px;
+min-height: 50px;
+image: url(":/Res/image/button_back_normal.png");
+}
+
+QPushButton[objectName="btnBack"]:pressed {
+border: no;
+min-width: 50px;
+min-height: 50px;
+image: url(":/Res/image/button_back_actvie.png");
+}
+
+QPushButton[objectName="btnQuit"] {
+border: no;
+min-width: 50px;
+min-height: 50px;
+image: url(":/Res/image/button_cancel_normal.png");
+}
+
+QPushButton[objectName="btnQuit"]:pressed {
+border: no;
+min-width: 50px;
+min-height: 50px;
+image: url(":/Res/image/button_cancel_active.png");
+}
+
+QPushButton[objectName="btn32"] {
+border: no;
+min-width: 274px;
+min-height: 50px;
+image: url(":/Res/image/button_274x50_normal.png");
+}
+
+QPushButton[objectName="btn32"]:pressed {
+border: no;
+min-width: 274px;
+min-height: 50px;
+image: url(":/Res/image/button_274x50_active.png");
+}
+
+QLineEdit {
+ background: qlineargradient(
+  x1:0, y1:0, x2:0, y2:1,
+  stop:0 gray,
+  stop: 0.2 white
+  stop:1 white
+ );
+ border-radius: 1px;
+ border: 1px solid black;
+ min-height: 30px;
+ color: black;
+}
+
+
