@@ -1,4 +1,4 @@
-*{
+﻿*{
 font: 14pt;
 font-family: "微软雅黑";
 }
@@ -6,6 +6,10 @@ font-family: "微软雅黑";
 QWidget {
 color: #c2c2c3;
 background: #343639;
+}
+
+QTabWidget::tab-bar {
+	left: 15px;
 }
 
 QTabWidget::pane {

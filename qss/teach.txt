@@ -1,4 +1,4 @@
-*{
+﻿*{
 font: 13pt;
 font-family: "微软雅黑";
 }
@@ -24,6 +24,10 @@ border: no;
 min-width: 80px;
 min-height: 50px;
 image: url(":/Res/image/button_80x50_active.png");
+}
+
+QTabWidget::tab-bar {
+	left: 15px;
 }
 
 QTabWidget::pane {
