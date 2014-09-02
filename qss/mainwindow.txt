@@ -1,0 +1,88 @@
+*{
+font: 14pt;
+font-family: "微软雅黑";
+}
+
+QWidget {
+color: #c2c2c3;
+background: #343639;
+}
+
+QScrollBar:vertical {
+border: 1px solid black;
+width: 40px;
+background: #343639;
+}
+
+QScrollBar::handle:vertical {
+border: 1px solid black;
+width: 40px;
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, 
+stop:0 #2773b4, 
+stop:1 #2773b4);
+}
+
+#titleFrame {
+border:no;
+min-height: 20px;
+background: url(":/Res/image/title_bar.png");
+}
+
+#titleFrame QLabel {
+color: white;
+border: no;
+background: transparent;
+}
+
+#midlleFrame {
+border:no;
+min-width: 804px;
+min-height: 500px;
+}
+
+#positionFrame {
+border: 1px solid black;
+border-radius: 1px;
+min-height: 50px;
+}
+
+#positionFrame QLabel {
+font: 18px;
+color: white;
+background: transparent;
+}
+
+#positionFrame QLabel:disabled {
+font: 18px;
+color: gray;
+background: transparent;
+}
+
+#bottomFrame {
+border:no;
+background: #2773b4;
+min-height: 30px;
+}
+
+#bottomFrame QLabel{
+color: white;
+border: no;
+background: transparent;
+}
+
+#centralWidget QPushButton {
+border: no;
+outline: no;
+min-width: 80px;
+min-height: 50px;
+image: url(":/Res/image/button_80x50_normal.png");
+}
+
+#centralWidget QPushButton:pressed {
+color: black;
+border: no;
+outline: no;
+min-width: 80px;
+min-height: 50px;
+image: url(":/Res/image/button_80x50_active.png");
+}

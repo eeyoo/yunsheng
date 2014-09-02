@@ -1,0 +1,39 @@
+*{
+font: 14pt;
+font-family: "微软雅黑";
+}
+
+
+QWidget {
+color: #c2c2c3;
+background: #343639;
+}
+
+QDialog {
+border:1px solid black;
+border-radius:1px;
+}
+
+#titleFrame {
+border: no;
+min-height: 20px;
+background: url(":/Res/image/title_bar.png");
+}
+
+QPushButton {
+border: no;
+font: 16pt;
+outline: no;
+min-width: 80px;
+min-height: 50px;
+image: url(":/Res/image/button_80x50_normal.png");
+}
+
+QPushButton:pressed {
+color: black;
+font: 16pt;
+border: no;
+min-width: 80px;
+min-height: 50px;
+image: url(":/Res/image/button_80x50_active.png");
+}

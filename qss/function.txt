@@ -1,0 +1,207 @@
+
+*{
+font: 14pt;
+font-family: "微软雅黑";
+}
+
+QWidget {
+color: #c2c2c3;
+background: #343639;
+}
+
+QLabel {
+min-width: 100px;
+min-height: 20px;
+}
+
+QPushButton[objectName="btnTeach"] {
+border: no;
+/*outline: no;*/
+min-width: 100px;
+min-height: 100px;
+image: url(":/Res/image/function_teach.png"); 
+}
+
+QPushButton[objectName="btnTeach"]:pressed {
+border: no;
+min-width: 100px;
+min-height: 100px;
+/*
+padding-top: -2px;
+padding-bottom: -2px;*/
+padding: 2px 2px 2px 2px;
+image: url(":/Res/image/function_teach.png"); 
+}
+
+QPushButton[objectName="btnRun"] {
+border: no;
+/*outline: no;*/
+min-width: 100px;
+min-height: 100px;
+image: url(":/Res/image/function_run.png"); 
+}
+
+QPushButton[objectName="btnRun"]:pressed {
+border: no;
+min-width: 100px;
+min-height: 100px;
+/*
+padding-top: -2px;
+padding-bottom: -2px;*/
+padding: 2px 2px 2px 2px;
+image: url(":/Res/image/function_run.png"); 
+}
+
+QPushButton[objectName="btnSysS"] {
+border: no;
+/*outline: no;*/
+min-width: 100px;
+min-height: 100px;
+image: url(":/Res/image/function_setup.png"); 
+}
+
+QPushButton[objectName="btnSysS"]:pressed {
+border: no;
+min-width: 100px;
+min-height: 100px;
+/*
+padding-top: -2px;
+padding-bottom: -2px;*/
+padding: 2px 2px 2px 2px;
+image: url(":/Res/image/function_setup.png"); 
+}
+
+QPushButton[objectName="btnStkS"] {
+border: no;
+/*outline: no;*/
+min-width: 100px;
+min-height: 100px;
+image: url(":/Res/image/function_stack.png"); 
+}
+
+QPushButton[objectName="btnStkS"]:pressed {
+border: no;
+min-width: 100px;
+min-height: 100px;
+/*
+padding-top: -2px;
+padding-bottom: -2px;*/
+padding: 2px 2px 2px 2px;
+image: url(":/Res/image/function_stack.png"); 
+}
+
+QPushButton[objectName="btnTimS"] {
+border: no;
+/*outline: no;*/
+min-width: 100px;
+min-height: 100px;
+image: url(":/Res/image/function_time.png"); 
+}
+
+QPushButton[objectName="btnTimS"]:pressed {
+border: no;
+min-width: 100px;
+min-height: 100px;
+/*
+padding-top: -2px;
+padding-bottom: -2px;*/
+padding: 2px 2px 2px 2px;
+image: url(":/Res/image/function_time.png"); 
+}
+
+QPushButton[objectName="btnMonitor"] {
+border: no;
+/*outline: no;*/
+min-width: 100px;
+min-height: 100px;
+image: url(":/Res/image/function_monitor.png"); 
+}
+
+QPushButton[objectName="btnMonitor"]:pressed {
+border: no;
+min-width: 100px;
+min-height: 100px;
+/*
+padding-top: -2px;
+padding-bottom: -2px;*/
+padding: 2px 2px 2px 2px;
+image: url(":/Res/image/function_monitor.png"); 
+}
+
+QPushButton[objectName="btnLog"] {
+border: no;
+/*outline: no;*/
+min-width: 100px;
+min-height: 100px;
+image: url(":/Res/image/function_note.png"); 
+}
+
+QPushButton[objectName="btnLog"]:pressed {
+border: no;
+min-width: 100px;
+min-height: 100px;
+/*
+padding-top: -2px;
+padding-bottom: -2px;*/
+padding: 2px 2px 2px 2px;
+image: url(":/Res/image/function_note.png"); 
+}
+QPushButton[objectName="btnAuthority"] {
+border: no;
+/*outline: no;*/
+min-width: 100px;
+min-height: 100px;
+image: url(":/Res/image/function_authority.png"); 
+}
+
+QPushButton[objectName="btnAuthority"]:pressed {
+border: no;
+min-width: 100px;
+min-height: 100px;
+/*
+padding-top: -2px;
+padding-bottom: -2px;*/
+padding: 2px 2px 2px 2px;
+image: url(":/Res/image/function_authority.png"); 
+}
+
+QPushButton[objectName="btnHelp"] {
+border: no;
+/*outline: no;*/
+min-width: 100px;
+min-height: 100px;
+image: url(":/Res/image/function_help.png"); 
+}
+
+QPushButton[objectName="btnHelp"]:pressed {
+border: no;
+min-width: 100px;
+min-height: 100px;
+/*
+padding-top: -2px;
+padding-bottom: -2px;*/
+padding: 2px 2px 2px 2px;
+image: url(":/Res/image/function_help.png"); 
+}
+
+QPushButton[objectName="btnManufacturer"] {
+border: no;
+/*outline: no;*/
+min-width: 101px;
+min-height: 101px;
+image: url(":/Res/image/function_vendor.png"); 
+}
+
+QPushButton[objectName="btnManufacturer"]:pressed {
+border: no;
+min-width: 101px;
+min-height: 101px;
+/*
+padding-top: -2px;
+padding-bottom: -2px;*/
+padding: 2px 2px 2px 2px;
+image: url(":/Res/image/function_vendor.png"); 
+}
+
+
+
