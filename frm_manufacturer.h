@@ -36,6 +36,8 @@ public:
 
 
 private slots:
+    void on_btnReladXml_clicked();
+    void on_btnImXml_clicked();
     void on_btnUpd_clicked();
     void on_btnRelad_clicked();
     void on_btnReboot_clicked();

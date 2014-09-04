@@ -471,7 +471,7 @@ void Frm_Setup::SetAxisEn()
                            widMana->mainW->ui->lblZ2Pos};
     QComboBox*  cbbA[]  = {ui->cbBoxRstFirst,ui->cbBoxRstSec,ui->cbBoxRstTree,
                            ui->cbBoxRstFouth,ui->cbBoxRstFifth};
-    QString     strA[]  = {QString("X"),QString("Y1"),QString("Z1"),QString("Y2"),QString("Z2")};
+    QString     strA[]  = {QString("X1"),QString("Z1"),QString("U"),QString("X2"),QString("Z2")};
 
     TLineEdit *tle[] = {ui->leAbsLX,ui->leMaxAX,ui->leMaxSX,ui->lePlsX,ui->lePrdWX,ui->leErrAX,ui->leRSpdX,ui->leMSpdX,ui->leZroOftX,ui->leJog_D_TX,
                       ui->leAbsLY1,ui->leMaxAY1,ui->leMaxSY1,ui->lePlsY1,ui->lePrdWY1,ui->leErrAY1,ui->leRSpdY1,ui->leMSpdY1,ui->leZroOftY1,ui->leJog_D_TY1,
@@ -653,7 +653,7 @@ void Frm_Setup::on_btnSysSend_clicked()
 {
     QComboBox*  cbbA[]  = {ui->cbBoxRstFirst,ui->cbBoxRstSec,ui->cbBoxRstTree,
                            ui->cbBoxRstFouth,ui->cbBoxRstFifth};
-    QString     strA[]  = {QString("X"),QString("Y1"),QString("Z1"),QString("Y2"),QString("Z2")};
+    QString     strA[]  = {QString("X1"),QString("Z1"),QString("U"),QString("X2"),QString("Z2")};
 
     memset(&com07.para,sizeof(com07.para),0);
 

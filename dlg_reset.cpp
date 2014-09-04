@@ -65,6 +65,8 @@ void Dlg_Reset::on_btnOK_clicked()
     comE0.para.runtype  = TComE0::REST;
     pComBuf2.push_back((TCom*)&comE0);
 
+    a5drv.led_off(3);
+
 
     QTimer *timer = new QTimer(this);
     timer->start(1000);//Ò»ÃëÖÓ
@@ -85,6 +87,9 @@ void Dlg_Reset::UpdateSet()
         strT += QString(".");
     }
     ui->lblT->setText(strT);
+    //ui->lblT->setText(QString("%1,%2").arg(comF0.rpara.sub_sta)
+    //                                  .arg(TComF0::RESTTING));
+    //return;
 
     iT++;
     iT%=6;
@@ -114,8 +119,13 @@ bool Dlg_Reset::chkRstOK()
             return false;
         }
     }*/
-    if(comF0.rpara.sub_sta == TComF0::IDLE)
+
+    if(comF0.rpara.sub_sta != TComF0::RESTTING){
+        if(comF0.rpara.sub_sta == TComF0::IDLE){
+            a5drv.led_on(3);
+        }
         return true;
+    }
     else
         return false;
 }

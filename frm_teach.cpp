@@ -60,7 +60,6 @@ Frm_Teach::Frm_Teach() :
     ui->tblV_Pro->setColumnWidth(1,50);
     ui->tblV_Pro->setColumnWidth(2,280);
     ui->tblV_Pro->horizontalHeader()->hide();
-    ui->tblV_Pro->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff); //关闭水平滚动条(程序调试阶段应打开)
 
     QStandardItem *startI=new QStandardItem(QObject::tr("程序开始"));
     com20.modelPro->setItem(0,2,startI);

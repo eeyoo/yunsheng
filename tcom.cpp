@@ -56,6 +56,7 @@ bool TCom::snd()
 *************************************************************************/
 bool TCom::rcv()
 {
+#ifdef EMBEDED_ARM
     vecRcv.clear();
     while(true)
     {
@@ -115,6 +116,8 @@ bool TCom::rcv()
             }
         }
     }
+#endif
+    return true;
 }
 /*************************************************************************
 * º¯ÊýÃû³Æ: DoCom
@@ -125,6 +128,7 @@ bool TCom::rcv()
 *************************************************************************/
 bool TCom::DoCom()
 {
+#ifdef EMBEDED_ARM
     static int iT = 0;
 
     for(int i = 0;i<3;i++)
@@ -156,6 +160,7 @@ bool TCom::DoCom()
 
     iT++;
 
+#endif
     UpdateUI(false);
     return false;
 }
@@ -1310,11 +1315,17 @@ bool TComF0::UpdateUI(bool bSuc)
 *************************************************************************/
 void TComF0::UpdateLht()
 {
-    if(rpara.sub_sta == RESTTING)
-        a5drv.led_on(1);
+    /*if(rpara.sub_sta == RESTTING)
+        a5drv.led_on(3);
     else
-        a5drv.led_off(1);
+        a5drv.led_off(3);*/
+    if(rpara.sub_sta == STP_NO_RST)
+        a5drv.led_off(3);
 
+    if(rpara.sub_sta == EMERGENCY)
+        a5drv.led_on(0);
+    else
+        a5drv.led_off(0);
     /*str_sub_sta.push_back(QObject::tr("¿ÕÏÐ"));
     str_sub_sta.push_back(QObject::tr("Í£Ö¹Î´¸´Î»"));
     str_sub_sta.push_back(QObject::tr("µ¥Ö¸Áî"));
@@ -1332,9 +1343,9 @@ void TComF0::UpdateLht()
        rpara.sub_sta == AUTO ||
        rpara.sub_sta == RESTTING ||
        rpara.sub_sta == JOG){
-                a5drv.led_on(2);
+                a5drv.led_on(1);
             }else{
-                a5drv.led_off(2);
+                a5drv.led_off(1);
             }
 }
 

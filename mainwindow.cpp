@@ -119,8 +119,9 @@ void MainWindow::UpdateTim()
 
     warn.ClearW();
 
-
+#ifdef EMBEDED_ARM
     config.DoScrPT();
+#endif
 }
 /*************************************************************************
 * º¯ÊýÃû³Æ: ~MainWindow
@@ -184,9 +185,8 @@ void MainWindow::Can_Com()
         if(index<pComBuf1.size())
         {
             pComBuf1[index]->DoCom();
-            //index++;
         }
-        else
+        if(index == (pComBuf1.size() - 1))
             index = -1;
 
         index++;
