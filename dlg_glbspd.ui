@@ -41,7 +41,8 @@ min-height: 200px;
 }
 
 QLineEdit {
-  color: black;
+color: black;
+font:20pt;
 background: qlineargradient(
   x1:0, y1:0, x2:0, y2:1,
   stop:0 gray,
@@ -157,7 +158,11 @@ image: url(&quot;:/Res/image/button_80x50_active.png&quot;);
           </widget>
          </item>
          <item>
-          <widget class="TLineEdit" name="leGlbSpd"/>
+          <widget class="TLineEdit" name="leGlbSpd">
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QPushButton" name="btnAdd">

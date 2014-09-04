@@ -219,6 +219,9 @@ width: no;
              <bold>false</bold>
             </font>
            </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
           </widget>
          </item>
          <item>
@@ -267,6 +270,9 @@ width: no;
              <italic>false</italic>
              <bold>false</bold>
             </font>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
            </property>
            <property name="buttonSymbols">
             <enum>QAbstractSpinBox::UpDownArrows</enum>
