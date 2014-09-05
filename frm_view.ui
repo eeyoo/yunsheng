@@ -13,6 +13,21 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">*{
+font: 14pt;
+font-family: &quot;微软雅黑&quot;;
+}
+
+QWidget { 
+color: #c2c2c3;
+background: #343639;
+}
+
+QTableWidget {
+border: 1px solid black;
+}</string>
+  </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
     <widget class="QTableWidget" name="tableWidget"/>
