@@ -15,7 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">*{
-font: 12pt;
+font: 14pt;
 font-family: &quot;微软雅黑&quot;;
 }
 
@@ -36,6 +36,7 @@ background: url(&quot;:/Res/image/title_bar.png&quot;);
 }
 
 QPushButton {
+font: 16pt;
 border: no;
 outline: no;
 min-width: 80px;
@@ -73,7 +74,16 @@ image: url(:/Res/image/icon_servo_x1.png);
 </string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
-   <property name="margin">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
     <number>0</number>
    </property>
    <item>
