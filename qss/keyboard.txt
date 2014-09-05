@@ -1,5 +1,5 @@
-*{
-font: 16pt;
+﻿*{
+font: 14pt;
 font-family: "微软雅黑";
 }
 
@@ -28,6 +28,7 @@ border: no;
 }
 
 QPushButton {
+font: 16pt;
 border: no;
 outline: no;
 min-width: 50px;

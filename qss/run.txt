@@ -1,4 +1,4 @@
-*{
+﻿*{
 font: 14pt;
 font-family: "微软雅黑";
 }

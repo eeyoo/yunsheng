@@ -24,6 +24,10 @@ color: #c2c2c3;
 background: #343639;
 }
 
+QTableWidget {
+border: 1px solid black;
+}
+
 QPushButton {
 font: 16pt;
 border: no;

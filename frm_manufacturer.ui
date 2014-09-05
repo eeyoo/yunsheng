@@ -28,6 +28,10 @@ QTabWidget::tab-bar {
 	left: 15px;
 }
 
+QTableWidget {
+border: 1px solid black;
+}
+
 QTabWidget::pane {
 border: 1px solid black;
 }

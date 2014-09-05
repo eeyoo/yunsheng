@@ -22,9 +22,9 @@ border: 1px solid black;
 border-bottom-color: #343639; 
 border-top-left-radius: 4px;
 border-top-right-radius: 4px;
-min-width: 50px;
+min-width: 70px;
 padding: 2px;
-min-height: 10px;
+min-height: 20px;
 }
 
 QTabBar::tab:selected {
@@ -69,4 +69,3 @@ QCheckBox::indicator {
 #tab_output QCheckBox::indicator:checked {
      image: url(:/Res/image/btn_cb_io_30x30_on.png);
 }
-

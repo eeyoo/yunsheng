@@ -513,7 +513,7 @@ min-height: 80px;
         <enum>QTabWidget::North</enum>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>2</number>
        </property>
        <widget class="QWidget" name="tab">
         <attribute name="title">
@@ -647,44 +647,6 @@ min-height: 80px;
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="widget">
-        <attribute name="title">
-         <string>堆叠</string>
-        </attribute>
-        <layout class="QGridLayout" name="gridLayout_8">
-         <property name="rightMargin">
-          <number>184</number>
-         </property>
-         <property name="bottomMargin">
-          <number>86</number>
-         </property>
-         <item row="0" column="0">
-          <widget class="QPushButton" name="btnS">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Ignored">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>32</width>
-             <height>32</height>
-            </size>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
        <widget class="QWidget" name="tab_4">
         <attribute name="title">
          <string>I/O</string>
@@ -753,6 +715,44 @@ min-height: 80px;
           <widget class="QPushButton" name="btnO2">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>32</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="widget">
+        <attribute name="title">
+         <string>堆叠</string>
+        </attribute>
+        <layout class="QGridLayout" name="gridLayout_8">
+         <property name="rightMargin">
+          <number>184</number>
+         </property>
+         <property name="bottomMargin">
+          <number>86</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="QPushButton" name="btnS">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Ignored">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>

@@ -1,4 +1,4 @@
-*{
+﻿*{
 font: 14pt;
 font-family: "微软雅黑";
 }
@@ -72,7 +72,3 @@ color: white;
 border: 1px solid black;
 selection-background-color: #2773b4;
 }
-
-
-
-

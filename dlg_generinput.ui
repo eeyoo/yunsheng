@@ -15,7 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">*{
-font: 12pt;
+font: 14pt;
 font-family: &quot;微软雅黑&quot;;
 }
 
@@ -36,6 +36,7 @@ background: url(&quot;:/Res/image/title_bar.png&quot;);
 }
 
 QPushButton {
+font: 16pt;
 border: no;
 outline: no;
 min-width: 80px;

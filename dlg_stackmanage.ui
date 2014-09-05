@@ -44,7 +44,7 @@ min-height: 20px;
 background: url(&quot;:/Res/image/title_bar.png&quot;);
 }
 
-QListView {
+QTableWidget {
 border: 1px solid black;
 }
 

@@ -1,4 +1,4 @@
-*{
+﻿*{
 font: 13pt;
 font-family: "微软雅黑";
 }
@@ -19,7 +19,7 @@ min-height: 20px;
 background: url(":/Res/image/title_bar.png");
 }
 
-QListView {
+QTableWidget {
 border: 1px solid black;
 }
 
