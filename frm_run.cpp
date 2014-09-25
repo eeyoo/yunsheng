@@ -41,16 +41,21 @@ Frm_Run::Frm_Run() :
     ui->tblV_Pro->setModel(com20.modelPro);
     ui->tblV_Pro->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tblV_Pro->setSelectionMode(QAbstractItemView::MultiSelection);
+    ui->tblV_Pro->horizontalHeader()->setStretchLastSection(true); // 设置充满表宽
+    ui->tblV_Pro->setShowGrid(false);  // 隐藏表格线
+    ui->tblV_Pro->setEditTriggers(QAbstractItemView::NoEditTriggers); // 禁止编辑表格
+    ui->tblV_Pro->setAlternatingRowColors(true); // 使能交替背景色
+
     //ui->tblV_Pro->setStyleSheet("selection-background-color: green");
     //ui->tblV_Pro->setAlternatingRowColors(true);
     //ui->tblV_Pro->setStyleSheet("QTableView{background-color: rgb(250, 250, 115);"
     //                            "alternate-background-color: rgb(141, 163, 215);}");
-    ui->tblV_Pro->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    //ui->tblV_Pro->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tblV_Pro->setIconSize(QSize(42,42));
 
     ui->tblV_Pro->setColumnWidth(0,80);
     ui->tblV_Pro->setColumnWidth(1,50);
-    ui->tblV_Pro->setColumnWidth(2,300);
+    //ui->tblV_Pro->setColumnWidth(2,300);
     ui->tblV_Pro->horizontalHeader()->hide();
 
     ui->tblV_Pro->setFocus(Qt::MouseFocusReason);

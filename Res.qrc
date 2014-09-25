@@ -64,6 +64,8 @@
         <file>Res/image/button_cancel_active.png</file>
         <file>Res/image/button_cancel_normal.png</file>
         <file>Res/image/button_enter_active.png</file>
+        <file>Res/image/icon_end.png</file>
+        <file>Res/image/icon_start.png</file>
     </qresource>
     <qresource prefix="/QSS">
         <file>Res/QSS/ys.qss</file>

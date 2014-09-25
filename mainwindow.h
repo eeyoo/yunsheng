@@ -70,6 +70,7 @@ private slots:
 
 private:
     QTime prsTim;       //记录旋转编码器按下时间
+    bool  bQdecPrs;     //按下旋转编码器标记
 };
 
 #endif // MAINWINDOW_H

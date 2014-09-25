@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>929</width>
-    <height>576</height>
+    <width>826</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -42,9 +42,9 @@ border: 1px solid black;
 border-bottom-color: #343639; 
 border-top-left-radius: 4px;
 border-top-right-radius: 4px;
-min-width: 70px;
+min-width:10ex;
 padding: 2px;
-min-height: 15px;
+min-height: 3ex;
 }
 
 QTabBar::tab:selected {
@@ -161,7 +161,7 @@ selection-background-color: #2773b4;
    <item>
     <widget class="QTabWidget" name="tabW">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab_srv">
       <attribute name="title">
@@ -1796,7 +1796,7 @@ selection-background-color: #2773b4;
            <widget class="QComboBox" name="cbBoxRstFirst">
             <item>
              <property name="text">
-              <string>无</string>
+              <string/>
              </property>
             </item>
             <item>
@@ -1884,7 +1884,7 @@ selection-background-color: #2773b4;
            <widget class="QComboBox" name="cbBoxRstSec">
             <item>
              <property name="text">
-              <string>无</string>
+              <string/>
              </property>
             </item>
             <item>
@@ -1918,7 +1918,7 @@ selection-background-color: #2773b4;
            <widget class="QComboBox" name="cbBoxRstTree">
             <item>
              <property name="text">
-              <string>无</string>
+              <string/>
              </property>
             </item>
             <item>
@@ -1952,7 +1952,7 @@ selection-background-color: #2773b4;
            <widget class="QComboBox" name="cbBoxRstFouth">
             <item>
              <property name="text">
-              <string>无</string>
+              <string/>
              </property>
             </item>
             <item>
@@ -1986,7 +1986,7 @@ selection-background-color: #2773b4;
            <widget class="QComboBox" name="cbBoxRstFifth">
             <item>
              <property name="text">
-              <string>无</string>
+              <string/>
              </property>
             </item>
             <item>
@@ -2144,7 +2144,7 @@ selection-background-color: #2773b4;
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="TLineEdit" name="lineEdit_2">
+          <widget class="TLineEdit" name="leCurPrd">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
              <horstretch>0</horstretch>

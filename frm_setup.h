@@ -42,6 +42,7 @@ public:
     void SetSeroPara();
     void SetResetPara();
     void SetAxisEn();
+    void SetPrd();
 
     void OnQdec(QDECT qt, int spanT);
 
@@ -80,6 +81,7 @@ private slots:
     void setVisible(bool visible);
 
     void on_lePlnPrd_clicked();
+    void on_leCurPrd_clicked();
     void on_leBadPrd_clicked();
     void on_leCirTim_clicked();
     void on_leRstTim_clicked();

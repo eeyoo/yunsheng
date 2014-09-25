@@ -82,7 +82,7 @@ void Dlg_Reset::on_btnOK_clicked()
 void Dlg_Reset::UpdateSet()
 {
     static int iT = 0;
-    QString strT = QObject::tr("复位中，请稍候");
+    QString strT = QObject::tr("复位中，请稍后");
     for(int i = 0; i < iT; i++){
         strT += QString(".");
     }

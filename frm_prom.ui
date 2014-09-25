@@ -26,12 +26,12 @@ background: #343639;
 
 QTableWidget {
 border: 1px solid black;
+alternate-background-color: #525c67;
 }
 
 QPushButton {
 font: 16pt;
 border: no;
-outline: no;
 min-width: 106px;
 min-height: 50px;
 image: url(&quot;:/Res/image/button_106x50_normal.png&quot;);
@@ -41,7 +41,6 @@ QPushButton:pressed {
 color: black;
 font: 16pt;
 border: no;
-outline: no;
 min-width: 106px;
 min-height: 50px;
 image: url(&quot;:/Res/image/button_106x50_active.png&quot;);

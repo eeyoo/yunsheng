@@ -87,10 +87,30 @@ bool TWidget::DoAhd_LineEdit(QWidget* pW, int *pT)
     QString   strT  = le->text();
 
     if(strT.contains(".")){
-        double db = strT.toDouble() + 0.01;
+        double dAdd = 0.01;
+        if(ispanT < 10)
+            dAdd = 10.0;
+        else if(ispanT >= 10 && ispanT < 200)
+            dAdd = 1.0;
+        else if(ispanT >= 200 && ispanT < 400)
+            dAdd = 0.1;
+        else if(ispanT >= 400 && ispanT < 3000)
+            dAdd = 0.01;
+
+        double db = strT.toDouble() + dAdd;
         le->setText(QString::number(db,'f',2));
     }else{
-        le->setText(QString("%1").arg(strT.toInt() + 1));
+        int iAdd = 1;
+        if(ispanT < 10)
+            iAdd = 1000;
+        else if(ispanT >= 10 && ispanT < 200)
+            iAdd = 100;
+        else if(ispanT >= 200 && ispanT < 400)
+            iAdd = 10;
+        else if(ispanT >= 400 && ispanT < 3000)
+            iAdd = 1;
+
+        le->setText(QString("%1").arg(strT.toInt() + iAdd));
     }
     return false;
 }
@@ -199,13 +219,33 @@ bool TWidget::DoBck_LineEdit(QWidget* pW, int *pT)
     QString   strT  = le->text();
 
     if(strT.contains(".")){
-        double db = strT.toDouble() - 0.01;
-        if(db < 0)
-            db = 0.00;
+        double dAdd = 0.01;
+        if(ispanT < 10)
+            dAdd = 10.0;
+        else if(ispanT >= 10 && ispanT < 200)
+            dAdd = 1.0;
+        else if(ispanT >= 200 && ispanT < 400)
+            dAdd = 0.1;
+        else if(ispanT >= 400 && ispanT < 3000)
+            dAdd = 0.01;
+
+        double db = strT.toDouble() - dAdd;
+        if(db < 0.0)
+            db = 0.0;
 
         le->setText(QString::number(db,'f',2));
     }else{
-        int iT = strT.toInt() - 1;
+        int iAdd = 1;
+        if(ispanT < 10)
+            iAdd = 1000;
+        else if(ispanT >= 10 && ispanT < 200)
+            iAdd = 100;
+        else if(ispanT >= 200 && ispanT < 600)
+            iAdd = 10;
+        else if(ispanT >= 600 && ispanT < 3000)
+            iAdd = 1;
+
+        int iT = strT.toInt() - iAdd;
         if(iT < 0)
             iT = 0;
 

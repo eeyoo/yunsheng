@@ -39,7 +39,12 @@ Dlg_StackManage::Dlg_StackManage(QWidget *parent) :
     ui->setupUi(this);
     setWindowFlags(Qt::FramelessWindowHint);
 
-    ui->tblWStkM->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tblWStkM->setSelectionBehavior(QAbstractItemView::SelectRows); // 设置整行选中
+    ui->tblWStkM->horizontalHeader()->setStretchLastSection(true); // 设置充满表宽
+    ui->tblWStkM->setEditTriggers(QAbstractItemView::NoEditTriggers); // 表格只读
+    ui->tblWStkM->setShowGrid(false); // 隐藏表格线
+    ui->tblWStkM->setAlternatingRowColors(true); // 使能交替背景色
+
     ui->tblWStkM->setColumnCount(3);
     //ui->tblWStkM->setRowCount(4);
     ui->tblWStkM->setColumnWidth(0,100);

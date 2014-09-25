@@ -26,6 +26,7 @@ background: #343639;
 
 QTableWidget {
 border: 1px solid black;
+alternate-background-color: #525c67;
 }</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">

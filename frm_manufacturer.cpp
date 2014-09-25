@@ -39,7 +39,12 @@ Frm_Manufacturer::Frm_Manufacturer() :
 {
     ui->setupUi(this);
 
-    ui->tblUpdate->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tblUpdate->setSelectionBehavior(QAbstractItemView::SelectRows);  // 设置整行选中
+    ui->tblUpdate->horizontalHeader()->setStretchLastSection(true); // 设置充满表宽
+    ui->tblUpdate->setShowGrid(false);  // 隐藏表格线
+    ui->tblUpdate->setEditTriggers(QAbstractItemView::NoEditTriggers); // 设置表格只读
+    ui->tblUpdate->setAlternatingRowColors(true); // 使能交替背景色
+
     ui->tblUpdate->setColumnCount(3);
     //ui->tblPgm->setRowCount(4);
     ui->tblUpdate->setColumnWidth(0,200);
@@ -52,7 +57,12 @@ Frm_Manufacturer::Frm_Manufacturer() :
     ui->tblUpdate->setHorizontalHeaderLabels(header);
 
 
-    ui->tblXML->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tblXML->setSelectionBehavior(QAbstractItemView::SelectRows);  // 设置整行选中
+    ui->tblXML->horizontalHeader()->setStretchLastSection(true); // 设置充满表宽
+    ui->tblXML->setShowGrid(false);  // 隐藏表格线
+    ui->tblXML->setEditTriggers(QAbstractItemView::NoEditTriggers); // 设置表格只读
+    ui->tblXML->setAlternatingRowColors(true); // 使能交替背景色
+
     ui->tblXML->setColumnCount(3);
     //ui->tblPgm->setRowCount(4);
     ui->tblXML->setColumnWidth(0,200);

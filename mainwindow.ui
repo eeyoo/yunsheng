@@ -63,7 +63,7 @@ min-height: 50px;
 }
 
 #positionFrame QLabel {
-font: 18px;
+font: 22px;
 color: white;
 background: transparent;
 }
@@ -101,6 +101,14 @@ outline: no;
 min-width: 80px;
 min-height: 50px;
 image: url(&quot;:/Res/image/button_80x50_active.png&quot;);
+}
+
+#btnlFrame {
+border:no;
+}
+
+#rFrame {
+border:no;
 }</string>
   </property>
   <widget class="QWidget" name="centralWidget">

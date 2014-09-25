@@ -822,9 +822,13 @@ void TCom20::NewPgm()
     AddCmd(0);
     QStandardItem *startI=new QStandardItem(QObject::tr("程序开始"));
     modelPro->setItem(0,2,startI);
+    QStandardItem *sIconI=new QStandardItem(QIcon(":/Res/image/icon_start.png"),QString(""));
+    modelPro->setItem(0,1,sIconI);
     AddCmd(1);
     QStandardItem *endI=new QStandardItem(QObject::tr("程序结束"));
     modelPro->setItem(1,2,endI);
+    QStandardItem *eIconI=new QStandardItem(QIcon(":/Res/image/icon_end.png"),QString(""));
+    modelPro->setItem(1,1,eIconI);
 }
 /*************************************************************************
 * 函数名称: SavePgm
@@ -878,9 +882,13 @@ void TCom20::OpenPgm(QFile *file)
     AddCmd(0);
     QStandardItem *startI=new QStandardItem(QObject::tr("程序开始"));
     modelPro->setItem(0,2,startI);
+    QStandardItem *sIconI=new QStandardItem(QIcon(":/Res/image/icon_start.png"),QString(""));
+    modelPro->setItem(0,1,sIconI);
     AddCmd(1);
     QStandardItem *endI=new QStandardItem(QObject::tr("程序结束"));
     modelPro->setItem(1,2,endI);
+    QStandardItem *eIconI=new QStandardItem(QIcon(":/Res/image/icon_end.png"),QString(""));
+    modelPro->setItem(1,1,eIconI);
 
 
     //解析命令
@@ -1609,9 +1617,13 @@ void TComF3::AnaCmd()
     com20.AddCmd(0);
     QStandardItem *startI=new QStandardItem(QObject::tr("程序开始"));
     com20.SetItem(0,2,startI);
+    QStandardItem *sIconI=new QStandardItem(QIcon(":/Res/image/icon_start.png"),QString(""));
+    com20.SetItem(0,1,sIconI);
     com20.AddCmd(1);
     QStandardItem *endI=new QStandardItem(QObject::tr("程序结束"));
     com20.SetItem(1,2,endI);
+    QStandardItem *eIconI=new QStandardItem(QIcon(":/Res/image/icon_end.png"),QString(""));
+    com20.SetItem(1,1,eIconI);
 
     int                iCmd  = (vecRcv.size() * 6 - sizeof(TCom06::STR_PARA))/(sizeof(TCmd::STR_PARA));
     TCmd::STR_PARA     *para = (TCmd::STR_PARA*)(pdD + sizeof(TCom06::STR_PARA));

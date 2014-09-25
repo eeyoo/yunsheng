@@ -40,7 +40,12 @@ Frm_View::Frm_View() :
     ui->setupUi(this);
     //setAutoFillBackground(true);
 
-    ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows); // 设置整行选中
+    ui->tableWidget->horizontalHeader()->setStretchLastSection(true); // 设置充满表宽
+    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers); // 表格只读
+    ui->tableWidget->setShowGrid(false); // 隐藏表格线
+    ui->tableWidget->setAlternatingRowColors(true); // 使能交替背景色
+
     ui->tableWidget->setColumnCount(3);
     //ui->tblPgm->setRowCount(4);
     ui->tableWidget->setColumnWidth(0,50);

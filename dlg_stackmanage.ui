@@ -13,7 +13,7 @@
   <property name="font">
    <font>
     <family>微软雅黑</family>
-    <pointsize>13</pointsize>
+    <pointsize>14</pointsize>
     <weight>50</weight>
     <italic>false</italic>
     <bold>false</bold>
@@ -24,7 +24,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">*{
-font: 13pt;
+font: 14pt;
 font-family: &quot;微软雅黑&quot;;
 }
 
@@ -46,26 +46,11 @@ background: url(&quot;:/Res/image/title_bar.png&quot;);
 
 QTableWidget {
 border: 1px solid black;
+alternate-background-color: #525c67;
 }
 
 QPushButton {
-border: no;
-outline: no;
-min-width: 50px;
-min-height: 50px;
-image: url(&quot;:/Res/image/button_50x50_normal.png&quot;);
-}
-
-QPushButton:pressed {
-color: black;
-border: no;
-outline: no;
-min-width: 50px;
-min-height: 50px;
-image: url(&quot;:/Res/image/button_50x50_active.png&quot;);
-}
-
-QPushButton[objectName=&quot;btnOK&quot;] {
+font: 16pt;
 border: no;
 outline: no;
 min-width: 80px;
@@ -73,18 +58,19 @@ min-height: 50px;
 image: url(&quot;:/Res/image/button_80x50_normal.png&quot;);
 }
 
-QPushButton[objectName=&quot;btnOK&quot;]:pressed {
+QPushButton:pressed {
 color: black;
 border: no;
 outline: no;
 min-width: 80px;
 min-height: 50px;
 image: url(&quot;:/Res/image/button_80x50_active.png&quot;);
-}</string>
+}
+</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0">
+  <layout class="QVBoxLayout" name="verticalLayout_2">
    <property name="spacing">
-    <number>6</number>
+    <number>0</number>
    </property>
    <property name="leftMargin">
     <number>0</number>
@@ -109,9 +95,6 @@ image: url(&quot;:/Res/image/button_80x50_active.png&quot;);
     </widget>
    </item>
    <item>
-    <widget class="QTableWidget" name="tblWStkM"/>
-   </item>
-   <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <property name="leftMargin">
       <number>9</number>
@@ -122,6 +105,9 @@ image: url(&quot;:/Res/image/button_80x50_active.png&quot;);
      <property name="bottomMargin">
       <number>9</number>
      </property>
+     <item>
+      <widget class="QTableWidget" name="tblWStkM"/>
+     </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>

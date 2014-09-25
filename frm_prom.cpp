@@ -42,7 +42,12 @@ Frm_ProM::Frm_ProM() :
 {
     ui->setupUi(this);
 
-    ui->tblPgm->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tblPgm->setSelectionBehavior(QAbstractItemView::SelectRows); // 设置整行选中
+    ui->tblPgm->horizontalHeader()->setStretchLastSection(true); // 设置充满表宽
+    ui->tblPgm->setEditTriggers(QAbstractItemView::NoEditTriggers); // 表格只读
+    ui->tblPgm->setShowGrid(false); // 隐藏表格线
+    ui->tblPgm->setAlternatingRowColors(true); // 使能交替背景色
+
     ui->tblPgm->setColumnCount(3);
     //ui->tblPgm->setRowCount(4);
     ui->tblPgm->setColumnWidth(0,200);

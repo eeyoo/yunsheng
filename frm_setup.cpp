@@ -357,6 +357,7 @@ void Frm_Setup::setVisible(bool visible)
     {
         SetSeroPara();
         SetResetPara();
+        SetPrd();
 
         ui->leScrProTim->setText(QString("%1").arg(config.cfg.scrPT / 60));
     }
@@ -442,11 +443,23 @@ void Frm_Setup::SetResetPara()
     QComboBox*  cbbA[]  = {ui->cbBoxRstFirst,ui->cbBoxRstSec,ui->cbBoxRstTree,
                            ui->cbBoxRstFouth,ui->cbBoxRstFifth};
     for(int i = 0; i < sizeof(cbbA)/sizeof(QComboBox*); i++){
-        if(cbbA[i]->count() > com07.para.axis[i] - 1){
-            cbbA[i]->setCurrentIndex(com07.para.axis[i] - 1);
+        if(cbbA[i]->count() >= com07.para.axis[i]){
+            cbbA[i]->setCurrentIndex(com07.para.axis[i]);
         }
     }
 
+}
+/*************************************************************************
+* 函数名称: SetPrd
+* 功    能: 设置生产参数
+* 输入参数: 无
+* 输出参数: 无
+* 返 回 值:
+*************************************************************************/
+void Frm_Setup::SetPrd()
+{
+    ui->lePlnPrd->setText(QString("%1").arg(com05.para.pln_prd));
+    ui->leCurPrd->setText(QString("%1").arg(config.cfg.curPrd));
 }
 /*************************************************************************
 * 函数名称: SetAxisEn
@@ -501,6 +514,7 @@ void Frm_Setup::SetAxisEn()
     for(int i = 0; i < sizeof(cbbA)/sizeof(QComboBox*); i++){
         cbbA[i]->clear();
         cbbA[i]->setEnabled(true);
+        cbbA[i]->addItem(QString(""));
         for(int j = 0; j < sizeof(axisp)/sizeof(quint8); j++){
             if(axisp[j]){
                 cbbA[i]->addItem(strA[j]);
@@ -508,7 +522,7 @@ void Frm_Setup::SetAxisEn()
         }
     }
 
-    for(int i = cbbA[0]->count(); i < sizeof(cbbA)/sizeof(QComboBox*); i++){
+    for(int i = cbbA[0]->count() - 1; i < sizeof(cbbA)/sizeof(QComboBox*); i++){
         cbbA[i]->clear();
         cbbA[i]->setEnabled(false);
     }
@@ -530,8 +544,28 @@ void Frm_Setup::on_lePlnPrd_clicked()
         ui->lePlnPrd->setText(dlg.m_str);
         com05.para.pln_prd = dlg.m_str.toInt();
 
+        widMana->SavePara();
+
         QMutexLocker locker(&mutex_com);
         pComBuf2.push_back((TCom*)(&com05));
+    }
+}
+/*************************************************************************
+* 函数名称: on_leCurPrd_clicked
+* 功    能: 输入当前生产数量
+* 输入参数: 无
+* 输出参数: 无
+* 返 回 值:
+*************************************************************************/
+void Frm_Setup::on_leCurPrd_clicked()
+{
+    Dlg_Psw dlg;
+    dlg.setModal(true);
+    if(dlg.exec() == QDialog::Accepted)
+    {
+        ui->leCurPrd->setText(dlg.m_str);
+        config.cfg.curPrd = dlg.m_str.toInt();
+        config.eepromW();
     }
 }
 /*************************************************************************
@@ -663,12 +697,19 @@ void Frm_Setup::on_btnSysSend_clicked()
 
         if(cbbA[i]->isEnabled()){
             QString strT = cbbA[i]->currentText();
-            for(int j = 0; j < 5; j++){
-                if(strT == strA[j]){
-                    com07.para.axis[i] = j + 1;
-                    break;
+
+            if(cbbA[i]->currentIndex() == 0){
+                com07.para.axis[i] = 0;
+            }else{
+                for(int j = 0; j < 5; j++){
+                    if(strT == strA[j]){
+                        com07.para.axis[i] = j + 1;
+                        break;
+                    }
                 }
             }
+
+
         }else{
             com07.para.axis[i] = 0;
         }
@@ -877,7 +918,7 @@ void Frm_Setup::OnQdec(QDECT qt, int spanT)
 
 
 
-                     (QWidget*)ui->lePlnPrd,(QWidget*)ui->lineEdit_2,(QWidget*)ui->lineEdit_6,
+                     (QWidget*)ui->lePlnPrd,(QWidget*)ui->leCurPrd,(QWidget*)ui->lineEdit_6,
                      (QWidget*)ui->leCirTim_2,(QWidget*)ui->leCirTim,(QWidget*)ui->leRstTim,
                      (QWidget*)ui->leBadPrd,(QWidget*)ui->lineEdit_8,(QWidget*)ui->leSprVal
 

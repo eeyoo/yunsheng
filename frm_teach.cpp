@@ -47,7 +47,11 @@ Frm_Teach::Frm_Teach() :
     InitTim();
 
     ui->tblV_Pro->setModel(com20.modelPro);
-    ui->tblV_Pro->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->tblV_Pro->setSelectionBehavior(QAbstractItemView::SelectRows);  // 设置整行选中
+    ui->tblV_Pro->horizontalHeader()->setStretchLastSection(true);  // 设置充满表宽
+    ui->tblV_Pro->setShowGrid(false);  // 隐藏表格线
+    ui->tblV_Pro->setAlternatingRowColors(true);  // 使能交替背景色
+
     //ui->tblV_Pro->setStyleSheet("selection-background-color: rgb(255,0,0)");
     //ui->tblV_Pro->setAlternatingRowColors(true);
     //ui->tblV_Pro->setStyleSheet("QTableView{background-color: rgb(250, 250, 115);"
@@ -58,13 +62,17 @@ Frm_Teach::Frm_Teach() :
 
     ui->tblV_Pro->setColumnWidth(0,70);
     ui->tblV_Pro->setColumnWidth(1,50);
-    ui->tblV_Pro->setColumnWidth(2,280);
+    //ui->tblV_Pro->setColumnWidth(2,280);
     ui->tblV_Pro->horizontalHeader()->hide();
 
     QStandardItem *startI=new QStandardItem(QObject::tr("程序开始"));
     com20.modelPro->setItem(0,2,startI);
+    QStandardItem *sIconI=new QStandardItem(QIcon(":/Res/image/icon_start.png"),QString(""));
+    com20.modelPro->setItem(0,1,sIconI);
     QStandardItem *endI=new QStandardItem(QObject::tr("程序结束"));
     com20.modelPro->setItem(1,2,endI);
+    QStandardItem *eIconI=new QStandardItem(QIcon(":/Res/image/icon_end.png"),QString(""));
+    com20.modelPro->setItem(1,1,eIconI);
 
     ui->tblV_Pro->setRowHeight(0,50);
     ui->tblV_Pro->setRowHeight(1,50);

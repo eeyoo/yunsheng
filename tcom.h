@@ -80,28 +80,41 @@ public:
     quint8   eptNum;                    //期望回复帧数量，0表示不需要校验帧数量
 };
 
+/**
+ *  TCom01 实现通讯协议中01的功能，配置序列号、版本号等信息
+ */
 class TCom01 : public TCom
 {
 public:
+    /**
+     * 构造函数
+     */
     TCom01();
 public:
 #pragma pack(1)
     struct STR_PARA
     {
-        quint8 ser[12];     //序列号
-        quint8 ver[6];      //版本号
-        quint16 year;       //年
-        quint8 month;       //月
-        quint8 day;         //日
-        quint8 res[2];      //备用
-        quint8 psw[6];      //密码
+        quint8 ser[12];     ///< 序列号
+        quint8 ver[6];      ///< 版本号
+        quint16 year;       ///< 年
+        quint8 month;       ///< 月
+        quint8 day;         ///< 日
+        quint8 res[2];      ///< 备用
+        quint8 psw[6];      ///< 密码
     };
 #pragma pack()
 
 public:
-    STR_PARA para;
+    STR_PARA para;          ///< 存储01包的数据
 public:
     //bool UpdateUI(bool bSuc);
+    /**
+     * 发送通讯数据
+     * @param a an integer argument.
+     * @param s a constant character pointer.
+     * @see Test()
+     * @return true发送成功 false发送失败
+     */
     bool snd();
     bool chk();
 };
@@ -305,38 +318,87 @@ public:
     bool chk();
 };
 
-
+/**
+ * 编辑、发送示教程序类，实现通讯协议中20的功能
+ */
 class TCom20 : public TCom
 {
 public:
+    /**
+     * 构造函数
+     */
     TCom20();
 public:
 #pragma pack(1)
     struct PGM_HEAD
     {
-        quint32 cmdL;                  //程序行
+        quint32 cmdL;                  ///< 程序行
     };
 #pragma pack()
 public:
-    bool    bNewForSnd;                //文件更新了，需要发送给下位机
-    bool    bOpen;                     //文件打开
-    QStandardItemModel *modelPro;      //程序model
+    bool    bNewForSnd;                ///< 文件更新标记，需要发送给下位机
+    bool    bOpen;                     ///< 文件打开标记
+    QStandardItemModel *modelPro;      ///< 程序model，存储具体的示教程序数据
     //TCom06  comStk;                    //堆叠数据
 private:
-    quint8  iSndN;                     //发送的帧数
+    quint8  iSndN;                     ///< 发送的帧数
 public:
-    void    AddCmd(int rIndex);        //添加命令行
-    void    DelCmd(int rIndex);        //删除命令行
-    void    SetItem(int row,int column,QStandardItem* item);    //更新命令item
+    /**
+     * 功能：添加命令行.
+     * @param rIndex：命令添加的位置.
+     */
+    void    AddCmd(int rIndex);
+    /**
+     * 功能：删除命令行.
+     * @param rIndex：命令删除的位置.
+     */
+    void    DelCmd(int rIndex);
+    /**
+     * 功能：更新程序列表的显示.
+     * @param row：更新的行.
+     * @param column：更新的列.
+     * @param item：更新的内容.
+     */
+    void    SetItem(int row,int column,QStandardItem* item);
 
-    void    NewPgm();                  //创建新程序
-    void    SavePgm(QFile *file);      //保存程序文件
-    void    OpenPgm(QFile *file);      //打开程序文件
+    /**
+     * 功能：创建新的示教程序.
+     */
+    void    NewPgm();
+    /**
+     * 功能：保存示教程序.
+     * @param file：保存句柄.
+     */
+    void    SavePgm(QFile *file);
+    /**
+     * 功能：打开示教程序.
+     * @param file：打开句柄.
+     */
+    void    OpenPgm(QFile *file);
+    /**
+     * 功能：脉冲当量转换.
+     */
     void    plsTran();
+    /**
+     * 功能：脉冲当量逆转换.
+     */
     void    RplsTran();
 public:
+    /**
+     * 功能：发送完成后更新UI显示.
+     * @param bSuc：true发送成功，false发送失败.
+     * @return true更新成功，false更新失败
+     */
     bool UpdateUI(bool bSuc);
+    /**
+     * 功能：发送通讯数据.
+     * @return true发送成功，false发送失败
+     */
     bool snd();
+    /**
+     * 功能：数据校验.
+     * @return true校验成功，false校验失败
+     */
     bool chk();
 };
 

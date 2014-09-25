@@ -28,7 +28,6 @@ background: #343639;
 QPushButton {
 font: 16pt;
 border: no;
-outline: no;
 min-width: 80px;
 min-height: 50px;
 image: url(&quot;:/Res/image/button_80x50_normal.png&quot;);
@@ -38,7 +37,6 @@ QPushButton:pressed {
 color: black;
 font: 16pt;
 border: no;
-outline: no;
 min-width: 80px;
 min-height: 50px;
 image: url(&quot;:/Res/image/button_80x50_active.png&quot;);
@@ -80,11 +78,11 @@ QCheckBox::indicator:checked {
 outline: no;
      image: url(:/Res/image/checkbutton_on.png);
 }
-/*
+
 QTableView {
-background-color: white;
-alternate-background-color: #87ceeb;
-}*/
+border: 1px solid black;
+alternate-background-color: #525c67;
+}
 
 QScrollBar:vertical {
 border: 1px solid black;
@@ -100,7 +98,7 @@ stop:0 #2773b4,
 stop:1 #2773b4);
 }</string>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="600,200">
+  <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="2,1">
    <property name="spacing">
     <number>12</number>
    </property>

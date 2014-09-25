@@ -1,8 +1,8 @@
 # files or dirs ignored by git
-totcy/
+totcy
+patch
 *~
 *.autosave
-*.user*
 *.user
 *.txt~
 

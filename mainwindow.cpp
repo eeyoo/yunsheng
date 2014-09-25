@@ -67,6 +67,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(&drv_qdec,SIGNAL(sigQdec(int)),this,SLOT(on_sigQdec(int)));
     drv_qdec.start();
 #endif
+
+    bQdecPrs = false;
 }
 /*************************************************************************
 * 函数名称: UpdateTim
@@ -122,6 +124,17 @@ void MainWindow::UpdateTim()
 #ifdef EMBEDED_ARM
     config.DoScrPT();
 #endif
+
+    static int iT = 0;
+    if(bQdecPrs){
+        if(iT >= 1){
+            widMana->SwitchWM(&widMana->frm_fun);
+            bQdecPrs = false;
+        }
+        iT++;
+    }else{
+        iT = 0;
+    }
 }
 /*************************************************************************
 * 函数名称: ~MainWindow
@@ -182,11 +195,11 @@ void MainWindow::Can_Com()
     if(pComBuf2.isEmpty())
     {
         static int index = 0;
-        if(index<pComBuf1.size())
+        if(index < pComBuf1.size())
         {
             pComBuf1[index]->DoCom();
         }
-        if(index == (pComBuf1.size() - 1))
+        else if(index >= (pComBuf1.size() - 1))
             index = -1;
 
         index++;
@@ -545,14 +558,15 @@ void MainWindow::on_sigKey(int dt)
                 return;
             }
             prsTim.start();
+            bQdecPrs = true;
+            //printf("up\n");
         }else if(msg.msgL == TDrvKey::DOWN){
-            if(prsTim.restart() < 1000){
-                //printf("pt1:%d\n",prsTim.restart());
+            if(bQdecPrs){
+                bQdecPrs = false;
                 widMana->pCurW->OnQdec(TWidget::PRS, prsTim.restart());
-            }else{
-                //printf("pt2:%d\n",prsTim.restart());
-                widMana->SwitchWM(&widMana->frm_fun);
             }
+            //printf("down\n");
+
         }
         return;
     }
@@ -612,8 +626,12 @@ void MainWindow::on_sigQdec(int dt)
 {
     //if(!widMana->bDialog)
     //    return;
-    if(!config.bScrP)
-        widMana->pCurW->OnQdec((TWidget::QDECT)dt,prsTim.restart());
+    if(!config.bScrP){
+        int iT = prsTim.restart();
+        //ui->btnStus->setText(QString("%1").arg(iT));
+        //printf("iT:%d\n",iT);
+        widMana->pCurW->OnQdec((TWidget::QDECT)dt,iT);
+    }
 
     /*quint8 spd[]    ={com02.para[0].manS,com02.para[1].manS,com02.para[2].manS,com02.para[3].manS,
                       com02.para[4].manS,com02.para[0].manS,com02.para[1].manS};

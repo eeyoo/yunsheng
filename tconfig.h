@@ -45,6 +45,9 @@ public:
 
     void DoScrPT();
     void InitScrPT();
+
+    void eepromW();
+    void eepromR();
 };
 
 extern  TConfig     config;     //≥Ã–Ú≈‰÷√Œƒº˛
