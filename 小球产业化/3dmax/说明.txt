@@ -1,0 +1,4 @@
+scenes/                     目录下存放造型和动画集成max文件
+3ds model/                目录下动画输出3ds文件
+maxscripts/demo/   目录下存放动画自动生成脚本文件
+

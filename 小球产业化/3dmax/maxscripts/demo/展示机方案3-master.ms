@@ -1,0 +1,1476 @@
+--==============================================================================
+--脚本意图：4x8球阵和框阵结合的造型设计
+--版本 1.0
+--日期 2015-2-13
+--作者 吴飞林
+--注意运行此脚本前，必须执行4x8球阵建模脚本
+--==============================================================================
+
+--==============================================================================
+--为放样赋予变量名称
+num = 4
+LineArray = #($Loft001, $Loft002, $Loft003, $Loft004)
+
+row = 2*row - 1
+column = 2*column - 1
+
+
+-------------------------------框阵造型函数-------------------------------------
+--==============================================================================
+--同步达到指定位置
+--参数：pos - 指定Z轴位置值
+--参数：delay  - 保持pod位置时间
+--==============================================================================
+fn horizLinePos pos frame:FrameTime n:num =
+(
+	at time frame (
+		for i = 1 to n do LineArray[i].pos.z = pos
+	)
+
+)
+
+--==============================================================================
+--随机位置分布
+--参数：rmin, rmax - 随机位置下限和上限
+--==============================================================================
+fn randomLinePos rmin rmax frame:FrameTime n:num =
+(
+	for i = 1 to n do
+	(
+		at time frame (
+			pos = random rmin rmax
+			LineArray[i].pos.z = pos
+		)
+	)
+)
+
+
+--==============================================================================
+--框阵奇偶分离
+--参数：pos - 指定Z轴位置值
+--==============================================================================
+fn horizLineDisPos pos1 pos2 frame:FrameTime n:num =
+(
+	for i = 1 to 3 by 2 do
+	(
+		at time frame (
+			LineArray[i].pos.z = pos1
+		)
+	)
+	
+	for i = 2 to n by 2 do
+	(
+		at time frame (
+			LineArray[i].pos.z = pos2
+		)
+	)
+
+)
+
+--==============================================================================
+--正向线性锥形
+--参数1 a - 锥形斜率
+--参数2 hor  - 中心高
+--==============================================================================
+fn linearForwardPos h hor frame:FrameTime n:num =
+(
+	dh = h/3
+	for i = 1 to n do
+	(
+		at time frame (
+			LineArray[i].pos.z = dh*(n-i) + hor
+		)
+	)
+)
+
+--==============================================================================
+--反向线性线性锥形
+--参数1 a - 锥形斜率
+--参数2 hor  - 中心高
+--==============================================================================
+fn linearBackwardPos h hor frame:FrameTime n:num =
+(
+	dh = h/3
+	for i = 1 to n do
+	(
+		at time frame (
+			LineArray[i].pos.z = -dh*(n-i) + hor
+		)
+	)
+)
+
+--------------------------------------------------------------------------------
+-----------------------------上下对称动态造型---------------------------------------
+--------------------------------------------------------------------------------
+fn loopLineSymAPos amp count dur delay pos hor frame:FrameTime n:num =
+(
+	c = 8  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+	
+	temp1 = frame
+	for t = 1 to (c*count+1) do
+	(
+		at time temp1 ( LineArray[1].pos.z = amp*sin(dt*(t-1)) + pos + hor )
+		temp1 += df
+	)
+	
+	temp2 = frame
+	for t = 1 to (c*count+1) do
+	(
+		at time temp2 ( LineArray[2].pos.z = -amp*sin(dt*(t-1)) - pos + hor )
+		temp2 += df
+
+	)
+
+	return (frame + dur*count)
+	
+)
+
+-------------------------------球阵造型函数-------------------------------------
+--==============================================================================
+--球阵整体同步达到指定位置
+--参数：pos    - 指定Z轴位置值
+--==============================================================================
+fn horizSphereSynPos pos frame:FrameTime row:row col:column =
+(
+	at time frame (
+		for i = 1 to row by 2 do
+		(
+			for j = 1 to col by 2 do
+			(
+				BallArray[i][j].pos.z = pos
+			)
+		)
+	)
+)
+
+--==============================================================================
+--球阵指定时间内随机异步达到指定位置
+--参数：pos     - 指定Z轴位置值
+--参数：range     - 随机分布范围
+--==============================================================================
+fn horizSphereASynPos pos range frame:FrameTime row:row col:column =
+(
+
+	start = frame - range
+	temp = start
+		for i = 1 to row by 2 do
+		(
+			for j = 1 to col by 2 do
+			(
+				at time temp ( BallArray[i][j].pos.z = pos )
+				temp = random start frame
+			)
+		)
+	
+	
+)
+
+--==============================================================================
+--球阵指定时间内随机异步达到指定位置
+--参数：pos     - 指定Z轴位置值
+--参数：delay     - 随机分布范围
+--==============================================================================
+fn horizSphereASynDelayPos pos0 pos range delay start:FrameTime row:row col:column =
+(
+	--frame = start
+	
+		for i = 1 to row by 2 do
+		(
+			frame = start
+			for j = 1 to col by 2 do
+			(
+				at time frame ( BallArray[i][j].pos.z = pos0 )
+				end = frame + range
+				at time end ( BallArray[i][j].pos.z = pos )
+			)
+			start += delay
+		)
+		start -= delay
+	
+	return start+range
+)
+
+--==============================================================================
+--球阵指定时间内随机异步达到指定位置
+--参数：pos     - 指定Z轴位置值
+--参数：delay     - 随机分布范围
+--==============================================================================
+fn horizSphereASynDelay1Pos pos0 pos range delay start:FrameTime row:row col:column =
+(
+	--frame = start
+	--rangeMax = range
+	--rangeArray = #()
+	
+		for i = 1 to row by 2 do
+		(
+			frame = start
+			for j = 1 to col by 2 do
+			(
+				at time frame ( BallArray[i][j].pos.z = pos0 )
+				
+				temp = range - 10*abs(j-4)
+				--append rangeArray temp
+				end = frame + temp
+				at time end ( BallArray[i][j].pos.z = pos )
+			)
+			start += delay
+		)
+		start -= delay
+		--rangeMax = max rang
+	
+	return start+range
+)
+
+--==============================================================================
+--球阵指定时间内随机异步达到指定位置
+--参数：pos     - 指定Z轴位置值
+--参数：range     - 随机分布范围
+--参数：delay     - 随机分布范围
+--==============================================================================
+fn horizSphereASynDelay2Pos pos range delay frame:FrameTime row:row col:column =
+(
+
+	end = frame
+	start = end - range
+	tempx = end
+	tempy = end
+	--temp = start
+		for i = 1 to row by 2 do
+		(
+			for j = 1 to col by 2 do
+			(
+				at time tempy ( BallArray[i][j].pos.z = pos )
+				--tempy = tempx + (random 0 delay)
+				tempy = tempx + random 0 delay
+			)
+			--tempx += random 0 delay
+			tempx = random start end
+		)
+	
+	
+)
+
+--==============================================================================
+--Z轴随机位置矩阵
+--参数：rmin,rmax - 指定Z轴随机位置下限和上限
+--==============================================================================
+fn randomSpherePos rmin rmax frame:FrameTime row:row col:column =
+(
+	at time frame (
+		for i = 1 to row by 2 do
+		(
+			for j = 1 to col by 2 do
+			(
+				BallArray[i][j].pos.z = random rmin rmax
+			)
+		)
+	)
+)
+
+--==============================================================================
+--球阵形成抛物面
+--参数：a      - 系数（正开口向上，负开口向下）
+--参数：h      - 弓高
+--参数：cx,cy  - 中心点坐标
+--参数：hor    - 中心高
+--参数：hold   - 保持时间
+--==============================================================================
+fn paraboSpherePos a hor cx:8 cy:4 frame:FrameTime row:row col:column =
+(
+
+	rmax2 = 49+9
+	
+	at time frame (
+		for i = 1 to row by 2 do
+		(
+			for j = 1 to col by 2 do
+			(
+				rx = cx - i
+				ry = cy - j
+				r2 = rx*rx+ry*ry
+				BallArray[i][j].pos.z = a*(rmax2 - r2) + hor
+			)
+		)
+	)
+)
+
+--==============================================================================
+--球阵形成圆弧面
+--参数：a      - 系数（正开口向上，负开口向下）
+--参数：h      - 弓高
+--参数：cx,cy  - 中心点坐标
+--参数：hor    - 中心高
+--参数：hold   - 保持时间
+--==============================================================================
+fn circleXSpherePos a hor frame:FrameTime row:row col:column =
+(
+
+	
+	at time frame (
+		for i = 1 to row by 2 do
+		(
+			for j = 1 to col by 2 do
+			(
+				--rx = cx - i
+				--ry = cy - j
+				--r2 = rx*rx+ry*ry
+				r2 = 49 - (8-i)*(8-i)
+				BallArray[i][j].pos.z = a*r2 + hor
+			)
+		)
+	)
+)
+
+--==============================================================================
+--球阵逐个延时启动正弦波动
+--参数：amp    - 振幅
+--参数：count  - 波形周期数
+--参数：dur    - 周期帧长,注意传入值应为8的倍数
+--参数：delay  - 逐个延时时间
+--参数：hor    - 中心高
+--==============================================================================
+fn sinSpherePos amp count dur delay hor frame:FrameTime row:row col:column =
+(
+	c = 8  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+	
+	for i = 1 to row by 2 do
+	(
+		for j = 1 to col by 2 do
+		(
+			frame += delay
+			temp = frame
+			for t = 1 to (c*count+1) do
+			(
+				
+				at time temp ( BallArray[i][j].pos.z = amp*sin(dt*(t-1)) + hor )
+				temp += df
+			)
+		)
+	)
+
+	return (frame + dur*count)
+)
+
+--==============================================================================
+--球阵逐个延时启动正弦波动
+--参数：amp    - 振幅
+--参数：count  - 波形周期数
+--参数：dur    - 周期帧长,注意传入值应为8的倍数
+--参数：delay  - 逐个延时时间
+--参数：hor    - 中心高
+--==============================================================================
+fn sinSphereDirectPos amp count dur delay hor frame:FrameTime row:row col:column =
+(
+	c = 8  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+	for i = 1 to row by 2 do
+	(
+		for j = 1 to col by 2 do
+		(
+			frame += delay
+			temp = frame
+			for t = 1 to (c*count+1) do
+			(
+
+				at time temp ( BallArray[i][j].pos.z = amp*sin(dt*(t-1)) + hor )
+				temp += df
+			)
+		)
+	)
+
+	return (frame + dur*count)
+)
+
+--==============================================================================
+--球阵逐个延时启动正弦波动
+--参数：amp    - 振幅
+--参数：count  - 波形周期数
+--参数：dur    - 周期帧长
+--参数：delay  - 逐个延时时间
+--参数：hor    - 中心高
+--参数：da     - 振幅的变化值
+--说明：增加振幅随球序号变化而变化的因素
+--==============================================================================
+fn sinSphere1Pos amp count dur delay hor da frame:FrameTime row:row col:column =
+(
+	c = 8  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+	for i = 1 to row by 2 do
+	(
+		for j = 1 to col by 2 do
+		(
+			frame += delay
+			temp = frame
+			for t = 1 to (c*count+1) do
+			(
+				
+				at time temp ( BallArray[i][j].pos.z = amp*sin(dt*(t-1)) + hor )
+				temp += df
+			)
+			amp += da  --每个球的波形幅值在变化
+		)
+	)
+
+	return (frame + dur*count)
+)
+
+--==============================================================================
+--球阵沿X轴向逐个延时启动正弦波动
+--参数：amp    - 振幅
+--参数：count  - 波形周期数
+--参数：dur    - 周期帧长
+--参数：delay  - 逐个延时时间
+--参数：hor    - 中心高
+--参数：da     - 振幅的变化值
+--说明：振幅随完整波形的次数count逐次增加
+--==============================================================================
+fn sinSphereSingleXPos amp count dur delay hor da frame:FrameTime row:row col:column =
+(
+	c = 8  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+	
+	temp = frame
+	for i = 1 to row by 2 do
+	(
+		for j = 1 to col by 2 do
+		(
+			temp1 = amp - da   --让小球起始振幅为amp的权宜之计
+			for t = 1 to (c*count+1) do
+			(
+				at time temp ( BallArray[i][j].pos.z = temp1*sin(dt*(t-1)) + hor )
+				temp += df
+				--每隔一个周期振幅增加da
+				if ((mod (t-1) c) == 0) then temp1 += da
+			)
+			frame += delay
+			temp = frame
+		)
+		
+	)
+
+	return (frame-delay + dur*count)
+)
+
+--==============================================================================
+--球阵沿Y轴向逐个延时启动正弦波动
+--参数：amp    - 振幅
+--参数：count  - 波形周期数
+--参数：dur    - 周期帧长
+--参数：delay  - 逐个延时时间
+--参数：hor    - 中心高
+--参数：da     - 振幅的变化值
+--说明：振幅随完整波形的次数count逐次增加
+--==============================================================================
+fn sinSphereSingleYPos amp count dur delay hor da frame:FrameTime row:row col:column =
+(
+	c = 8  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+	
+	temp = frame
+	for j = 1 to col by 2 do
+	(
+		for i = 1 to row by 2 do
+		(
+			temp1 = amp - da   --让小球起始振幅为amp的权宜之计
+			for t = 1 to (c*count+1) do
+			(
+				at time temp ( BallArray[i][j].pos.z = temp1*sin(dt*(t-1)) + hor )
+				temp += df
+				--每隔一个周期振幅增加da
+				if ((mod (t-1) c) == 0) then temp1 += da
+			)
+			frame += delay
+			temp = frame
+		)
+		
+	)
+
+	return (frame-delay + dur*count)
+)
+
+--==============================================================================
+--球阵沿X轴逐列延时启动正弦波动
+--参数：amp    - 振幅
+--参数：count  - 波形周期数
+--参数：dur    - 周期帧长
+--参数：delay  - 逐列延时时间
+--参数：hor    - 中心高
+--==============================================================================
+fn sinSphereXPos amp count dur delay hor frame:FrameTime row:row col:column =
+(
+	c = 8  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+
+	for i = 1 to row by 2 do
+	(
+		frame += delay
+		temp = frame
+		for t = 1 to (c*count+1) do
+		(
+			at time temp 
+			(
+				for j = 1 to col by 2 do ( BallArray[i][j].pos.z = amp*sin(dt*(t-1)) + hor  )
+			)
+			temp += df
+		)
+	)
+
+	return (frame + dur*count)
+)
+
+--==============================================================================
+--球阵沿X轴逐列延时启动正弦波动
+--参数：amp    - 振幅
+--参数：count  - 波形周期数
+--参数：dur    - 周期帧长
+--参数：delay  - 逐列延时时间
+--参数：hor    - 中心高
+--参数：da     - 振幅的变化值
+--==============================================================================
+fn sinSphereX1Pos amp count dur delay hor da frame:FrameTime row:row col:column =
+(
+	c = 8  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+
+	temp = frame
+	for i = 1 to row by 2 do
+	(
+		temp1 = amp - da   --让小球起始振幅为amp的权宜之计
+		for t = 1 to c*count+1 do
+		(
+			at time temp
+			(
+				for j = 1 to col by 2 do ( BallArray[i][j].pos.z = temp1*sin(dt*(t-1)) + hor  )
+			)
+			temp += df
+			--每隔一个周期振幅增加da
+			if ((mod (t-1) c) == 0) then temp1 += da
+		)
+		frame += delay
+		temp = frame
+	)
+		
+	return (frame-delay + dur*count)
+)
+
+
+--==============================================================================
+--球阵沿Y轴逐列延时启动正弦波动
+--参数：amp    - 振幅
+--参数：count  - 波形周期数
+--参数：dur    - 周期帧长
+--参数：delay  - 逐列延时时间
+--参数：hor    - 中心高
+--==============================================================================
+fn sinSphereYPos amp count dur delay hor frame:FrameTime row:row col:column =
+(
+	c = 8  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+
+	temp = frame
+	for j = 1 to col by 2 do
+	(
+		
+		for t = 1 to (c*count+1) do
+		(
+			at time temp 
+			(
+				for i = 1 to row by 2 do ( BallArray[i][j].pos.z = amp*sin(dt*(t-1)) + hor  )
+			)
+			temp += df
+		)
+		frame += delay
+		temp = frame
+	)
+
+	return (frame-delay + dur*count)
+)
+
+--==============================================================================
+--球阵沿Y轴逐列延时启动正弦波动
+--参数：amp    - 振幅
+--参数：count  - 波形周期数
+--参数：dur    - 周期帧长
+--参数：delay  - 逐列延时时间
+--参数：hor    - 中心高
+--参数：da     - 振幅的变化值
+--==============================================================================
+fn sinSphereY1Pos amp count dur delay hor da frame:FrameTime row:row col:column =
+(
+	c = 8  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+
+	temp = frame
+	for j = 1 to col by 2 do
+	(
+		temp1 = amp - da   --让小球起始振幅为amp的权宜之计
+		for t = 1 to (c*count+1) do
+		(
+			at time temp 
+			(
+				for i = 1 to row by 2 do ( BallArray[i][j].pos.z = temp1*sin(dt*(t-1)) + hor  )
+			)
+			temp += df
+			--每隔一个周期振幅增加da
+			if ((mod (t-1) c) == 0) then temp1 += da
+		)
+		frame += delay
+		temp = frame
+	)
+
+	return (frame-delay + dur*count)
+)
+
+--==============================================================================
+--球阵从起点开始斜向延时启动正弦波动
+--参数：amp    - 振幅
+--参数：count  - 波形周期数
+--参数：dur    - 周期帧长
+--参数：delay  - 逐列延时时间
+--参数：hor    - 中心高
+--参数：direct     - 造型起点，1表示左下方，2表示左上方，3表示右下方，4表示右上方
+--从白翠霞的脚本得到启发：抓住每个小球起始运行的时刻，不要被多重嵌套循环迷惑
+--==============================================================================
+fn sinSphereZPos amp count dur delay hor direct frame:FrameTime row:row col:column =
+(
+	c = 8  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+	flag = direct
+	
+	for i = 1 to row by 2 do
+	(
+		start = frame
+		for j = 1 to col by 2 do
+		(
+			case flag of
+			(
+			1: start = frame + ((i+j)/2-1)*delay
+			2: start = frame + ((i+col+1-j)/2-1)*delay
+			3: start = frame + ((row+1-i+j)/2-1)*delay
+			4: start = frame + ((row+1-i+col+1-j)/2-1)*delay
+			defalut: undefined
+			)
+			
+			temp = start
+			for t = 1 to (c*count+1) do
+			(
+				at time temp
+				(
+					BallArray[i][j].pos.z = amp*sin(dt*(t-1)) + hor
+				)
+				temp += df
+			)
+		)
+	)
+	
+	return (frame + 10*delay + dur*count)
+)
+
+--==============================================================================
+--球阵从起点开始斜向延时启动正弦波动
+--参数：amp    - 振幅
+--参数：count  - 波形周期数
+--参数：dur    - 周期帧长
+--参数：delay  - 逐列延时时间
+--参数：hor    - 中心高
+--参数：da     - 振幅的变化值
+--参数：direct     - 造型起点，1表示左下方，2表示左上方，3表示右下方，4表示右上方
+--从白翠霞的脚本得到启发：抓住每个小球起始运行的时刻，不要被多重嵌套循环迷惑
+--==============================================================================
+fn sinSphereZ1Pos amp count dur delay hor da direct frame:FrameTime row:row col:column =
+(
+	c = 8  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+	flag = direct
+	
+	for i = 1 to row by 2 do
+	(
+		start = frame
+		for j = 1 to col by 2 do
+		(
+			case flag of
+			(
+			1: start = frame + ((i+j)/2-1)*delay
+			2: start = frame + ((i+col+1-j)/2-1)*delay
+			3: start = frame + ((row+1-i+j)/2-1)*delay
+			4: start = frame + ((row+1-i+col+1-j)/2-1)*delay
+			defalut: undefined
+			)
+			
+			temp = start
+			temp1 = amp - da   --让小球起始振幅为amp的权宜之计
+			for t = 1 to (c*count+1) do
+			(
+				at time temp
+				(
+					BallArray[i][j].pos.z = temp1*sin(dt*(t-1)) + hor
+				)
+				temp += df
+				--每隔一个周期振幅增加da
+				if ((mod (t-1) c) == 0) then temp1 += da
+			)
+		)
+	)
+	
+	return (frame + 10*delay + dur*count)
+)
+
+
+--==============================================================================
+--球阵由中心启动延时效果正弦波动
+--参数：amp    - 振幅
+--参数：count  - 波形周期数
+--参数：dur    - 周期帧长
+--参数：delay  - 逐列延时时间
+--参数：hor    - 中心高
+--==============================================================================
+fn sinSphereCPos amp count dur hor cx:8 cy:4 frame:FrameTime row:row col:column =
+(
+	enter = frame
+	rc2 = 64+16
+	rmax2 = 49+9
+	rmin2 = 1+1
+	c = 8  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+	
+	for i = 1 to row by 2 do
+	(
+		for j = 1 to col by 2 do
+		(
+			rx = cx - i
+			ry = cy - j
+			r2 = rx*rx+ry*ry
+			
+			frame = enter + r2
+			temp = frame
+			for t = 1 to (c*count+1) do
+			(
+				at time temp ( BallArray[i][j].pos.z = amp*sin(dt*(t-1)) + hor )
+				temp += df
+				
+			)
+			
+		)
+	)
+
+	return (enter + rmax2 + dur*count)
+)
+
+--==============================================================================
+--球阵由中心启动延时效果正弦波动
+--参数：amp    - 振幅
+--参数：count  - 波形周期数
+--参数：dur    - 周期帧长
+--参数：delay  - 逐列延时时间
+--参数：hor    - 中心高
+--参数：da     - 振幅的变化值
+--==============================================================================
+fn sinSphereC1Pos amp count dur hor da cx:8 cy:4 frame:FrameTime row:row col:column =
+(
+	enter = frame
+	rc2 = 64+16
+	rmax2 = 49+9
+	rmin2 = 1+1
+	c = 8  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+	
+	for i = 1 to row by 2 do
+	(
+		for j = 1 to col by 2 do
+		(
+			rx = cx - i
+			ry = cy - j
+			r2 = rx*rx+ry*ry
+			
+			frame = enter + r2
+			temp = frame
+			temp1 = amp - da   --让小球起始振幅为amp的权宜之计
+			for t = 1 to (c*count+1) do
+			(
+				at time temp ( BallArray[i][j].pos.z = temp1*sin(dt*(t-1)) + hor )
+				temp += df
+				--每隔一个周期振幅增加da
+				if ((mod (t-1) c) == 0) then temp1 += da
+			)
+			
+		)
+	)
+
+	return (enter + rmax2 + dur*count)
+)
+
+-------------------------------球阵区别奇偶造型-------------------------------------
+--==============================================================================
+--球阵X轴向奇偶不同列互为反向正弦波动
+--参数：amp    - 振幅
+--参数：count  - 波形周期数
+--参数：dur    - 周期帧长
+--参数：hor    - 中心高
+--参数：da     - 振幅的变化值
+--==============================================================================
+fn sinXOESpherePos amp count dur hor frame:FrameTime row:row col:column =
+(
+	c = 8  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+	
+	start = frame
+	
+	for i = 1 to row-2 by 4 do
+	(
+
+			temp = start
+		
+			for t = 1 to (c*count+1) do
+			(
+				at time temp ( 
+					for j = 1 to col by 2 do ( BallArray[i][j].pos.z = amp*sin(dt*(t-1)) + hor )
+				)
+				temp += df
+			)
+
+	)
+	
+	for i = 3 to row by 4 do
+	(
+
+			temp = start
+		
+			for t = 1 to (c*count+1) do
+			(
+				at time temp ( 
+					for j = 1 to col by 2 do ( BallArray[i][j].pos.z = -amp*sin(dt*(t-1)) + hor )
+				)
+				temp += df
+
+			)
+	)
+
+	return (frame + dur*count)
+)
+
+--==============================================================================
+--球阵Y轴向奇偶不同列互为反向正弦波动
+--参数：amp    - 振幅
+--参数：count  - 波形周期数
+--参数：dur    - 周期帧长
+--参数：hor    - 中心高
+--参数：da     - 振幅的变化值
+--==============================================================================
+fn sinYOESpherePos amp count dur hor frame:FrameTime row:row col:column =
+(
+	c = 8  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+	
+	start = frame
+	
+	for j = 1 to col-2 by 4 do
+	(
+
+			temp = start
+		
+			for t = 1 to (c*count+1) do
+			(
+				at time temp ( 
+					for i = 1 to row by 2 do ( BallArray[i][j].pos.z = amp*sin(dt*(t-1)) + hor )
+				)
+				temp += df
+			)
+
+	)
+	
+	for j = 3 to col by 4 do
+	(
+
+			temp = start
+		
+			for t = 1 to (c*count+1) do
+			(
+				at time temp ( 
+					for i = 1 to row by 2 do ( BallArray[i][j].pos.z = -amp*sin(dt*(t-1)) + hor )
+				)
+				temp += df
+
+			)
+	)
+
+	return (frame + dur*count)
+)
+
+--==============================================================================
+--球阵XY轴向奇偶不同列互为反向正弦波动
+--参数：amp    - 振幅
+--参数：count  - 波形周期数
+--参数：dur    - 周期帧长
+--参数：hor    - 中心高
+--参数：da     - 振幅的变化值
+--==============================================================================
+fn sinXYOESpherePos amp count dur hor frame:FrameTime row:row col:column =
+(
+	c = 8  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+	
+	start = frame
+	
+	for i = 1 to row-2 by 4 do
+	(
+
+		temp = start
+		
+			for t = 1 to (c*count+1) do
+			(
+				at time temp ( 
+					for j = 1 to col-2 by 4 do 
+					( 
+						BallArray[i][j].pos.z = amp*sin(dt*(t-1)) + hor 
+					)
+					
+					for j = 3 to col by 4 do 
+					( 
+						BallArray[i][j].pos.z = -amp*sin(dt*(t-1)) + hor 
+					)
+				)
+				temp += df
+			)	
+
+	)
+	
+	for i = 3 to row by 4 do
+	(
+
+			temp = start
+		
+			for t = 1 to (c*count+1) do
+			(
+				at time temp ( 
+					for j = 1 to col-2 by 4 do 
+					( 
+						BallArray[i][j].pos.z = -amp*sin(dt*(t-1)) + hor 
+					)
+					
+					for j = 3 to col by 4 do 
+					( 
+						BallArray[i][j].pos.z = amp*sin(dt*(t-1)) + hor 
+					)
+				)
+				temp += df
+			)
+	)
+
+	return (frame + dur*count)
+)
+
+--==================================================================================
+--造型说明
+--最大演示范围，1.6米
+--距离地面最大高度，1.5米
+--最长演示时间，5min
+--==================================================================================
+
+FrameTime = 0
+
+
+animate on
+(
+	
+	--==============================================================================
+	--球阵和框阵起始零位，停止0.5秒
+	--==============================================================================
+	--FrameTime += 120
+	--horizSphereSynPos 0
+	--horizLinePos -200
+	
+	
+	--==============================================================================
+	--球阵和框阵起始零位，停止0.5秒
+	--==============================================================================
+	--FrameTime += 120
+
+	FrameTime = horizSphereASynDelay1Pos 0 200 60 15    --horizSphereASynDelayPos pos0 pos range delay
+	
+	FrameTime = horizSphereASynDelay1Pos 200 0 60 15    --horizSphereASynDelayPos pos0 pos range delay
+	
+	--horizSphereASynDelay1Pos 200 90 10      --horizSphereASynDelay1Pos pos range delay
+
+	
+	--FrameTime = sinSphereDirectPos 100 4 40 0 10 2
+	--FrameTime = sinSphereDirectPos 100 4 40 0 10 4
+	--FrameTime = sinSphereDirectPos 100 4 40 0 10 3
+	
+	/*
+	FrameTime = sinXYOESpherePos 50 4 32 0                --sinXYOESpherePos amp count dur hor
+	
+	FrameTime = sinXOESpherePos 50 4 40 0              --sinOXSpherePos amp count dur hor
+	
+	FrameTime = sinYOESpherePos 50 4 40 0              --sinOXSpherePos amp count dur hor
+	
+	FrameTime = sinSphereZPos 100 4 120 10 0 4         --sinSphereZPos amp count dur delay hor direct
+	
+	FrameTime = sinSphereZ1Pos 100 4 120 10 0 50 1      --sinSphereZPos amp count dur delay hor da direct
+	FrameTime = sinSphereZ1Pos 100 4 120 10 0 50 2      --sinSphereZPos amp count dur delay hor da direct
+	FrameTime = sinSphereZ1Pos 100 4 120 10 0 50 4      --sinSphereZPos amp count dur delay hor da direct
+	FrameTime = sinSphereZ1Pos 100 4 120 10 0 50 3      --sinSphereZPos amp count dur delay hor da direct
+	
+	--FrameTime = sinSphereY1Pos 100 4 120 10 0 100         --sinSphereYPos amp count dur delay hor
+	
+	--FrameTime = sinSphereC1Pos 100 count dur hor da  
+	
+	--sinSpherePos amp count dur delay hor        --sinSpherePos amp count dur delay hor
+	
+	--FrameTime = sinSphereDirectPos 100 4 40 10 0      --sinSphereDirectPos amp count dur delay hor flag
+	
+	/*
+	--==============================================================================
+	--球阵同步下移至-800，耗时
+	--==============================================================================
+	FrameTime += 120
+	horizSphereSynPos -800
+	FrameTime += 15
+	horizSphereSynPos -800
+	--horizLineDisPos 0 -1600
+	
+	--==============================================================================
+	--球阵异步下移至-800，耗时
+	--==============================================================================
+	FrameTime += 120
+	horizSphereASynPos -1600 60
+	
+	FrameTime += 15
+	horizSphereSynPos -1600
+	
+	--==============================================================================
+	--球阵异步下移至-800，耗时
+	--==============================================================================
+	FrameTime += 120
+	horizSphereASynPos -800 60
+	
+	FrameTime += 15
+	horizSphereSynPos -800
+	
+	--==============================================================================
+	--球阵异步下移至-800，耗时
+	--==============================================================================
+	FrameTime += 120
+	horizSphereASynPos -1600 60
+	
+	/*
+	--==============================================================================
+	--球阵随机分布0至-1600，框阵偶数框下行至-1600，耗时4秒
+	--==============================================================================
+	FrameTime += 240
+	randomSpherePos 0 -1600
+	horizLineDisPos 0 -1600
+	
+	--==============================================================================
+	--球阵随机分布0至-1600，框阵偶数框下行至-1600，耗时4秒
+	--==============================================================================
+	--FrameTime += 240
+	--horizSphere1Pos --1600 120           --horizSphere1Pos pos dur
+	--horizSpherePos -1600
+	
+	
+	--==============================================================================
+	--球阵随机分布0至-1600，框阵偶数框下行至-1600，耗时4秒
+	--==============================================================================
+	--FrameTime += 120
+	--randomSpherePos 0 -1600
+	--horizLineDisPos 0 -1600
+	--horizSphere1Pos -1600 60           --horizSphere1Pos pos delay
+	--horizLinePos -1600
+	
+	
+	--FrameTime += 120
+	--horizSpherePos -1600
+	
+	
+	--==============================================================================
+	--球阵再次随机分布0至-1600，耗时4秒
+	--==============================================================================
+	FrameTime += 120
+	randomSpherePos -200 -1400
+	horizLineDisPos 0 -1600
+	
+	--==============================================================================
+	--球阵随机分布-200至-1400，耗时2秒
+	--==============================================================================
+	FrameTime += 120
+	randomSpherePos -400 -1200
+	horizLineDisPos -400 -1200
+	
+	--==============================================================================
+	--球阵随机分布-400至-1200，耗时2秒
+	--==============================================================================
+	FrameTime += 120
+	randomSpherePos -600 -1000
+	horizLineDisPos -600 -1000
+	
+	--==============================================================================
+	--球阵随机分布-600至-1000，耗时2秒
+	--==============================================================================
+	FrameTime += 120
+	horizSpherePos -800
+	horizLinePos -800
+	
+	--==============================================================================
+	--球阵在-800停止0.5秒
+	--==============================================================================
+	FrameTime += 15
+	horizSpherePos -800
+	horizLinePos -800
+	
+	--==============================================================================
+	--球阵与框阵分离，耗时4秒
+	--==============================================================================
+	FrameTime += 120
+	horizSpherePos 0
+	horizLinePos -1600
+	
+	--==============================================================================
+	--球阵随机分布0至-1000，耗时2秒
+	--框阵向上运行呼应
+	--==============================================================================
+	FrameTime += 60
+	randomSpherePos 0 -1300
+	linearForwardPos 300 -1600        --linearForwardPos h hor
+	
+	--==============================================================================
+	--球阵与框阵分离，耗时2秒
+	--==============================================================================
+	FrameTime += 120
+	horizSpherePos 0
+	horizLinePos -1300
+	
+	--==============================================================================
+	--球阵随机分布0至-1000，耗时4秒
+	--框阵向上运行呼应
+	--==============================================================================
+	FrameTime += 60
+	randomSpherePos 0 -1600
+	linearBackwardPos 300 -1300                --linearBackwardPos h hor
+	
+	--==============================================================================
+	--球阵与框阵运行至-800，耗时1秒
+	--==============================================================================
+	FrameTime += 60
+	horizSpherePos -800
+	horizLinePos -800
+	
+	--==============================================================================
+	--球阵由中心启动正弦波动形成水滴涟漪造型，4周期，周期时长4秒
+	--框阵同时奇偶分离
+	--==============================================================================
+	FrameTime = sinSphereC1Pos 100 8 120 -800 50    --sinSphereCPos amp count dur hor
+	--horizLineDisPos -400 -1200
+	
+	--==============================================================================
+	--球阵由中心启动正弦波动形成水滴涟漪造型，4周期，周期时长4秒
+	--框阵同时奇偶分离
+	--==============================================================================
+	FrameTime = sinSphereCPos 200 2 180 -800    --sinSphereCPos amp count dur hor
+	horizLineDisPos -200 -1400
+	
+	--==============================================================================
+	--球阵由中心启动正弦波动形成水滴涟漪造型，4周期，周期时长4秒
+	--框阵同时奇偶分离
+	--==============================================================================
+	FrameTime = sinSphereCPos 400 2 240 -800     --sinSphereCPos amp count dur hor
+	horizLineDisPos 0 -1600
+	
+	--==============================================================================
+	--球阵启动逐个延时正弦波动，单个球运行1周期，耗时4秒
+	--同时框阵奇偶上下交替
+	--==============================================================================
+	FrameTime = sinSpherePos 200 1 120 5 -800      --sinSpherePos amp count dur delay hor
+	horizLineDisPos -1600 0
+	
+	--==============================================================================
+	--球阵启动逐个延时正弦波动，单个球运行1周期，耗时4秒
+	--同时框阵奇偶上下交替
+	--==============================================================================
+	FrameTime = sinSpherePos 400 1 180 5 -800      --sinSpherePos amp count dur delay hor
+	horizLineDisPos 0 -1600
+	
+	--==============================================================================
+	--球阵启动逐个延时正弦波动，单个球运行1周期，耗时4秒
+	--同时框阵奇偶上下交替
+	--==============================================================================
+	FrameTime += 60
+	horizSpherePos -800
+	horizLinePos -800
+	
+	--==============================================================================
+	--球阵启动逐个延时正弦波动运行6周期，耗时12秒
+	--==============================================================================
+	FrameTime = sinSphere3Pos 200 6 120 5 -800 50     --sinSphere3Pos amp count dur delay hor da
+	horizLineDisPos 0 -1600
+	
+	--==============================================================================
+	--球阵启动X轴延时正弦波动运行6周期，耗时12秒
+	--==============================================================================
+	FrameTime = sinSphereX1Pos 200 4 120 10 -800 100    --sinSpherePos amp count dur delay hor
+	horizLineDisPos -1600 0
+	
+	--==============================================================================
+	--球阵启动Y轴延时正弦波动运行6周期，耗时12秒
+	--==============================================================================
+	FrameTime = sinSphereY1Pos 600 4 120 10 -800 -100    --sinSpherePos amp count dur delay hor
+	horizLinePos -800
+	*/
+	
+	FrameTime
+	
+)
+
+/*
+---------------------------------2015-3-2-------------------------------------------
+animate on
+(
+	--==============================================================================
+	--球阵起始零位，停止0.5秒
+	--==============================================================================
+	FrameTime += 15
+	horizSpherePos 0
+	horizLinePos 0
+	
+	--loopLineSymAPos 750 50 4 120 -800 --loopLineSymAPos pos amp count dur hor
+	
+	--==============================================================================
+	--球阵随机分布变于0至-1600
+	--==============================================================================
+	FrameTime += 120
+	randomSpherePos 0 -1600
+	horizLineDisPos 0 -1600
+	
+	--==============================================================================
+	--球阵随机分布变于0至-1600
+	--==============================================================================
+	FrameTime += 15
+	--randomSpherePos 0 -1600
+	horizLineDisPos 0 -1600
+	
+	--randomSpherePos 0 -1600
+	FrameTime = loopLineSymAPos 100 4 120 5 800 -800 --loopLineSymAPos amp count dur delay pos hor
+	randomSpherePos 0 -1600
+	
+	/*
+	--==============================================================================
+	--球阵整体下降至-800，耗时2秒
+	--==============================================================================
+	FrameTime += 60
+	horizSpherePos -800
+	horizLineDisPos 0 -1600
+	
+	--==============================================================================
+	--球阵整体下降至-800，暂停0.5秒
+	--==============================================================================
+	FrameTime += 15
+	horizSpherePos -800
+	
+	--==============================================================================
+	--球阵由中心启动正弦波动形成水滴涟漪造型，4周期，周期时长4秒
+	--==============================================================================
+	FrameTime = sinSphereCPos 200 2 120 -800     --sinSphereCPos amp count dur hor
+	
+	--==============================================================================
+	--球阵启动开口向下抛物面造型，并停留0.5秒，耗时3.5秒
+	--==============================================================================
+	FrameTime += 90
+	paraboSpherePos 5 -800     --paraboSpherePos a hor
+	
+	--==============================================================================
+	--球阵启动开口向下抛物面造型，并停留0.5秒
+	--==============================================================================
+	FrameTime += 15
+	paraboSpherePos 5 -800     --paraboSpherePos a hor
+	
+	--==============================================================================
+	--球阵启动开口向上抛物面造型，并停留0.5秒，耗时3.5秒
+	--==============================================================================
+	FrameTime += 90
+	paraboSpherePos -5 -800     --paraboSpherePos a hor
+	
+	--==============================================================================
+	--球阵启动开口向上抛物面造型，并停留0.5秒
+	--==============================================================================
+	FrameTime += 15
+	paraboSpherePos -5 -800     --paraboSpherePos a hor
+
+	--==============================================================================
+	--球阵启动逐个延时正弦波动，单个球运行1周期，耗时4秒
+	--==============================================================================
+	--FrameTime = sinSpherePos 200 1 120 5 -800      --sinSpherePos amp count dur delay hor
+	
+	
+	
+	--==============================================================================
+	--球阵整体下降至-800，暂停0.5秒
+	--==============================================================================
+	FrameTime += 15
+	horizSpherePos -800
+	
+	--==============================================================================
+	--球阵沿X轴启动延时正弦波动运行2周期，耗时6秒，同时框阵全部回到-500
+	--==============================================================================
+	--FrameTime += 30
+
+	FrameTime = sinSphereXPos 200 1 120 10 -800  --sinSpherePos amp count dur delay hor 
+	FrameTime = sinSphereXPos 400 1 120 10 -800  --sinSpherePos amp count dur delay hor 
+	FrameTime = sinSphereXPos 600 1 120 10 -800  --sinSpherePos amp count dur delay hor 
+	FrameTime = sinSphereXPos 800 1 120 10 -800  --sinSpherePos amp count dur delay hor 
+	
+	--FrameTime = sinSphereX1Pos 500 4 90 10 -800 -50  --sinSpherePos amp count dur delay hor da  
+	
+	
+	--==============================================================================
+	--球阵沿X轴启动延时正弦波动运行5周期，耗时20秒，同时框阵全部回到-500
+	--==============================================================================
+	--FrameTime += 30
+	FrameTime = sinSphereXPos 400 1 120 10 -800   --sinSpherePos amp count dur delay hor   
+	
+	--==============================================================================
+	--球阵沿X轴启动延时正弦波动运行5周期，耗时20秒，同时框阵全部回到-500
+	--==============================================================================
+	--FrameTime += 30
+	FrameTime = sinSphereXPos 600 1 180 10 -800   --sinSpherePos amp count dur delay hor
+	
+	--==============================================================================
+	--球阵沿X轴启动延时正弦波动运行5周期，耗时20秒，同时框阵全部回到-500
+	--==============================================================================
+	--FrameTime += 30
+	FrameTime = sinSphereXPos 400 1 120 10 -800   --sinSpherePos amp count dur delay hor 
+	
+	--==============================================================================
+	--球阵沿X轴启动延时正弦波动运行2周期，耗时6秒，同时框阵全部回到-500
+	--==============================================================================
+	--FrameTime += 30
+	FrameTime = sinSphereXPos 200 1 90 10 -800   --sinSpherePos amp count dur delay hor 
+	
+	--==============================================================================
+	--球阵整体下降至-800，暂停0.5秒
+	--==============================================================================
+	FrameTime += 15
+	horizSpherePos -800
+	
+	--==============================================================================
+	--球阵沿Y轴启动延时正弦波动运行5周期，耗时20秒，同时框阵全部回到-500
+	--周期参数dur越大波形周期跨度越大
+	--延时参数delay越大波形显得越僵硬
+	--==============================================================================
+	FrameTime = sinSphereYPos 200 5 90 10 -800   --sinSpherePos amp count dur delay hor   
+	
+	FrameTime
+	
+)
+*/
+/*
+animate on
+(
+	--==============================================================================
+	--球阵起始零位，停止0.5秒
+	--==============================================================================
+	FrameTime += 15
+	horizSpherePos 0
+	horizLinePos 0
+	
+	--==============================================================================
+	--球阵随机分布变于0至-1600
+	--==============================================================================
+	FrameTime += 120
+	randomSpherePos 0 -1600
+	horizLineDisPos 0 -1600
+	
+	--==============================================================================
+	--球阵随机分布变于0至-1600
+	--==============================================================================
+	FrameTime += 60
+	randomSpherePos 0 -1600
+	
+	--==============================================================================
+	--球阵随机分布变于0至-1600
+	--==============================================================================
+	FrameTime += 60
+	randomSpherePos 0 -1600
+	
+	--==============================================================================
+	--球阵整体下降至-800，耗时2秒
+	--==============================================================================
+	FrameTime += 60
+	horizSpherePos -800
+	
+	--==============================================================================
+	--球阵整体下降至-800，暂停0.5秒
+	--==============================================================================
+	FrameTime += 15
+	horizSpherePos -800
+	
+	--==============================================================================
+	--球阵由中心启动正弦波动形成水滴涟漪造型，4周期，周期时长4秒
+	--==============================================================================
+	FrameTime = sinSphereCPos 200 4 120 -800     --sinSphereCPos amp count dur hor
+	
+	--==============================================================================
+	--球阵启动开口向下抛物面造型，并停留0.5秒，耗时3.5秒
+	--==============================================================================
+	FrameTime += 90
+	paraboSpherePos 5 -800     --paraboSpherePos a hor
+	
+	--==============================================================================
+	--球阵启动开口向下抛物面造型，并停留0.5秒
+	--==============================================================================
+	FrameTime += 15
+	paraboSpherePos 5 -800     --paraboSpherePos a hor
+	
+	--==============================================================================
+	--球阵启动开口向上抛物面造型，并停留0.5秒，耗时3.5秒
+	--==============================================================================
+	FrameTime += 90
+	paraboSpherePos -5 -800     --paraboSpherePos a hor
+	
+	--==============================================================================
+	--球阵启动开口向上抛物面造型，并停留0.5秒
+	--==============================================================================
+	FrameTime += 15
+	paraboSpherePos -5 -800     --paraboSpherePos a hor
+	
+	--==============================================================================
+	--球阵启动逐个延时正弦波动，单个球运行2周期，耗时8秒
+	--==============================================================================
+	FrameTime = sinSpherePos 200 2 120 5 -800      --sinSpherePos amp count dur delay hor
+	
+	--==============================================================================
+	--球阵沿X轴启动延时正弦波动运行5周期，耗时20秒，同时框阵全部回到-500
+	--周期参数dur越大波形周期跨度越大
+	--延时参数delay越大波形显得越僵硬
+	--==============================================================================
+	FrameTime = sinSphereXPos 200 5 90 10 -800   --sinSpherePos amp count dur delay hor   
+	
+	--==============================================================================
+	--球阵沿Y轴启动延时正弦波动运行5周期，耗时20秒，同时框阵全部回到-500
+	--周期参数dur越大波形周期跨度越大
+	--延时参数delay越大波形显得越僵硬
+	--==============================================================================
+	FrameTime = sinSphereYPos 200 5 90 10 -800   --sinSpherePos amp count dur delay hor   
+	
+	FrameTime
+	
+)
+*/
+
