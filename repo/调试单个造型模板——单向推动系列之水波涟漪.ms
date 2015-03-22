@@ -53,9 +53,9 @@ animate on
 	horizSphereSynPos middle_pos   --球初始状态在最高位置 ，0位
 	horizLinePos middle_pos        --框初始状态在最高位置 ，0位	
 	
-	--FrameTime = LineDelayPos -700 200 6 240 120   --LineDelayPos 起始位置 位置增量 变化次数 延时时间  保持时间
+	
 	LineDelayPos -700 250 4 40 90   --LineDelayPos 起始位置 位置增量 变化次数 延时时间  保持时间
-	FrameTime = sinSphereYPos 200 4 120 10 -700 200      --sinSphereYNPos 振幅 振幅变化次数 变化周期 逐行延时 中心高 振幅增量
+	FrameTime = sinSphereCPos 150 4 120 -700 200      --ssinSphereCPos 振幅 振幅变化次数 变化周期 逐行延时 中心高 振幅增量
 	
 	/*
 	--1.球阵逐行向上运行，同时框阵向上运行相同距离

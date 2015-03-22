@@ -296,28 +296,96 @@ fn LineSingleLoopDelayPos pos dur delay hor frame:FrameTime n:num =
 
 ----------------------------------动态延时造型--------------------------------------
 --==============================================================================
---造型函数：框阵为周期性变化，在周期时间内静止
+--造型函数：框阵整体位置为周期性变化，在周期时间内静止
 --参数：pos    - 起始位置
 --参数：d       - 位置增量
 --参数：count   - 周期数
---参数：cycle   - 周期时间
+--参数：dur     - 运行时间
 --参数：hold    - 保持时间
 --说明：一个周期时间包括位置变化时间与保持终点位置时间
 --==============================================================================
-fn LineDelayPos pos d count cycle hold frame:FrameTime n:num =
+fn LineDelayPos pos d count dur hold frame:FrameTime n:num =
 (
-	--pos1 = pos
+
+	cycle = dur+hold
+	start = frame
 	for t = 1 to count do
 	(	
+		at time start ( for i = 1 to n do LineArray[i].pos.z = pos )
 		pos += d
-		
-		at time frame ( for i = 1 to n do LineArray[i].pos.z = pos )
-		at time (frame + hold) ( for i = 1 to n do LineArray[i].pos.z = pos )
-		
-		frame += cycle
+		at time (start+dur) ( for i = 1 to n do LineArray[i].pos.z = pos )
+		at time (start+dur+hold) ( for i = 1 to n do LineArray[i].pos.z = pos )
+		start += cycle
+		--frame += cycle
 	)
 	
-	return frame
+	return frame+count*cycle
 )	
 
+--==============================================================================
+--造型函数：框阵分为奇偶两组，位置周期性变化，在周期时间内静止
+--参数：pos    - 起始位置
+--参数：d       - 位置增量
+--参数：count   - 周期数
+--参数：dur     - 运行时间
+--参数：hold    - 保持时间
+--参数：hor     - 中心高
+--说明：一个周期时间包括位置变化时间与保持终点位置时间
+--==============================================================================
+fn LineDisDelayPos d count dur hold hor frame:FrameTime n:num =
+(
+	pos = d
+	cycle = dur+hold
+	start = frame
+	for t = 1 to count do
+	(	
 
+		at time (start+dur) ( 
+			for i = 1 to n-1 by 2 do LineArray[i].pos.z = pos + hor
+			for i = 2 to n by 2 do LineArray[i].pos.z = -pos + hor
+		)
+		at time (start+dur+hold) ( 
+			for i = 1 to n-1 by 2 do LineArray[i].pos.z = pos + hor
+			for i = 2 to n by 2 do LineArray[i].pos.z = -pos + hor
+		)
+		pos += d
+		start += cycle
+	)
+	
+	return frame+count*cycle
+)
+
+--==============================================================================
+--造型函数：框阵分为奇偶两组，周期性打开并合上
+--参数：pos    - 起始位置
+--参数：d       - 位置增量
+--参数：count   - 周期数
+--参数：dur     - 运行时间
+--参数：hold    - 保持时间
+--参数：hor     - 中心高
+--说明：一个周期时间包括位置变化时间与保持终点位置时间
+--==============================================================================
+fn LineDynDisDelayPos pos d count dur hold hor frame:FrameTime n:num =
+(
+
+	cycle = dur+hold
+	start = frame
+	for t = 1 to count do
+	(	
+
+		at time start ( for i = 1 to n do LineArray[i].pos.z = hor )
+
+		at time (start+dur) ( 
+			for i = 1 to n-1 by 2 do LineArray[i].pos.z = pos + hor
+			for i = 2 to n by 2 do LineArray[i].pos.z = -pos + hor
+		)
+		at time (start+dur+hold) ( 
+			for i = 1 to n-1 by 2 do LineArray[i].pos.z = pos + hor
+			for i = 2 to n by 2 do LineArray[i].pos.z = -pos + hor
+		)
+		pos += d
+		start += cycle
+	)
+	
+	return frame+count*cycle
+)
