@@ -42,37 +42,50 @@ animate on
 	horizSphereSynPos initial_pos   --球初始状态在最高位置 ，0位
 	horizLinePos initial_pos         --框初始状态在最高位置 ，0位	
 	
+	
+	--Z字形弹簧
 	--==============================================================================
-	--球随机跳动，框上下分离不动
+	--中平面打开并产生弹簧阻尼振动效果,注意需要手动改变速度曲线曲率，达到撞击反弹的效果
 	--==============================================================================
-	--造型准备
 	FrameTime += 120
 	horizSphereSynPos middle_pos   --球初始状态在最高位置 ，0位
-	horizLinePos middle_pos        --框初始状态在最高位置 ，0位
+	horizLinePos middle_pos        --框初始状态在最高位置 ，0位	
 	FrameTime += 15
 	horizSphereSynPos middle_pos   --球初始状态在最高位置 ，0位
-	horizLinePos middle_pos        --框初始状态在最高位置 ，0位	
+	horizLinePos middle_pos
 	
-	--框阵基于中平面双侧间歇性运动
-	--LineDisDelayPos 150 4 40 90 -700   --LineDisDelayPos d count dur hold hor 偏距位置增量 变化次数 运行时间  保持时间 中心高
-	--球阵基于中平面启动行波
-	--FrameTime = sinSphereXPos 150 6 120 10 -700 120     --ssinSphereYPos 振幅 振幅变化次数 变化周期 逐行延时 中心高 振幅增量
+	--1 第1次弹开和回落
+	FrameTime += 120
+	rateXCOESpherePos 100 -700            --球横向X交叉
+	horizLineBasePos 700 -700      --horizLineBasePos 偏距 中心高
+	FrameTime += 90
+	horizSphereSynPos -700       --rateSphereCPos a hor
+	horizLineBasePos 0 -700
 	
-	--LineAsyDisDelayPos 100 6 130 100 90 60 -700     --LineAsyDisDelayPos 偏距位置增量 变化次数 奇数组周期 偶数组周期  奇数组保持时间 偶数组保持时间 中心高
-	--FrameTime = sinSphereYPos 100 6 120 10 -700 100     --sinSphereYPos 振幅 振幅变化次数 变化周期 逐行延时 中心高 振幅增量
+	--2 第2次弹开和回落
+	FrameTime += 80
+	rateXCOESpherePos 60 -700       --rateSphereCPos a hor
+	horizLineBasePos 500 -700
+	FrameTime += 70
+	horizSphereSynPos -700       --rateSphereCPos a hor
+	horizLineBasePos 0 -700
 	
-	--1 框阵奇偶分开
+	--3 第3次弹开和回落
 	FrameTime += 60
+	rateXCOESpherePos 40 -700       --rateSphereCPos a hor
+	horizLineBasePos 300 -700
+	FrameTime += 50
+	horizSphereSynPos -700       --rateSphereCPos a hor
+	horizLineBasePos 0 -700
+	
+	--4 第4次弹开和回落
+	FrameTime += 50
+	rateXCOESpherePos 15 -700       --rateSphereCPos a hor
 	horizLineBasePos 100 -700
+	FrameTime += 30
+	horizSphereSynPos -700       --rateSphereCPos a hor
+	horizLineBasePos 0 -700
 	
-	--2 奇数组间歇性上升
-	LineOddDelayPos  100 100 6 30 120 90 -700   --LineOddDelayPos pos d count delay cycle hold hor
-	LineEvenDelayPos 100 100 6 90 120 90 -700    --LineOddDelayPos 偏距位置增量 变化次数 运行时间  保持时间 中心高
-	
-	--3 球阵启动列波
-	FrameTime = sinSphereXPos 100 6 120 10 -700 100
-	
-
 	FrameTime
 	
 )

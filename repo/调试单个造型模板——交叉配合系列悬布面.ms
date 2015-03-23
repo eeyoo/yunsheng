@@ -43,193 +43,46 @@ animate on
 	horizLinePos initial_pos         --框初始状态在最高位置 ，0位	
 	
 	--==============================================================================
-	--球阵被框阵压缩和释放，球阵斜面
+	--框阵奇偶框交叉穿越，球阵躺椅形颠倒变化
 	--==============================================================================
-	-------------------------------中平面之上---------------------------------------
-	--1 弹簧释放
+	--到达中平面造型准备
 	FrameTime += 120
-	rateSpherePos 690 -700 1           --球阵斜面造型，rateSpherePos 高度 基准 方向：1左边，2右边
-	horizLineDisPos 0 -700
-	FrameTime += 15   --停留0.5秒
-	rateSpherePos 690 -700  1        
-	horizLineDisPos 0 -700
-	
-	--2 弹簧压缩
-	FrameTime += 120
-	horizSphereSynPos -700         --球横向X交叉
-	horizLinePos -700
-	
-	--3 弹簧再次释放
-	FrameTime += 120
-	rateSpherePos 690 -700 2
-	horizLineDisPos 0 -700
+	horizSphereSynPos middle_pos   --中平面
+	horizLinePos middle_pos 
 	FrameTime += 15
-	rateSpherePos 690 -700 2
-	horizLineDisPos 0 -700
-	
-	--4 弹簧再次压缩
-	FrameTime += 120
-	horizSphereSynPos -700           --球横向X交叉
-	horizLinePos -700
-	FrameTime += 5
-	horizSphereSynPos -700           --球横向X交叉
-	horizLinePos -700
-	
-	-------------------------------中平面以下-----------------------------------
-	--1 弹簧释放
-	FrameTime += 120
-	rateSpherePos 690 -1400 1
-	horizLineDisPos -700 -1400
-	FrameTime += 15
-	rateSpherePos 690 -1400 1
-	horizLineDisPos -700 -1400
-	
-	--2 弹簧压缩
-	FrameTime += 120
-	horizSphereSynPos -1400          --球至底部
-	horizLinePos -1400
-	
-	--3 弹簧再次释放
-	FrameTime += 120
-	rateSpherePos 690 -1400 2
-	horizLineDisPos -700 -1400
-	FrameTime += 15
-	rateSpherePos 690 -1400 2
-	horizLineDisPos -700 -1400
-	
-	--4 弹簧再次压缩
-	FrameTime += 120
-	horizSphereSynPos -1400          --球至底部
-	horizLinePos -1400
-	
-	---------------------------------中平面---------------------------------------
-	--1 同时到达中平面
-	FrameTime += 120
-	horizSphereSynPos middle_pos   --球初始状态在最高位置 ，0位
-	horizLinePos middle_pos        --框初始状态在最高位置 ，0位	
-	FrameTime += 15
-	horizSphereSynPos middle_pos   --球初始状态在最高位置 ，0位
+	horizSphereSynPos middle_pos   --中平面
 	horizLinePos middle_pos
 	
-	--2 框阵打开，球阵横向X字形
+	--1 框阵向上打开，球阵呈悬布面
 	FrameTime += 120
-	rateSphereCPos 100 -700       --rateSphereCPos ax7 hor
-	horizLineBasePos 700 -700      --horizLineBasePos 偏距 中心高
-	FrameTime += 15
-	rateSphereCPos 100 -700       --rateSphereCPos ax7 hor
-	horizLineBasePos 700 -700      --horizLineBasePos 偏距 中心高
-	
-	--3 回到中平面
-	FrameTime += 120
-	horizSphereSynPos middle_pos   --球初始状态在最高位置 ，0位
-	horizLinePos middle_pos        --框初始状态在最高位置 ，0位
-	FrameTime += 15
-	horizSphereSynPos middle_pos   --球初始状态在最高位置 ，0位
-	horizLinePos middle_pos        --框初始状态在最高位置 ，0位
-	
-	--4 再次弹开
-	FrameTime += 120
-	rateSphereCPos -100 -700       --rateSphereCPos ax7 hor
-	horizLineBasePos 700 -700      --horizLineBasePos 偏距 中心高
-	FrameTime += 15
-	rateSphereCPos -100 -700       --rateSphereCPos ax7 hor
-	horizLineBasePos 700 -700      --horizLineBasePos 偏距 中心高
-	
-	--5 回到中平面
-	FrameTime += 120
-	horizSphereSynPos middle_pos   --球初始状态在最高位置 ，0位
-	horizLinePos middle_pos        --框初始状态在最高位置 ，0位
-	
-	
-	--==============================================================================
-	--中平面打开并产生弹簧阻尼振动效果,注意需要手动改变速度曲线曲率，达到撞击反弹的效果
-	--==============================================================================
-	FrameTime += 120
-	horizSphereSynPos middle_pos   --球初始状态在最高位置 ，0位
-	horizLinePos middle_pos        --框初始状态在最高位置 ，0位	
-	FrameTime += 15
-	horizSphereSynPos middle_pos   --球初始状态在最高位置 ，0位
-	horizLinePos middle_pos
-	
-	--1 打开
-	FrameTime += 120
-	rateSphereCPos 100 -700       --rateSphereCPos ax7 hor
-	horizLineBasePos 700 -700      --horizLineBasePos 偏距 中心高
-	
-	FrameTime += 90
-	rateSphereCPos 0 -700       --rateSphereCPos a hor
-	horizLineBasePos 0 -700
-	
-	FrameTime += 80
-	rateSphereCPos 60 -700       --rateSphereCPos a hor
-	horizLineBasePos 500 -700
-	
-	FrameTime += 70
-	rateSphereCPos 0 -700       --rateSphereCPos a hor
-	horizLineBasePos 0 -700
-	
-	FrameTime += 60
-	rateSphereCPos 40 -700       --rateSphereCPos a hor
-	horizLineBasePos 300 -700
-	
-	FrameTime += 50
-	rateSphereCPos 0 -700       --rateSphereCPos a hor
-	horizLineBasePos 0 -700
-	
-	FrameTime += 50
-	rateSphereCPos 15 -700       --rateSphereCPos a hor
-	horizLineBasePos 100 -700
-	
-	FrameTime += 30
-	rateSphereCPos 0 -700       --rateSphereCPos a hor
-	horizLineBasePos 0 -700
-	
-	/*
-	--斜面以中心轴转动
-	--造型准备
-	FrameTime += 120
-	horizSphereSynPos middle_pos   --球初始状态在最高位置 ，0位
-	horizLinePos middle_pos        --框初始状态在最高位置 ，0位	
-	FrameTime += 15
-	horizSphereSynPos middle_pos   --球初始状态在最高位置 ，0位
-	horizLinePos middle_pos
-	
-	--1 打开
-	FrameTime += 120
-	rateSphereCXPos 100 -700       --rateSphereCPos ax7 hor
-	horizLineBasePos 700 -700      --horizLineBasePos 偏距 中心高
-	*/
-	
-	/*
-	--1.框奇偶分离，球阵在中间
-	FrameTime += 120
-	horizSphereSynPos -700           --球到中间
-	horizLinePos -700          --奇偶框上下分离（奇数框位置，pos2 - 偶数框位置） 
-	
-	--2.球阵横向X交叉，框阵奇偶分开
-	FrameTime += 120
-	rateXOESpherePos 50 -1400          --rateXOESpherePos a hor
-	horizLineDisPos -300 -1100
+	cornerSpherePos 4 -650 1        --cornerSpherePos 高度系数 基准 
+	horizLineDisPos 0 -700
 	FrameTime += 15   --停留0.5秒
-	rateXOESpherePos 80 -700          --rateXOESpherePos a hor
-	horizLineDisPos -300 -1100
+	cornerSpherePos 4 -650 1          --球阵躺椅造型，chairSpherePos a hor 高度系数x7 基准
+	horizLineDisPos 0 -700
 	
-	--3.压缩
+	--2 回到中平面
 	FrameTime += 120
-	horizSphereSynPos -700           --球到中间
-	horizLinePos -700 
+	horizSphereSynPos -700
+	horizLinePos -700
+	FrameTime += 15
+	horizSphereSynPos -700
+	horizLinePos -700
 	
-	--4.释放
+	--3 框阵向下打开，球阵呈悬布面
 	FrameTime += 120
-	rateXOESpherePos 80 -700          --rateXOESpherePos a hor
-	horizLineDisPos -100 -1300
+	cornerSpherePos -4 -750 1         --球阵躺椅造型，chairSpherePos a hor 高度系数x7 基准
+	horizLineDisPos -700 -1400
 	FrameTime += 15   --停留0.5秒
-	rateXOESpherePos 80 -700          --rateXOESpherePos a hor
-	horizLineDisPos -100 -1300
+	cornerSpherePos -4 -750 1          --球阵躺椅造型，chairSpherePos a hor 高度系数x7 基准
+	horizLineDisPos -700 -1400
 	
-	--5.压缩
+	--4 回到中平面
 	FrameTime += 120
-	horizSphereSynPos -700           --球到中间
+	horizSphereSynPos -700
+	horizLinePos -700
+	FrameTime += 15
+	horizSphereSynPos -700
 	horizLinePos -700
 	
 	

@@ -54,7 +54,7 @@ animate on
 	horizLinePos middle_pos        --框初始状态在最高位置 ，0位	
 	
 	
-	LineDynDisDelayPos 250 250 4 40 90 -700   --LineDisDelayPos pos d count dur hold hor 起始位置 位置增量 变化次数 延时时间  保持时间
+	--LineDynDisDelayPos 250 250 4 40 90 -700   --LineDisDelayPos pos d count dur hold hor 起始位置 位置增量 变化次数 延时时间  保持时间
 	FrameTime = sinSphereRatePos 200 4 120 10 -700 200 1     --sinSphereRatePos 振幅 振幅变化次数 变化周期 逐行延时 中心高 振幅增量 起点
 	
 	/*

@@ -54,25 +54,10 @@ animate on
 	horizLinePos middle_pos        --框初始状态在最高位置 ，0位	
 	
 	--框阵基于中平面双侧间歇性运动
-	--LineDisDelayPos 150 4 40 90 -700   --LineDisDelayPos d count dur hold hor 偏距位置增量 变化次数 运行时间  保持时间 中心高
-	--球阵基于中平面启动行波
-	--FrameTime = sinSphereXPos 150 6 120 10 -700 120     --ssinSphereYPos 振幅 振幅变化次数 变化周期 逐行延时 中心高 振幅增量
+	LineDisDelayPos 150 4 70 180 -700   --LineDisDelayPos d count dur hold hor 偏距位置增量 变化次数 运行时间  保持时间 中心高
+	--球阵基于中平面启动列波
+	FrameTime = sinSphereYPos 150 4 240 10 -700 120     --ssinSphereYPos 振幅 振幅变化次数 变化周期 逐行延时 中心高 振幅增量
 	
-	--LineAsyDisDelayPos 100 6 130 100 90 60 -700     --LineAsyDisDelayPos 偏距位置增量 变化次数 奇数组周期 偶数组周期  奇数组保持时间 偶数组保持时间 中心高
-	--FrameTime = sinSphereYPos 100 6 120 10 -700 100     --sinSphereYPos 振幅 振幅变化次数 变化周期 逐行延时 中心高 振幅增量
-	
-	--1 框阵奇偶分开
-	FrameTime += 60
-	horizLineBasePos 100 -700
-	
-	--2 奇数组间歇性上升
-	LineOddDelayPos  100 100 6 30 120 90 -700   --LineOddDelayPos pos d count delay cycle hold hor
-	LineEvenDelayPos 100 100 6 90 120 90 -700    --LineOddDelayPos 偏距位置增量 变化次数 运行时间  保持时间 中心高
-	
-	--3 球阵启动列波
-	FrameTime = sinSphereXPos 100 6 120 10 -700 100
-	
-
 	FrameTime
 	
 )

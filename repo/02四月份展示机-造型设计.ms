@@ -245,7 +245,7 @@ animate on
 	horizLinePos middle_pos        --框初始状态在最高位置 ，0位
 	
 	--==============================================================================
-	--造型011 - 弹簧系列之横向塔形
+	--造型011 - 弹簧系列之横向宝塔形
 	--==============================================================================
 	--------------------------------初始位置上平面----------------------------------
 	---------------------------------基准面中平面-----------------------------------
@@ -283,10 +283,148 @@ animate on
 	FrameTime += 120
 	horizSphereSynPos -700
 	horizLinePos -700
-	FrameTime += 5
+	FrameTime += 15
 	horizSphereSynPos -700
 	horizLinePos -700
 	
+	--==============================================================================
+	--造型012 - 交叉变换系列
+	--==============================================================================
+	-----------------------------------扭曲面---------------------------------------
+	--1 框阵打开，球阵向上呈扭曲面 
+	FrameTime += 120
+	warpSpherePos 100 -700          --warpSpherePos a hor 高度系数x7 基准
+	horizLineDisPos 0 -1400
+	FrameTime += 15   --停留0.5秒
+	warpSpherePos 100 -700       
+	horizLineDisPos 0 -1400
+	
+	--2 球阵向上呈扭曲面，框奇偶颠倒
+	FrameTime += 120
+	warpSpherePos -100 -700
+	horizLineDisPos -1400 0
+	FrameTime += 15
+	warpSpherePos -100 -700
+	horizLineDisPos -1400 0
+	
+	--3 回到中平面
+	FrameTime += 120
+	horizSphereSynPos -700
+	horizLinePos -700
+	FrameTime += 15
+	horizSphereSynPos -700
+	horizLinePos -700
+	
+	-----------------------------------抛物面---------------------------------------
+	--1 框阵打开，球阵向上呈抛物面 
+	FrameTime += 120
+	paraboSpherePos 10 -700          --paraboSpherePos a hor 高度系数x7 基准
+	horizLineDisPos 0 -1400
+	FrameTime += 15   --停留0.5秒
+	paraboSpherePos 10 -700        
+	horizLineDisPos 0 -1400
+	
+	--2 球阵向上呈抛物面，框奇偶颠倒
+	FrameTime += 120
+	paraboSpherePos -10 -700
+	horizLineDisPos -1400 0
+	FrameTime += 15
+	paraboSpherePos -10 -700
+	horizLineDisPos -1400 0
+	
+	--3 回到中平面
+	FrameTime += 120
+	horizSphereSynPos -700
+	horizLinePos -700
+	FrameTime += 15
+	horizSphereSynPos -700
+	horizLinePos -700
+	
+	-----------------------------------躺椅面---------------------------------------
+	--1 框阵打开，球阵呈躺椅形
+	FrameTime += 120
+	chairSpherePos 8 -700          --球阵躺椅造型，chairSpherePos a hor 高度系数x7 基准
+	horizLineDisPos 0 -1400
+	FrameTime += 15   --停留0.5秒
+	chairSpherePos 8 -700          --球阵躺椅造型，chairSpherePos a hor 高度系数x7 基准
+	horizLineDisPos 0 -1400
+	
+	--2 框阵和球阵颠倒
+	FrameTime += 120
+	chairSpherePos -8 -700          --球阵躺椅造型，chairSpherePos a hor 高度系数x7 基准
+	horizLineDisPos -1400 0
+	FrameTime += 15   --停留0.5秒
+	chairSpherePos -8 -700          --球阵躺椅造型，chairSpherePos a hor 高度系数x7 基准
+	horizLineDisPos -1400 0
+	
+	--3 回到中平面
+	FrameTime += 120
+	horizSphereSynPos -700
+	horizLinePos -700
+	FrameTime += 15
+	horizSphereSynPos -700
+	horizLinePos -700
+	
+	-----------------------------------悬布面---------------------------------------
+	--1 框阵向上打开，球阵呈悬布面
+	FrameTime += 120
+	cornerSpherePos 4 -650 1        --cornerSpherePos 高度系数 基准 
+	horizLineDisPos 0 -700
+	FrameTime += 15   --停留0.5秒
+	cornerSpherePos 4 -650 1          --球阵躺椅造型，chairSpherePos a hor 高度系数x7 基准
+	horizLineDisPos 0 -700
+	
+	--2 回到中平面
+	FrameTime += 120
+	horizSphereSynPos -700
+	horizLinePos -700
+	FrameTime += 15
+	horizSphereSynPos -700
+	horizLinePos -700
+	
+	--3 框阵向下打开，球阵呈悬布面
+	FrameTime += 120
+	cornerSpherePos -4 -750 1         --球阵躺椅造型，chairSpherePos a hor 高度系数x7 基准
+	horizLineDisPos -700 -1400
+	FrameTime += 15   --停留0.5秒
+	cornerSpherePos -4 -750 1          --球阵躺椅造型，chairSpherePos a hor 高度系数x7 基准
+	horizLineDisPos -700 -1400
+	
+	--4 回到中平面
+	FrameTime += 120
+	horizSphereSynPos -700
+	horizLinePos -700
+	FrameTime += 15
+	horizSphereSynPos -700
+	horizLinePos -700
+	
+	--==============================================================================
+	--造型013 - 双向推动之列波
+	--==============================================================================
+	--1 框阵奇偶分开
+	FrameTime += 60
+	horizLineBasePos 100 -700
+	
+	--2 奇数组间歇性上升
+	LineOddDelayPos  100 100 6 30 120 90 -700   --LineOddDelayPos pos d count delay cycle hold hor
+	LineEvenDelayPos 100 100 6 90 120 90 -700    --LineOddDelayPos 偏距位置增量 变化次数 运行时间  保持时间 中心高
+	
+	--3 球阵启动列波
+	FrameTime = sinSphereYPos 100 6 120 10 -700 100
+	
+	--==============================================================================
+	--造型014 - 启动斜波
+	--==============================================================================
+	--启动两次斜波，起点为对角线
+	FrameTime = sinSphereRatePos 100 4 120 10 -700 150 1     --sinSphereRatePos 振幅 振幅变化次数 变化周期 逐行延时 中心高 振幅增量 起点
+	FrameTime = sinSphereRatePos 100 4 120 10 -700 150 4     --sinSphereRatePos 振幅 振幅变化次数 变化周期 逐行延时 中心高 振幅增量 起点
+	horizLineDisPos 0 -1400
+	
+	--回到中平面
+	FrameTime += 120
+	horizLinePos -700
+	FrameTime += 15
+	horizLinePos -700
 	
 	
 	

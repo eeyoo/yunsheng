@@ -42,6 +42,7 @@ animate on
 	horizSphereSynPos initial_pos   --球初始状态在最高位置 ，0位
 	horizLinePos initial_pos         --框初始状态在最高位置 ，0位	
 	
+	/*
 	--==============================================================================
 	--球阵被框阵压缩和释放，球阵斜面
 	--==============================================================================
@@ -183,8 +184,8 @@ animate on
 	FrameTime += 30
 	rateSphereCPos 0 -700       --rateSphereCPos a hor
 	horizLineBasePos 0 -700
+	*/
 	
-	/*
 	--斜面以中心轴转动
 	--造型准备
 	FrameTime += 120
@@ -196,10 +197,30 @@ animate on
 	
 	--1 打开
 	FrameTime += 120
-	rateSphereCXPos 100 -700       --rateSphereCPos ax7 hor
-	horizLineBasePos 700 -700      --horizLineBasePos 偏距 中心高
-	*/
+	rateSphereCXPos 60 -700       --rateSphereCXPos ax7 hor
+	FrameTime += 5  --停留5帧
+	rateSphereCXPos 60 -700       --rateSphereCXPos ax7 hor
 	
+	FrameTime += 120
+	rateSphereCYPos -140 -700       --rateSphereCYPos ax3 hor
+	FrameTime += 5  --停留5帧
+	rateSphereCYPos -140 -700       --rateSphereCXPos ax7 hor
+	
+	FrameTime += 120
+	rateSphereCXPos -60 -700       --rateSphereCXPos ax7 hor
+	FrameTime += 5  --停留5帧
+	rateSphereCXPos -60 -700       --rateSphereCXPos ax7 hor
+	
+	FrameTime += 120
+	rateSphereCYPos 140 -700        --rateSphereCYPos ax3 hor
+	FrameTime += 5  --停留5帧
+	rateSphereCYPos 140 -700       --rateSphereCXPos ax7 hor
+	
+	FrameTime += 120
+	rateSphereCXPos 60 -700       --rateSphereCXPos ax7 hor
+	FrameTime += 5  --停留5帧
+	rateSphereCXPos 60 -700       --rateSphereCXPos ax7 hor
+
 	/*
 	--1.框奇偶分离，球阵在中间
 	FrameTime += 120

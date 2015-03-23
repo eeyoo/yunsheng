@@ -63,7 +63,7 @@ fn horizLineDisPos pos1 pos2 frame:FrameTime n:num =
 --==============================================================================
 fn horizLineBasePos pos hor frame:FrameTime n:num =
 (
-	for i = 1 to 3 by 2 do
+	for i = 1 to n-1 by 2 do
 	(
 		at time frame (
 			LineArray[i].pos.z = pos + hor
@@ -353,6 +353,69 @@ fn LineDisDelayPos d count dur hold hor frame:FrameTime n:num =
 	)
 	
 	return frame+count*cycle
+)
+
+--==============================================================================
+--造型函数：框阵奇数组间歇性运动
+--参数：pos    - 起始位置
+--参数：d       - 位置增量
+--参数：count   - 周期数
+--参数：delay   - 周期延时启动时间
+--参数：cycle   - 周期时间
+--参数：hold    - 保持时间
+--参数：hor     - 中心高
+--说明：一个周期时间包括位置变化时间与保持终点位置时间
+--==============================================================================
+fn LineOddDelayPos pos d count delay cycle hold hor frame:FrameTime n:num =
+(
+	start = frame
+	dur = cycle - hold
+	
+	start += delay
+	at time start ( for i = 1 to n-1 by 2 do LineArray[i].pos.z = pos + hor )
+	
+	
+	for t = 1 to count do
+	(
+		pos += d
+		at time (start+dur) ( for i = 1 to n-1 by 2 do LineArray[i].pos.z = pos + hor )
+		at time (start+dur+hold) ( for i = 1 to n-1 by 2 do LineArray[i].pos.z = pos + hor )
+		
+		start += cycle
+	)
+	
+	return frame+delay+count*cycle
+)
+
+--==============================================================================
+--造型函数：框阵偶数组间歇性运动
+--参数：pos    - 起始位置
+--参数：d       - 位置增量
+--参数：count   - 周期数
+--参数：delay   - 周期延时启动时间
+--参数：cycle   - 周期时间
+--参数：hold    - 保持时间
+--参数：hor     - 中心高
+--说明：一个周期时间包括位置变化时间与保持终点位置时间
+--==============================================================================
+fn LineEvenDelayPos pos d count delay cycle hold hor frame:FrameTime n:num =
+(
+	start = frame
+	dur = cycle - hold
+	
+	start += delay
+	at time start ( for i = 2 to n by 2 do LineArray[i].pos.z = -pos + hor )
+	
+	for t = 1 to count do
+	(
+		pos += d
+		at time (start+dur) ( for i = 2 to n by 2 do LineArray[i].pos.z = -pos + hor )
+		at time (start+dur+hold) ( for i = 2 to n by 2 do LineArray[i].pos.z = -pos + hor )
+		
+		start += cycle
+	)
+	
+	return frame+delay+count*cycle
 )
 
 --==============================================================================

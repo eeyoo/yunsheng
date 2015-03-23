@@ -53,15 +53,15 @@ animate on
 	horizSphereSynPos middle_pos   --中平面
 	horizLinePos middle_pos
 	
-	--2 框阵打开，球阵向上呈抛物面 
+	--2 框阵打开，球阵向上呈扭曲面 
 	FrameTime += 120
-	warpSpherePos 50 -700          --球阵塔形造型，warpSpherePos a hor 高度系数x7 基准
+	warpSpherePos 50 -700          --warpSpherePos a hor 高度系数x7 基准
 	horizLineDisPos 0 -1400
 	FrameTime += 15   --停留0.5秒
 	warpSpherePos 50 -700       
 	horizLineDisPos 0 -1400
 	
-	--3 球阵向上呈抛物面，框奇偶颠倒
+	--3 球阵向上呈扭曲面，框奇偶颠倒
 	FrameTime += 120
 	warpSpherePos -50 -700
 	horizLineDisPos -1400 0
@@ -78,15 +78,15 @@ animate on
 	horizLinePos -700
 	
 	--增加球阵幅度
-	--1 框阵打开，球阵向上呈抛物面 
+	--1 框阵打开，球阵向上呈扭曲面 
 	FrameTime += 120
-	warpSpherePos 100 -700          --球阵塔形造型，warpSpherePos a hor 高度系数x7 基准
+	warpSpherePos 100 -700          --warpSpherePos a hor 高度系数x7 基准
 	horizLineDisPos 0 -1400
 	FrameTime += 15   --停留0.5秒
 	warpSpherePos 100 -700       
 	horizLineDisPos 0 -1400
 	
-	--2 球阵向上呈抛物面，框奇偶颠倒
+	--2 球阵向上呈扭曲面，框奇偶颠倒
 	FrameTime += 120
 	warpSpherePos -100 -700
 	horizLineDisPos -1400 0

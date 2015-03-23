@@ -55,7 +55,7 @@ animate on
 	
 	--2 框阵打开，球阵向上呈抛物面 
 	FrameTime += 120
-	paraboSpherePos 10 -700          --球阵塔形造型，paraboSpherePos a hor 高度系数x7 基准
+	paraboSpherePos 10 -700          --paraboSpherePos a hor 高度系数x7 基准
 	horizLineDisPos 0 -1400
 	FrameTime += 15   --停留0.5秒
 	paraboSpherePos 10 -700        
