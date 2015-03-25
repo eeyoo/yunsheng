@@ -40,7 +40,7 @@ fn randomLinePos rmin rmax frame:FrameTime n:num =
 --==============================================================================
 fn horizLineDisPos pos1 pos2 frame:FrameTime n:num =
 (
-	for i = 1 to 3 by 2 do
+	for i = 1 to n-1 by 2 do
 	(
 		at time frame (
 			LineArray[i].pos.z = pos1
@@ -294,7 +294,122 @@ fn LineSingleLoopDelayPos pos dur delay hor frame:FrameTime n:num =
 )
 
 
-----------------------------------动态延时造型--------------------------------------
+----------------------------------动态延时造型----------------------------------
+--==============================================================================
+--造型函数：整体正弦波动
+--参数1：amp    - 正弦振幅
+--参数2：count  - 运行周期数
+--参数3：dur    - 单个运行一个周期时间
+--参数4：delay  - 延时时间
+--参数5：hor    - 中心高
+--==============================================================================
+fn sinLinePos amp count dur hor frame:FrameTime n:num =
+(
+
+	c = 4  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+	
+	temp = frame
+	for t = 1 to (c*count+1) do
+	(
+		at time temp ( for i = 1 to n do LineArray[i].pos.z = amp*sin(dt*(t-1)) + hor )
+		temp += df
+	)
+
+	return frame+count*dur
+)
+
+--==============================================================================
+--造型函数：框阵逐个启动正弦波动
+--参数1：amp    - 正弦振幅
+--参数2：count  - 运行周期数
+--参数3：dur    - 单个运行一个周期时间
+--参数4：delay  - 延时时间
+--参数5：hor    - 中心高
+--==============================================================================
+fn sinLineDelayPos amp count dur delay hor frame:FrameTime n:num =
+(
+
+	c = 4  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+	
+	for t = 1 to (c*count+1) do
+	(
+		temp = frame
+		for i = 1 to n do
+		(
+			at time temp (  LineArray[i].pos.z = amp*sin(dt*(t-1)) + hor )
+			temp += delay
+		)
+		
+		frame += df
+	)
+
+	return frame-df + (n-1)*delay
+)
+
+--==============================================================================
+--造型函数：框阵奇数组正弦波动
+--参数1：amp    - 正弦振幅
+--参数2：count  - 运行周期数
+--参数3：dur    - 单个运行一个周期时间
+--参数4：delay  - 延时时间
+--参数5：hor    - 中心高
+--==============================================================================
+fn sinLineOddDelayPos amp count dur delay hor frame:FrameTime n:num =
+(
+
+	c = 4  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+	
+	for t = 1 to (c*count+1) do
+	(
+		temp = frame
+		for i = 1 to n-1 by 2 do
+		(
+			at time temp (  LineArray[i].pos.z = amp*sin(dt*(t-1)) + hor )
+			temp += delay
+		)
+		
+		frame += df
+	)
+
+	return frame-df + (n-1)*delay
+)
+
+--==============================================================================
+--造型函数：框阵偶数组正弦波动
+--参数1：amp    - 正弦振幅
+--参数2：count  - 运行周期数
+--参数3：dur    - 单个运行一个周期时间
+--参数4：delay  - 延时时间
+--参数5：hor    - 中心高
+--==============================================================================
+fn sinLineEvenDelayPos amp count dur delay hor frame:FrameTime n:num =
+(
+
+	c = 4  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+	
+	for t = 1 to (c*count+1) do
+	(
+		temp = frame
+		for i = 2 to n by 2 do
+		(
+			at time temp (  LineArray[i].pos.z = amp*sin(dt*(t-1)) + hor )
+			temp += delay
+		)
+		
+		frame += df
+	)
+
+	return frame-df + (n-1)*delay
+)
+
 --==============================================================================
 --造型函数：框阵整体位置为周期性变化，在周期时间内静止
 --参数：pos    - 起始位置

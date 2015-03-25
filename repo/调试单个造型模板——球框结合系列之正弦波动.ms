@@ -60,14 +60,14 @@ animate on
 	--SphereRectDelayPos 700 -700
 	--FrameTime = SphereRectInDelayPos 400 6 120 middle_pos  --SphereRectInDelayPos amp count dur hor 
 	--内圈球阵波动
-	SphereRectInDelayPos  400 6 240 middle_pos    --SphereRectInDelayPos amp count dur hor 
+	SphereRectInDelayPos  400 4 240 middle_pos    --SphereRectInDelayPos amp count dur hor 
 	--延迟外圈球阵波动
 	FrameTime += 15
-	SphereRectOutDelayPos 400 6 240 middle_pos    --SphereRectInDelayPos amp count dur hor 
+	SphereRectOutDelayPos 400 4 240 middle_pos    --SphereRectInDelayPos amp count dur hor 
 	--框阵延迟波动
 	FrameTime += 15
 	--FrameTime = sinLinePos 200 6 240 middle_pos   --sinLinePos 振幅 周期数 周期时间 中心高
-	FrameTime = sinLineDelayPos 400 6 240 15 -650  --sinLineDelayPos amp count dur delay hor
+	FrameTime = sinLineDelayPos 400 4 240 15 middle_pos  --sinLineDelayPos amp count dur delay hor
 
 	
 	FrameTime

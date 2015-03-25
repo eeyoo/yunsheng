@@ -1583,6 +1583,28 @@ fn SphereXDelayPos pos dur delay hor frame:FrameTime row:row col:column =
 )
 
 --==============================================================================
+--球阵逐列延时到达指定平面
+--参数：pos    - 振幅
+--参数：dur    - 时间
+--参数：hor    - 中心高
+--==============================================================================
+fn horizSphereXDelayPos pos dur delay hor frame:FrameTime row:row col:column =
+(
+	for i = 1 to row by 2 do
+	(
+		frame += delay
+		
+		at time frame ( for j = 1 to col by 2 do BallArray[i][j].pos.z = hor )
+
+		
+		at time (frame+dur) ( for j = 1 to col by 2 do BallArray[i][j].pos.z = pos + hor )
+	
+	)
+
+	return (frame + dur)
+)
+
+--==============================================================================
 --球阵逐行延时到达指定平面
 --参数：pos    - 振幅
 --参数：dur    - 时间
@@ -1605,111 +1627,45 @@ fn SphereYDelayPos pos dur delay hor frame:FrameTime row:row col:column =
 )
 
 --==============================================================================
---球阵分为内外两圈波动
+--球阵逐行延时到达指定平面
 --参数：pos    - 振幅
 --参数：dur    - 时间
 --参数：hor    - 中心高
 --==============================================================================
-fn SphereRectDelayPos pos hor frame:FrameTime row:row col:column =
+fn horizSphereYDelayPos pos dur delay hor frame:FrameTime row:row col:column =
 (
-	--start = frame
-	--count = 1
-	/*
-	for t = 1 to count do
+	for j = 1 to col by 2 do
 	(
-		--内圈
-		at time (start+dur) (	if ((i>1)and(i<15)and((j>1)and(j<7))) then BallArray[i][j].pos.z = pos + hor )
+		frame += delay
 		
-		start += delay
-		--外圈
-		at time (start+dur) ( if (((i==1)or(i==15))or((j==1)or(j==7))) then BallArray[i][j].pos.z = pos + hor )
+		at time frame ( for i = 1 to row by 2 do BallArray[i][j].pos.z = hor )
+
 		
+		at time (frame+dur) ( for i = 1 to row by 2 do BallArray[i][j].pos.z = pos + hor )
+	
 	)
-	
-	
-	for t = 1 to count  do
-	(
-		pos += d
-		
-		--内圈
-		for i = 1 to row by 2 do
-		(
-			for j = 1 to col by 2 do
-			(
-				at time temp
-				(
-					if ((i>1)and(i<15)and((j>1)and(j<7))) then
-						BallArray[i][j].pos.z = pos
-				)
-				
-				at time (temp+hold)
-				(
-					if ((i>1)and(i<15)and((j>1)and(j<7))) then
-						BallArray[i][j].pos.z = pos
-				)
 
-			)
-		)
-	)
-	*/
-	
-	at time frame (
-		--内圈
-		for i = 1 to row by 2 do
-		(
-			for j = 1 to col by 2 do
-			(
-
-					if ((i>1)and(i<15)and((j>1)and(j<7))) then
-						BallArray[i][j].pos.z = pos + hor
-			)
-		)
-	)
-	
-	
-	/*
-	--外圈
-	for i = 1 to row by 2 do
-	(
-		for j = 1 to col by 2 do
-		(
-			at time start
-			(
-
-				if (((i==1)or(i==15))or((j==1)or(j==7))) then
-					BallArray[i][j].pos.z = pos1
-			)
-			
-			at time (start+range)
-			(
-				if (((i==1)or(i==15))or((j==1)or(j==7))) then
-					BallArray[i][j].pos.z = pos2
-			)
-		)
-	)
-	*/
-	
-	--return (start + dur)
+	return (frame + dur)
 )
 
 
 --==============================================================================
---球阵分为内外两圈波动
+--球阵内圈上下波动
 --参数：pos    - 振幅
 --参数：dur    - 时间
 --参数：hor    - 中心高
 --==============================================================================
-fn SphereRectInDelayPos amp count dur hor frame:FrameTime row:row col:column =
+fn sinSphereRectInDelayPos amp count dur hor frame:FrameTime row:row col:column =
 (
-	--start = frame
-	--count = 1
-	c = 8  --周期划分单位数
+
+	c = 4  --周期划分单位数
 	dt = 360/c --周期划分一单位对应圆周度数
 	df = dur/c --周期划分一单位对应时间
-
+	
+	temp = frame
 	for t = 1 to (c*count+1) do
 	(
-		at time frame (
+		at time temp (
 			--内圈
 			for i = 1 to row by 2 do
 			(
@@ -1720,9 +1676,41 @@ fn SphereRectInDelayPos amp count dur hor frame:FrameTime row:row col:column =
 				)
 			)
 		)
-		frame += df
-		--pos += d
+		temp += df
 	)
 	
-	return frame
+	return frame+count*dur
+)
+
+--==============================================================================
+--球阵外圈上下波动
+--参数：pos    - 振幅
+--参数：dur    - 时间
+--参数：hor    - 中心高
+--==============================================================================
+fn sinSphereRectOutDelayPos amp count dur hor frame:FrameTime row:row col:column =
+(
+
+	c = 4  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+
+	temp = frame
+	for t = 1 to (c*count+1) do
+	(
+		at time temp (
+			--外圈
+			for i = 1 to row by 2 do
+			(
+				for j = 1 to col by 2 do
+				(
+					if (((i==1)or(i==15))or((j==1)or(j==7))) then
+						BallArray[i][j].pos.z = amp*sin(dt*(t-1)) + hor
+				)
+			)
+		)
+		temp += df
+	)
+	
+	return frame+count*dur
 )
