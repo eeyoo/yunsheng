@@ -141,6 +141,54 @@ animate on
 	horizSphereSynPos middle_pos   --球初始状态在最高位置 ，0位
 	horizLinePos middle_pos        --框初始状态在最高位置 ，0位
 	
+	
+	---------------------------------------------------------------------------
+	--==============================================================================
+	--造型008 - 弹簧系列之横向X字形
+	--==============================================================================
+	-----------------------------------横向X字形------------------------------------
+	--1 弹簧释放
+	FrameTime += 120
+	rateXCOESpherePos 500 middle_pos            --球横向X交叉
+	horizLineBasePos 500 middle_pos       --horizLineBasePos 偏距 中心高
+	FrameTime += 5
+	rateXCOESpherePos 500 middle_pos 
+	horizLineBasePos 500 middle_pos 
+	
+	--2 弹簧压缩
+	FrameTime += 60
+	rateXCOESpherePos 300 middle_pos            --球横向X交叉
+	horizLineBasePos 300 middle_pos       --horizLineBasePos 偏距 中心高
+	
+	--3 弹簧释放
+	FrameTime += 60
+	rateXCOESpherePos 500 middle_pos            --球横向X交叉
+	horizLineBasePos 500 middle_pos       --horizLineBasePos 偏距 中心高
+	
+	--4 弹簧压缩
+	FrameTime += 60
+	rateXCOESpherePos 300 middle_pos            --球横向X交叉
+	horizLineBasePos 300 middle_pos       --horizLineBasePos 偏距 中心高
+
+	--5 弹簧释放
+	FrameTime += 60
+	rateXCOESpherePos 500 middle_pos            --球横向X交叉
+	horizLineBasePos 500 middle_pos       --horizLineBasePos 偏距 中心高
+
+	--6 弹簧压缩
+	FrameTime += 60
+	rateXCOESpherePos 200 middle_pos            --球横向X交叉
+	horizLineBasePos 200 middle_pos       --horizLineBasePos 偏距 中心高
+ 
+	--7 回到中平面
+	FrameTime += 30
+	horizSphereSynPos middle_pos   
+	horizLinePos middle_pos       
+	FrameTime += 5
+	horizSphereSynPos middle_pos   
+	horizLinePos middle_pos 
+	
+	
 	FrameTime
 	
 )

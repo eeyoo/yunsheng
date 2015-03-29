@@ -20,16 +20,18 @@ fileIn "sphereLib.ms"
 
 
 --执行节目单
-fileIn "show.ms"
+--fileIn "show.ms"
 
 --==================================================================================
 --造型说明
---最大演示范围，1.4米
+--最大演示范围，1.3米
 --==================================================================================
 
 initial_pos = 0
-middle_pos = -700
-down_limit_pos = -1400
+run_initial_pos = 150
+run_limit_pos = 1150
+limit_pos = 1300
+middle_pos = (initial_pos+limit_pos)/2
 
 FrameTime = 0
 
@@ -47,34 +49,12 @@ animate on
 	--==============================================================================
 	--1.框奇偶分离，球阵在中间
 	FrameTime += 120
-	horizSphereSynPos -700           --球到中间
-	horizLineDisPos 0 -1400          --奇偶框上下分离（奇数框位置，pos2 - 偶数框位置） 
-	--2.球阵异步下移至-1400
-	FrameTime = horizSphereASynDelayPos -700 -1400 60 10  --horizSphereASynDelayPos pos1 pos2 range delay
-	FrameTime += 15
-	horizSphereSynPos -1400	
-
-	--3.球阵随机分布0至-1400
-	FrameTime += 120
-	randomSpherePos 0 -1400	
-
-	--4.球阵随机分布0至-1400
-	FrameTime += 90
-	randomSpherePos 0 -1400
-
-	--5.球阵随机分布0至-1400
-	FrameTime += 90
-	randomSpherePos 0 -1400	
-
-	--6.球阵随机分布0至-1600，框阵偶数框下行至-1600，耗时4秒
-	FrameTime += 60
-	horizSphereSynPos -700
+	horizSphereSynPos middle_pos           --球到中间
+	horizLineDisPos run_initial_pos run_limit_pos          --奇偶框上下分离（奇数框位置，pos2 - 偶数框位置）	
 	
-	FrameTime
+	--sinSphereXFPos amp amp1 count dur delay hor 单行振幅 基准振幅 次数 周期 延时 基准
+	FrameTime = sinSphereXFPos 100 200 4 120 10 middle_pos 
 	
-	--球阵X、Y轴行波，振幅随完整波形的次数count逐次增加
-	FrameTime = sinSphereXPos 100 4 120 10 -700 50 --sinSphereXPos amp count dur delay hor da
-	FrameTime = sinSphereYPos 100 4 120 10 -700 50 --sinSphereXPos amp count dur delay hor da
 	
 	/*		
 	--==============================================================================

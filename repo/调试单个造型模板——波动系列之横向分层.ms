@@ -24,12 +24,14 @@ fileIn "show.ms"
 
 --==================================================================================
 --造型说明
---最大演示范围，1.4米
+--最大演示范围，1.3米
 --==================================================================================
 
 initial_pos = 0
-middle_pos = -700
-down_limit_pos = -1400
+run_initial_pos = 150
+run_limit_pos = 1150
+limit_pos = 1300
+middle_pos = (initial_pos+limit_pos)/2
 
 FrameTime = 0
 
@@ -42,34 +44,32 @@ animate on
 	horizSphereSynPos initial_pos   --球初始状态在最高位置 ，0位
 	horizLinePos initial_pos         --框初始状态在最高位置 ，0位	
 	
-	--==============================================================================
-	--球随机跳动，框上下分离不动
-	--==============================================================================
-	--1.框奇偶分离，球阵在中间
-	FrameTime += 120
-	horizSphereSynPos -700           --球到中间
-	horizLineDisPos 0 -1400          --奇偶框上下分离（奇数框位置，pos2 - 偶数框位置） 
-	--2.球阵异步下移至-1400
-	FrameTime = horizSphereASynDelayPos -700 -1400 60 10  --horizSphereASynDelayPos pos1 pos2 range delay
-	FrameTime += 15
-	horizSphereSynPos -1400	
-
-	--3.球阵随机分布0至-1400
-	FrameTime += 120
-	randomSpherePos 0 -1400	
-
-	--4.球阵随机分布0至-1400
-	FrameTime += 90
-	randomSpherePos 0 -1400
-
-	--5.球阵随机分布0至-1400
-	FrameTime += 90
-	randomSpherePos 0 -1400	
-
-	--6.球阵随机分布0至-1600，框阵偶数框下行至-1600，耗时4秒
+	--造型准备
 	FrameTime += 60
-	horizSphereSynPos -700
+	rateSphereCYPos 300 middle_pos
+	horizLineDisPos run_limit_pos run_initial_pos 
 	
+	--启动分层波动
+	--sinXRateYSpherePos amp count dur delay hor high da 振幅 次数 周期 基准 分层基准偏距 振幅增量
+	FrameTime = sinXRateYSpherePos 50 2 120 10 middle_pos 300 20
+	
+	--造型准备
+	FrameTime += 60
+	rateSphereCYPos -300 middle_pos
+	horizLineDisPos run_limit_pos run_initial_pos 
+	
+	--启动分层波动
+	--sinXRateYSpherePos amp count dur delay hor high da 振幅 次数 周期 基准 分层基准偏距 振幅增量
+	FrameTime = sinXRateYSpherePos 50 2 120 10 middle_pos -300 20
+	
+	--1 启动蛇形波
+	--sinSphereSnakePos amp count dur delay hor da 振幅 次数 周期 延时 基准 振幅增量
+	--FrameTime = sinSphereSnakePos 150 2 120 5 initial_pos 50    
+	
+	
+	--球阵X、Y轴行波，振幅随完整波形的次数count逐次增加
+	--FrameTime = sinSphereXPos 100 4 120 10 -700 50 --sinSphereXPos amp count dur delay hor da
+	--FrameTime = sinSphereYPos 100 4 120 10 -700 50 --sinSphereXPos amp count dur delay hor da
 	
 	/*		
 	--==============================================================================

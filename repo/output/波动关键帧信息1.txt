@@ -1,0 +1,4 @@
+start1: 1535	 end1: 3053
+start2: 5587	 end2: 6107
+start3: 6262	 end3: 6822
+start4: 6917	 end4: 7392

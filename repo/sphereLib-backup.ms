@@ -56,10 +56,70 @@ fn rateSpherePos pos hor flag frame:FrameTime row:row col:column =
 )
 
 --==============================================================================
+--斜面造型，基准在中心
+--参数：pos    - 斜面高度
+--参数：hor    - 基准面
+--==============================================================================
+fn rateSphereCPos a hor cx:8 frame:FrameTime row:row col:column =
+(
+
+	at time frame (
+		for i = 1 to row by 2 do
+		(
+			x = cx-i  -- -3 -2 -1 1 2 3
+			for j = 1 to col by 2 do
+			(
+				BallArray[i][j].pos.z = -a*x + hor
+			)
+		)
+	)
+)
+
+--==============================================================================
+--X轴向斜面造型，基准在中心
+--参数：pos    - 斜面高度
+--参数：hor    - 基准面
+--==============================================================================
+fn rateSphereCXPos a hor cx:8 frame:FrameTime row:row col:column =
+(
+
+	at time frame (
+		for i = 1 to row by 2 do
+		(
+			x = cx-i  -- -3 -2 -1 1 2 3
+			for j = 1 to col by 2 do
+			(
+				BallArray[i][j].pos.z = -a*x + hor
+			)
+		)
+	)
+)
+
+--==============================================================================
+--Y轴向斜面造型，基准在中心
+--参数：rang    - 斜面高度
+--参数：hor    - 基准面
+--==============================================================================
+fn rateSphereCYPos rang hor cy:4 frame:FrameTime row:row col:column =
+(
+	d = rang/2
+	a = d/3
+	at time frame (
+		for j = 1 to col by 2 do
+		(
+			y = j - cy  -- -3 -2 -1 1 2 3
+			for i = 1 to row by 2 do
+			(
+				BallArray[i][j].pos.z = a*y + hor
+			)
+		)
+	)
+)
+
+--==============================================================================
 --X轴向塔形斜面造型
 --参数：pos    - 斜面高度
 --参数：hor    - 基准面
---参数：flag    - 起点方向，1，2区分不同起点
 --==============================================================================
 fn rateXSpherePos a hor cx:8 frame:FrameTime row:row col:column =
 (
@@ -67,7 +127,6 @@ fn rateXSpherePos a hor cx:8 frame:FrameTime row:row col:column =
 	at time frame (
 		for i = 1 to row by 2 do
 		(
-			--x = (i+1)/2
 			pos = pos_max - a*abs(cx-i)
 			for j = 1 to col by 2 do
 			(
@@ -212,14 +271,14 @@ fn randomSpherePos rmin rmax frame:FrameTime row:row col:column =
 
 --==============================================================================
 --球阵形成抛物面
---参数：a      - 系数（正开口向上，负开口向下）
+--参数：pos      - 高度
 --参数：cx,cy  - 中心点坐标
 --参数：hor    - 中心高
 --==============================================================================
-fn paraboSpherePos a hor cx:8 cy:4 frame:FrameTime row:row col:column =
+fn paraboSpherePos pos hor cx:8 cy:4 frame:FrameTime row:row col:column =
 (
-
-	rmax2 = (cx-1)^2+(cy-1)^2
+	rmax2 = (cx-1)^2+(cy-1)^2  --49+9 = 58
+	a = pos/rmax2
 	
 	at time frame
 	(
@@ -337,7 +396,7 @@ fn chairSpherePos a hor cx:8 cy:4 frame:FrameTime row:row col:column =
 			(
 				x = i - cx
 				y = j - cy
-				r2 = -(x^2 + y^2)
+				r2 = -sqrt(x^2 + y^2)
 				pos = a*x*r2
 				BallArray[i][j].pos.z = pos + hor
 			)
@@ -378,30 +437,56 @@ fn warpSpherePos a hor cx:8 cy:4 frame:FrameTime row:row col:column =
 --==============================================================================
 --球阵形成对角布悬曲面
 --参数：a      - 系数（正开口向上，负开口向下）
---参数：cx,cy  - 中心点坐标
 --参数：hor    - 中心高
 --参数：flag    - 1 2 3 4数字区分四个角落
 --==============================================================================
 fn cornerSpherePos a hor flag frame:FrameTime row:row col:column =
 (
 
-	--rmax2 = (cx-1)^2-(cy-1)^2
-	
 	at time frame
 	(
 		for i = 1 to row by 2 do
 		(
 			for j = 1 to col by 2 do
 			(
-				--pos = a*(i+j)^2
+				x = (i+1)/2  --1 2 3 ... 8
+				y = (j+1)/2  --1 2 3 4
 				case flag of
 				(
-				1: x = (i+j)^2
-				2: x = (i+col-j)^2
-				3: x = (row-i+col-j)^2
-				4: x = (row-i+j)^2
+				1: pos = (x+y)^2
+				2: pos = (x+4-y)^2
+				3: pos = (8-x+4-y)^2
+				4: pos = (8-x+y)^2
 				)
-				BallArray[i][j].pos.z = a*x + hor
+				BallArray[i][j].pos.z = a*pos + hor
+			)
+		)
+	)
+	
+)
+
+
+--==============================================================================
+--球阵横向弧面
+--参数：a      - 系数（正开口向上，负开口向下）
+--参数：cx,cy  - 中心点坐标
+--参数：hor    - 中心高
+--参数：flag    - 1 2 3 4数字区分四个角落
+--==============================================================================
+fn camberXSpherePos a hor cx:8 frame:FrameTime row:row col:column =
+(
+	--max_pos = a*(cx-1)^2
+	
+	max_pos = 49
+	at time frame
+	(
+		for i = 1 to row by 2 do
+		(
+			x = (cx - i)^2
+
+			for j = 1 to col by 2 do
+			(
+				BallArray[i][j].pos.z = a*(max_pos - x) + hor
 			)
 		)
 	)
@@ -409,30 +494,24 @@ fn cornerSpherePos a hor flag frame:FrameTime row:row col:column =
 )
 
 --==============================================================================
---球阵形成弧面
+--球阵纵向弧面
 --参数：a      - 系数（正开口向上，负开口向下）
 --参数：cx,cy  - 中心点坐标
 --参数：hor    - 中心高
 --参数：flag    - 1 2 3 4数字区分四个角落
 --==============================================================================
-fn cornerSpherePos a hor flag frame:FrameTime row:row col:column =
+fn camberYSpherePos a hor cy:4 frame:FrameTime row:row col:column =
 (
-	
+	max_pos = a*(cy-1)^2
 	at time frame
 	(
-		for i = 1 to row by 2 do
+		for j = 1 to col by 2 do
 		(
+			y = (cy - j)^2
+
 			for j = 1 to col by 2 do
 			(
-				--pos = a*(i+j)^2
-				case flag of
-				(
-				1: x = (i+j)^2
-				2: x = (i+col-j)^2
-				3: x = (row-i+col-j)^2
-				4: x = (row-i+j)^2
-				)
-				BallArray[i][j].pos.z = a*x + hor
+				BallArray[i][j].pos.z = a*(max_pos - y) + hor
 			)
 		)
 	)
@@ -514,7 +593,7 @@ fn paraboSphereDynamicPos a range hor hold cx:8 cy:4 frame:FrameTime row:row col
 	
 	return frame
 )
-
+/*
 --==============================================================================
 --逐个环形启动，回字形
 --参数：amp    - 振幅
@@ -553,9 +632,42 @@ fn sinSphereSinglePos amp count dur delay hor da frame:FrameTime row:row col:col
 
 	return (frame + dur*count)
 )
+*/
 
 --==============================================================================
 --球阵沿X轴向逐个延时启动正弦波动
+--参数：amp    - 振幅
+--参数：count  - 波形周期数
+--参数：dur    - 周期帧长
+--参数：delay  - 逐个延时时间
+--参数：hor    - 中心高
+--==============================================================================
+fn sinSphereSingleXNPos amp count dur delay hor frame:FrameTime row:row col:column =
+(
+	c = 8  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+	
+	for i = 1 to row by 2 do
+	(
+		for j = 1 to col by 2 do
+		(
+			frame += delay
+			temp = frame
+			
+			for t = 1 to (c*count+1) do
+			(
+				at time temp ( BallArray[i][j].pos.z = amp*sin(dt*(t-1)) + hor )
+				temp += df
+			)
+		)
+	)
+
+	return (frame + dur*count)
+)
+
+--==============================================================================
+--球阵沿X轴向逐个延时启动正弦波动，振幅周期性线性变化
 --参数：amp    - 振幅
 --参数：count  - 波形周期数
 --参数：dur    - 周期帧长
@@ -595,6 +707,39 @@ fn sinSphereSingleXPos amp count dur delay hor da frame:FrameTime row:row col:co
 
 --==============================================================================
 --球阵沿Y轴向逐个延时启动正弦波动
+--参数：amp    - 振幅
+--参数：count  - 波形周期数
+--参数：dur    - 周期帧长
+--参数：delay  - 逐个延时时间
+--参数：hor    - 中心高
+--==============================================================================
+fn sinSphereSingleYNPos amp count dur delay hor frame:FrameTime row:row col:column =
+(
+	c = 8  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+	
+	temp = frame
+	for j = 1 to col by 2 do
+	(
+		for i = 1 to row by 2 do
+		(
+			frame += delay
+			temp = frame
+
+			for t = 1 to (c*count+1) do
+			(
+				at time temp ( BallArray[i][j].pos.z = amp*sin(dt*(t-1)) + hor )
+				temp += df
+			)			
+		)
+	)
+
+	return (frame + dur*count)
+)
+
+--==============================================================================
+--球阵沿Y轴向逐个延时启动正弦波动，振幅周期性线性变化
 --参数：amp    - 振幅
 --参数：count  - 波形周期数
 --参数：dur    - 周期帧长
@@ -640,6 +785,38 @@ fn sinSphereSingleYPos amp count dur delay hor da frame:FrameTime row:row col:co
 --参数：dur    - 周期帧长
 --参数：delay  - 逐列延时时间
 --参数：hor    - 中心高
+--==============================================================================
+fn sinSphereXNPos amp count dur delay hor frame:FrameTime row:row col:column =
+(
+	c = 8  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+
+	for i = 1 to row by 2 do
+	(
+		frame += delay
+		temp = frame
+
+		for t = 1 to c*count+1 do
+		(
+			at time temp
+			(
+				for j = 1 to col by 2 do ( BallArray[i][j].pos.z = amp*sin(dt*(t-1)) + hor  )
+			)
+			temp += df
+		)		
+	)
+		
+	return (frame + dur*count)
+)
+
+--==============================================================================
+--球阵X轴行波，横向方向振幅线性变化
+--参数：amp    - 振幅
+--参数：count  - 波形周期数
+--参数：dur    - 周期帧长
+--参数：delay  - 逐列延时时间
+--参数：hor    - 中心高
 --参数：da     - 振幅的变化值
 --==============================================================================
 fn sinSphereXPos amp count dur delay hor da frame:FrameTime row:row col:column =
@@ -671,7 +848,7 @@ fn sinSphereXPos amp count dur delay hor da frame:FrameTime row:row col:column =
 )
 
 --==============================================================================
---球阵X轴行波
+--球阵X轴行波，纵向方向振幅线性变化
 --参数：amp    - 振幅
 --参数：count  - 波形周期数
 --参数：dur    - 周期帧长
@@ -715,13 +892,44 @@ fn sinSphereRateXPos amp count dur delay hor da direct frame:FrameTime row:row c
 		)
 		
 	)
-	
 		
 	return (frame + dur*count)
 )
 
 --==============================================================================
 --球阵Y轴列波
+--参数：amp    - 振幅
+--参数：count  - 波形周期数
+--参数：dur    - 周期帧长
+--参数：delay  - 逐列延时时间
+--参数：hor    - 中心高
+--==============================================================================
+fn sinSphereYNPos amp count dur delay hor frame:FrameTime row:row col:column =
+(
+	c = 8  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+
+	for j = 1 to col by 2 do
+	(
+		frame += delay
+		temp = frame
+
+		for t = 1 to (c*count+1) do
+		(
+			at time temp 
+			(
+				for i = 1 to row by 2 do ( BallArray[i][j].pos.z = amp*sin(dt*(t-1)) + hor  )
+			)
+			temp += df
+		)
+	)
+
+	return (frame + dur*count)
+)
+
+--==============================================================================
+--球阵Y轴列波，振幅周期性线性变化
 --参数：amp    - 振幅
 --参数：count  - 波形周期数
 --参数：dur    - 周期帧长
@@ -858,7 +1066,48 @@ fn sinSphereRatePos amp count dur delay hor da direct frame:FrameTime row:row co
 )
 
 --==============================================================================
---球阵由中心启动延时效果正弦波动
+--球阵由中心启动延时效果正弦波动，振幅不变
+--参数：amp    - 振幅
+--参数：count  - 波形周期数
+--参数：dur    - 周期帧长
+--参数：delay  - 逐列延时时间
+--参数：hor    - 中心高
+--==============================================================================
+fn sinSphereCNPos amp count dur hor cx:8 cy:4 frame:FrameTime row:row col:column =
+(
+	enter = frame
+	rc2 = 64+16
+	rmax2 = 49+9
+	rmin2 = 1+1
+	c = 8  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+	
+	for i = 1 to row by 2 do
+	(
+		for j = 1 to col by 2 do
+		(
+			rx = cx - i
+			ry = cy - j
+			r2 = rx*rx+ry*ry
+			
+			frame = enter + r2
+			temp = frame
+			
+			for t = 1 to (c*count+1) do
+			(
+				at time temp ( BallArray[i][j].pos.z = amp*sin(dt*(t-1)) + hor )
+				temp += df
+			)
+			
+		)
+	)
+
+	return (enter + rmax2 + dur*count)
+)
+
+--==============================================================================
+--球阵由中心启动延时效果正弦波动，振幅周期性线性变化
 --参数：amp    - 振幅
 --参数：count  - 波形周期数
 --参数：dur    - 周期帧长
@@ -904,11 +1153,105 @@ fn sinSphereCPos amp count dur hor da cx:8 cy:4 frame:FrameTime row:row col:colu
 -------------------------------球阵区别奇偶造型-----------------------------------
 
 --==============================================================================
+--沿X轴线性交错，基准在X轴中心
+--参数：a    - 位置相关系数
+--参数：hor - 中心高
+--==============================================================================
+fn rateXCOESpherePos a hor cx:8 frame:FrameTime row:row col:column =
+(
+
+	at time frame (
+		for j = 1 to col-2 by 4 do
+		(
+			for i = 1 to row by 2 do
+			(
+				x = cx - i  -- 最大为7
+				BallArray[i][j].pos.z = a*x + hor
+			)
+		)
+		
+		for j = 3 to col by 4 do
+		(
+			for i = 1 to row by 2 do
+			(
+				x = cx - i
+				BallArray[i][j].pos.z = -a*x + hor
+			)
+		)
+	)
+
+)
+
+--==============================================================================
+--沿Y轴线性交错，基准在Y轴中心
+--参数：pos    - 基准单向高度
+--参数：hor    - 中心高
+--==============================================================================
+fn rateYCOESpherePos pos hor cy:4 frame:FrameTime row:row col:column =
+(
+	a = pos/7
+	at time frame (
+		for i = 1 to row-2 by 4 do
+		(
+			for j = 1 to col by 2 do
+			(
+				y = j - cy  -- 最大为7
+				BallArray[i][j].pos.z = a*y + hor
+			)
+		)
+		
+		for i = 3 to row by 4 do
+		(
+			for j = 1 to col by 2 do
+			(
+				y = j - cy
+				BallArray[i][j].pos.z = -a*y + hor
+			)
+		)
+	)
+
+)
+
+--==============================================================================
 --沿X轴线性交错
 --参数：a    - 位置相关系数
 --参数：hor - 中心高
 --==============================================================================
-fn rateXOESpherePos a range hor frame:FrameTime row:row col:column =
+fn rateXOESpherePos a  hor frame:FrameTime row:row col:column =
+(
+	start = frame
+
+	
+	at time frame (
+		for j = 1 to col-2 by 4 do
+		(
+			for i = 1 to row by 2 do
+			(
+				x = (i+1)/2 - 1
+				BallArray[i][j].pos.z = a*x + hor
+			)
+		)
+		
+		for j = 3 to col by 4 do
+		(
+			for i = 1 to row by 2 do
+			(
+				x = 8 - (i+1)/2
+				BallArray[i][j].pos.z = a*x + hor
+			)
+		)
+	)
+	
+
+	return frame
+)
+
+--==============================================================================
+--沿X轴线性交错
+--参数：a    - 位置相关系数
+--参数：hor - 中心高
+--==============================================================================
+fn rateXOESphereTestPos a range hor frame:FrameTime row:row col:column =
 (
 	start = frame
 	
@@ -1268,213 +1611,158 @@ fn sinXYOESpherePos amp count dur hor frame:FrameTime row:row col:column =
 	return (frame + dur*count)
 )
 
-
-
-
------------------------------球阵组合的节目单-----------------------------------
+----------------------------------非同动造型--------------------------------------
 --==============================================================================
---节目编号：001
---节目说明：球阵进行回字形编组与框阵一起由初始位置到达终点位置
---参数：pos1    - 初始位置
---参数：pos2    - 终点位置
---参数：range   - 单元动作时间
---参数：delay  - 逐个延时时间
+--球阵逐列延时到达指定平面
+--参数：pos    - 振幅
+--参数：dur    - 时间
 --参数：hor    - 中心高
 --==============================================================================
-fn CompositeShow001 pos1 pos2 range delay hor frame:FrameTime row:row col:column n:num =
+fn SphereXDelayPos pos dur delay hor frame:FrameTime row:row col:column =
 (
-	start = frame
-	
-	for i = 1 to row by 2 do
-	(
-		for j = 1 to col by 2 do
-		(
-			at time start
-			(
-				if ((i>1)and(i<15)and((j>1)and(j<7))) then
-					BallArray[i][j].pos.z = pos1 + hor
-			)
-			
-			at time (start+range)
-			(
-				if ((i>1)and(i<15)and((j>1)and(j<7))) then
-					BallArray[i][j].pos.z = pos2 + hor
-			)
-		)
-	)
-	
-	start += delay
-	for i = 1 to row by 2 do
-	(
-		for j = 1 to col by 2 do
-		(
-			at time start
-			(
-
-				if (((i==1)or(i==15))or((j==1)or(j==7))) then
-					BallArray[i][j].pos.z = pos1 + hor
-			)
-			
-			at time (start+range)
-			(
-				if (((i==1)or(i==15))or((j==1)or(j==7))) then
-					BallArray[i][j].pos.z = pos2 + hor
-			)
-		)
-	)
-	
-	
-	for t = 1 to n do 
-	(
-		start += delay
-		at time start ( LineArray[t].pos.z = pos1 + hor )
-		--start += delay
-		at time (start+range) ( LineArray[t].pos.z = pos2 + hor )
-	)
-	
-	
-	return frame+5*delay+range
-)
-
---==============================================================================
---节目编号：002
---节目说明：球阵进行回字形编组与框阵一起由初始位置到达终点位置
---参数：pos1    - 初始位置
---参数：pos2    - 终点位置
---参数：range   - 单元动作时间
---参数：delay  - 逐个延时时间
---参数：hor    - 中心高
---==============================================================================
-fn CompositeShow002 pos1 pos2 range delay hor frame:FrameTime row:row col:column n:num =
-(
-	height = pos2 - pos1
-	dh = height/5
-	
-	start = frame
-	
-	for i = 1 to row by 2 do
-	(
-		for j = 1 to col by 2 do
-		(
-			at time start
-			(
-				if ((i>1)and(i<15)and((j>1)and(j<7))) then
-					BallArray[i][j].pos.z = pos1 + hor
-			)
-			
-			at time (start+range)
-			(
-				if ((i>1)and(i<15)and((j>1)and(j<7))) then
-					BallArray[i][j].pos.z = pos1+dh + hor
-			)
-		)
-	)
-	
-	start += delay
-	for i = 1 to row by 2 do
-	(
-		for j = 1 to col by 2 do
-		(
-			at time start
-			(
-				if (((i==1)or(i==15))or((j==1)or(j==7))) then
-					BallArray[i][j].pos.z = pos1 + hor
-			)
-			
-			at time (start+range)
-			(
-				if (((i==1)or(i==15))or((j==1)or(j==7))) then
-					BallArray[i][j].pos.z = pos1+2*dh + hor
-			)
-		)
-	)
-	
-	
-	for t = 1 to n do 
-	(
-		start += delay
-		at time start ( LineArray[t].pos.z = pos1 + hor )
-		--start += delay
-		at time (start+range) ( LineArray[t].pos.z = pos1+(t+2)*dh + hor )
-	)
-	
-	
-	return frame+5*delay+range
-)
-
---==============================================================================
---节目编号：003
---节目说明：球阵与框阵起始处于同一水平面，球阵活动范围逐渐扩大框阵始终作为其动态变化的边界
---参数：pos1    - 初始位置
---参数：pos2    - 终点位置
---参数：range   - 单元动作时间
---参数：delay  - 逐个延时时间
---参数：hor    - 中心高
---==============================================================================
-fn CompositeShow003 amp count range delay hor da frame:FrameTime row:row col:column n:num =
-(
-	start = frame
-	
-	c = 8  --周期划分单位数
-	dt = 360/c --周期划分一单位对应圆周度数
-	df = range/c --周期划分一单位对应时间
-
-
 	for i = 1 to row by 2 do
 	(
 		frame += delay
-		temp = frame
 		
-		temp1 = amp - da   --让小球起始振幅为amp的权宜之计
-		for t = 1 to c*count+1 do
-		(
-			at time temp
-			(
-				for j = 1 to col by 2 do ( BallArray[i][j].pos.z = temp1*sin(dt*(t-1)) + hor  )
-			)
-			temp += df
-			--每隔一个周期振幅增加da
-			if ((mod (t-1) c) == 0) then temp1 += da
-		)
+		at time frame ( for j = 1 to col by 2 do BallArray[i][j].pos.z = hor )
+
 		
-	)
+		at time (frame+dur) ( for j = 1 to col by 2 do BallArray[i][j].pos.z = pos + hor )
 	
-	at time start
+	)
+
+	return (frame + dur)
+)
+
+--==============================================================================
+--球阵逐列延时到达指定平面
+--参数：pos    - 振幅
+--参数：dur    - 时间
+--参数：hor    - 中心高
+--==============================================================================
+fn horizSphereXDelayPos pos dur delay hor frame:FrameTime row:row col:column =
+(
+	for i = 1 to row by 2 do
 	(
-		for i = 1 to 3 by 2 do
-		(
-			at time frame (
-				LineArray[i].pos.z = hor
-			)
-		)
+		frame += delay
 		
-		for i = 2 to n by 2 do
-		(
-			at time frame (
-				LineArray[i].pos.z = hor
-			)
-		)
-	)
+		at time frame ( for j = 1 to col by 2 do BallArray[i][j].pos.z = hor )
+
+		
+		at time (frame+dur) ( for j = 1 to col by 2 do BallArray[i][j].pos.z = pos + hor )
 	
-	frame += count*range
-	at time frame
+	)
+
+	return (frame + dur)
+)
+
+--==============================================================================
+--球阵逐行延时到达指定平面
+--参数：pos    - 振幅
+--参数：dur    - 时间
+--参数：hor    - 中心高
+--==============================================================================
+fn SphereYDelayPos pos dur delay hor frame:FrameTime row:row col:column =
+(
+	for j = 1 to col by 2 do
 	(
-		for i = 1 to 3 by 2 do
-		(
-			at time frame (
-				LineArray[i].pos.z = amp+count*da + hor
-			)
-		)
+		frame += delay
 		
-		for i = 2 to n by 2 do
-		(
-			at time frame (
-				LineArray[i].pos.z = -(amp+count*da) + hor
-			)
-		)
-	)
+		at time frame ( for i = 1 to row by 2 do BallArray[i][j].pos.z = hor )
+
+		
+		at time (frame+dur) ( for i = 1 to row by 2 do BallArray[i][j].pos.z = pos + hor )
 	
-	return frame
+	)
+
+	return (frame + dur)
+)
+
+--==============================================================================
+--球阵逐行延时到达指定平面
+--参数：pos    - 振幅
+--参数：dur    - 时间
+--参数：hor    - 中心高
+--==============================================================================
+fn horizSphereYDelayPos pos dur delay hor frame:FrameTime row:row col:column =
+(
+	for j = 1 to col by 2 do
+	(
+		frame += delay
+		
+		at time frame ( for i = 1 to row by 2 do BallArray[i][j].pos.z = hor )
+
+		
+		at time (frame+dur) ( for i = 1 to row by 2 do BallArray[i][j].pos.z = pos + hor )
+	
+	)
+
+	return (frame + dur)
 )
 
 
+--==============================================================================
+--球阵内圈上下波动
+--参数：pos    - 振幅
+--参数：dur    - 时间
+--参数：hor    - 中心高
+--==============================================================================
+fn sinSphereRectInDelayPos amp count dur hor frame:FrameTime row:row col:column =
+(
+
+	c = 4  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+	
+	temp = frame
+	for t = 1 to (c*count+1) do
+	(
+		at time temp (
+			--内圈
+			for i = 1 to row by 2 do
+			(
+				for j = 1 to col by 2 do
+				(
+					if ((i>1)and(i<15)and((j>1)and(j<7))) then
+						BallArray[i][j].pos.z = amp*sin(dt*(t-1)) + hor
+				)
+			)
+		)
+		temp += df
+	)
+	
+	return frame+count*dur
+)
+
+--==============================================================================
+--球阵外圈上下波动
+--参数：pos    - 振幅
+--参数：dur    - 时间
+--参数：hor    - 中心高
+--==============================================================================
+fn sinSphereRectOutDelayPos amp count dur hor frame:FrameTime row:row col:column =
+(
+
+	c = 4  --周期划分单位数
+	dt = 360/c --周期划分一单位对应圆周度数
+	df = dur/c --周期划分一单位对应时间
+
+	temp = frame
+	for t = 1 to (c*count+1) do
+	(
+		at time temp (
+			--外圈
+			for i = 1 to row by 2 do
+			(
+				for j = 1 to col by 2 do
+				(
+					if (((i==1)or(i==15))or((j==1)or(j==7))) then
+						BallArray[i][j].pos.z = amp*sin(dt*(t-1)) + hor
+				)
+			)
+		)
+		temp += df
+	)
+	
+	return frame+count*dur
+)
