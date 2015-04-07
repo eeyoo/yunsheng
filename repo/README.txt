@@ -87,6 +87,14 @@ sinXYOESpherePos amp count dur hor
 horizSphereASynDelayPos pos1 pos2 range delay
 
 
+球阵造型函数列表
+===================================
+SphereRectInHorizPos pos row:row col:column
+内圈球阵位置指定 位置 行数 列数
+
+SphereRectOutHorizPos pos row:row col:column
+外圈球阵位置指定 位置 行数 列数
+
 
 
 

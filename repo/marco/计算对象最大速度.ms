@@ -35,19 +35,20 @@ macroScript MySpeedSheet category:"HowTo"
 					for t = animationrange.start to animationrange.end do
 					(
 						at time t current_pos = selection[i].center
-						at time (t-30f) last_pos = selection[i].center
-						frame_speed = (distance current_pos last_pos)
+						at time (t-1f) last_pos = selection[i].center
+						frame_speed = (distance current_pos last_pos)*FrameRate
 							
 						-- ’ºØ÷°ÀŸ
 						append object_speed frame_speed
 						
+						--format "Frame % speed: %\n" t frame_speed to:output_file
 					)
 					
 					sort object_speed
 					end = object_speed.count
 					max_speed = object_speed[end]
 					
-					format "% max speed: %\n" selection[i].name max_speed to:output_file
+					format "% MAX speed: %\n" selection[i].name max_speed to:output_file
 				)
 		
 			)--end if
